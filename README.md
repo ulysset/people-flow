@@ -11,6 +11,8 @@
 
 
 ## Getting started
+
+#### Install
 Just [clone](github-windows://openRepo/https://github.com/ulysset/people-flow.git) the repo
 and start :
 ```shell
@@ -19,13 +21,13 @@ $ cd people-flow
 $ npm i                         # Install Node.js components listed in ./package.json
 ```
 
-### How to use ?
+#### How to use ?
 ```shell
 $ npm start                     # or: ...
 ```
 This will start a lightweight development server ```http://localhost:8080```.
 
-### Bundling for release
+#### Bundling for release
 ```shell
 $ npm run build                # or: ...
 ```
