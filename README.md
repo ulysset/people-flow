@@ -5,7 +5,7 @@ To edit ...
 - Node.js 4.x or newer
 
 ## Stack
-- [Vue.js](http://vuejs.org/) `^1.0.x` simple yet powerful library for building modern web interfaces.
+- [Vue.js](http://vuejs.org/) `1.0.x` simple yet powerful library for building modern web interfaces.
 - [Redux](https://github.com/rackt/redux) `3.0.x` a predictable state container for Javascript apps
 - [Babel](http://babeljs.io/) `6.x.x` for ES6+ support
 - [Webpack](https://webpack.github.io/) module loader and bundler
@@ -24,7 +24,7 @@ $ npm i                         # Install Node.js components listed in ./package
 
 #### How to use ?
 ```shell
-$ npm start                     # or: ...
+$ npm start                     # or: webpack-dev-server --inline --hot --config webpack.config
 ```
 This will start a lightweight development server ```http://localhost:8080```.
 

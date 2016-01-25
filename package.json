@@ -10,8 +10,7 @@
   "author": "Léo LE BRAS <leo.lebrasf@gmail.com> (http://github.com/LeoLeBras)",
   "license": "MIT",
   "scripts": {
-    "start": "env BABEL_ENV=development DEBUG=true NODE_ENV=DEV node server.js",
-    "dev": "webpack-dev-server --inline --hot --config webpack.config"
+    "start": "webpack-dev-server --inline --hot --config webpack.config"
   },
   "dependencies": {
     "vue": "^1.0.15"
