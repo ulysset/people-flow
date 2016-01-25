@@ -31,4 +31,4 @@ $ npm run build                # or: ...
 ```
 
 ## Issues
-If you run into any issues please see the [Getting Started](http://facebook.github.io/react-native/docs/getting-started.html) guide for React Native before submitting an issue.
+If you run into any issues please see the Getting Started guide for [Vue.js](http://vuejs.org/guide/) and [three.js](http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene) before submitting an issue.
