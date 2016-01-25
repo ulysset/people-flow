@@ -1,0 +1,21 @@
+{
+  "name": "people-flow",
+  "version": "0.0.1",
+  "description": "To edit",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ulysset/people-flow.git"
+  },
+  "author": "Léo LE BRAS <leo.lebrasf@gmail.com> (http://github.com/LeoLeBras)",
+  "license": "MIT",
+  "scripts": {
+    "start": "env BABEL_ENV=development DEBUG=true NODE_ENV=DEV node server.js"
+  },
+  "dependencies": {
+    "vue": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.6"
+  }
+}
