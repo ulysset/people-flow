@@ -1,0 +1,26 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "indent": [2, 4],
+    "quotes": [2, "single"],
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"],
+    "constructor-super": 2,
+    "no-arrow-condition": 2,
+    "no-class-assign": 2,
+    "no-const-assign": 2,
+    "no-dupe-class-members": 2,
+    "no-var": 1,
+    "no-this-before-super": 2,
+    "object-shorthand": [2, "always"],
+    "prefer-spread": 1,
+    "prefer-template": 1,
+    "require-yield": 2,
+    "jsx-quotes": 1
+  },
+  "extends": "eslint:recommended"
+}
