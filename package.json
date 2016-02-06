@@ -14,7 +14,7 @@
     "dev": "nodemon index.js",
     "postinstall": "env BASE_DIR=public/ webpack --config public/webpack.config.babel"
   },
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "^6.4.5",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.1",
