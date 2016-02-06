@@ -14,9 +14,6 @@
     "dev": "nodemon index.js",
     "postinstall": "env BASE_DIR=public/ webpack --config public/webpack.config.babel"
   },
-  "dependencies": {
-    "vue": "^1.0.15"
-  },
   "devDependencies": {
     "babel-core": "^6.4.5",
     "babel-eslint": "^4.1.6",
@@ -26,6 +23,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-runtime": "^6.3.19",
     "css-loader": "^0.23.1",
+    "vue": "^1.0.15"
     "file-loader": "^0.8.5",
     "vue-hot-reload-api": "^1.3.0",
     "vue-html-loader": "^1.1.0",
