@@ -1,0 +1,15 @@
+{
+  "errors": [
+    "Entry module not found: Error: Cannot resolve module 'public' in /Users/wino/Documents/Apps/people-flow\nresolve module public in /Users/wino/Documents/Apps/people-flow\n  looking for modules in /Users/wino/Documents/Apps/people-flow/node_modules\n    /Users/wino/Documents/Apps/people-flow/node_modules/public doesn't exist (module as directory)\n  looking for modules in /Users/wino/node_modules\n    /Users/wino/node_modules/public doesn't exist (module as directory)"
+  ],
+  "warnings": [],
+  "version": "1.12.12",
+  "hash": "7efcc823093c010f8c93",
+  "publicPath": "__build__/",
+  "assetsByChunkName": {},
+  "assets": [],
+  "chunks": [],
+  "modules": [],
+  "filteredModules": 0,
+  "children": []
+}

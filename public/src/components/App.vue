@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2 class="title">Hello from, vue-loader !!</h2>
-    <p>Hello world</p>
+    <h2 class="title">Dataviz</h2>
+    <p>Hello world :)</p>
   </div>
 </template>
 

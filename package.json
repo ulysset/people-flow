@@ -10,7 +10,9 @@
   "author": "Léo LE BRAS <leo.lebrasf@gmail.com> (http://github.com/LeoLeBras)",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --inline --hot --config webpack.config"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "postinstall": "env BASE_DIR=public/ webpack --config public/webpack.config.babel"
   },
   "dependencies": {
     "vue": "^1.0.15"
