@@ -1,3 +1,16 @@
+/*
+ * Get Google Spreadsheet
+ */
+
+import { run } from './server/core.js';
+run();
+
+
+
+/*
+ * Server static files
+ */
+
 import express from 'express';
 
 const app = express();
