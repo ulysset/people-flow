@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="title">Dataviz</h2>
-    <p>Hello world :)</p>
+    <p>Hello world !!! :)</p>
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 {
-  "name": "people-flow",
+  "name": "future-grant",
   "version": "0.0.1",
   "description": "To edit",
-  "main": "index.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ulysset/people-flow.git"
@@ -10,9 +10,10 @@
   "author": "Léo LE BRAS <leo.lebrasf@gmail.com> (http://github.com/LeoLeBras)",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "postinstall": "env BASE_DIR=public/ webpack --config public/webpack.config.babel"
+    "start": "node server.js",
+    "dev-server": "nodemon server.js",
+    "dev-client": "env BASE_DIR=public/ webpack-dev-server --inline --hot --config public/webpack.config.dev",
+    "postinstall": "env BASE_DIR=public/ webpack --config public/webpack.config.prod"
   },
   "dependencies": {
     "babel-core": "^6.4.5",

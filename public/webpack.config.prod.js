@@ -1,4 +1,5 @@
 var PathRewriterPlugin = require('webpack-path-rewriter');
+var path = require('path');
 
 var BASE_DIR = process.env.BASE_DIR ? process.env.BASE_DIR : '';
 
