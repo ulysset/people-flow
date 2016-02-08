@@ -1,13 +1,18 @@
 import { SPREADSHEET_KEY } from './config';
-import { fetch } from './utils/spreadsheet';
+import { fetch, getCells } from './utils/spreadsheet';
 
 export const run = () => {
 
     const spreadsheet = fetch({
         key: SPREADSHEET_KEY,
-        range: 'R1C1:R2C6'
-    }, (data) => {
-        console.log(data);
+        select: {
+            from: 'A1',
+            to: 'A5'
+        }
+    }, data => {
+
+        const cell = getCells(data);
+
     });
 
 };
