@@ -45,5 +45,10 @@ $ npm run postinstall           # or: env BASE_DIR=public/ webpack --config publ
 $ npm start
 ```
 
+#### Deploy
+```shell
+$ git push heroku master
+```
+
 ## Issues
 If you run into any issues please see the Getting Started guide for [Vue.js](http://vuejs.org/guide/) and [three.js](http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene) before submitting an issue.
