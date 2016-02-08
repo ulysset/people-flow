@@ -23,6 +23,11 @@ $ npm i                         # Install Node.js components listed in ./package
 ```
 
 #### How to use ?
+###### Run server
+```shell
+$ npm start                     # node server.js
+```
+
 ###### Server
 ```shell
 $ npm run dev-server            # or: nodemon server.js
