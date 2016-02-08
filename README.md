@@ -23,11 +23,6 @@ $ npm i                         # Install Node.js components listed in ./package
 ```
 
 #### How to use ?
-###### Run server
-```shell
-$ npm start                     # node server.js
-```
-
 ###### Server
 ```shell
 $ npm run dev-server            # or: nodemon server.js
@@ -39,10 +34,15 @@ $ npm run dev-client            # or: env BASE_DIR=public/ webpack-dev-server --
 ```
 This will start a lightweight development server ```http://localhost:8080```.
 
-#### Build for release
-###### Client
+## Production
+#### Build static files
 ```shell
-$ npm run postinstall           # or: ...
+$ npm run postinstall           # or: env BASE_DIR=public/ webpack --config public/webpack.config.prod
+```
+
+#### Start server
+```shell
+$ npm start
 ```
 
 ## Issues
