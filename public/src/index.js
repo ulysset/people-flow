@@ -1,10 +1,9 @@
 // Import .html files
 import './index.html';
 
-// Run Vue.js
-import Vue from 'vue';
-import App from './components/App.vue';
-new Vue({
-    el: 'body',
-    components: { App }
-});
+// Import dependencies
+import router from 'scripts/routes';
+import App from 'web_modules/App';
+
+// Run app !
+router.start(App, '.app');
