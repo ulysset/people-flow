@@ -30,14 +30,14 @@ $ npm run dev-server            # or: nodemon server.js
 
 ###### Client
 ```shell
-$ npm run dev-client            # or: env BASE_DIR=public/ webpack-dev-server --inline --hot --config public/webpack.config.dev
+$ npm run dev-client            # or: env BASE_DIR=public/ NODE_ENV=development webpack-dev-server --inline --hot --config public/webpack.config.dev public/webpack.config
 ```
 This will start a lightweight development server ```http://localhost:8080```.
 
 ## Production
 #### Build static files
 ```shell
-$ npm run postinstall           # or: env BASE_DIR=public/ webpack --config public/webpack.config.prod
+$ npm run prod-client           # or: env BASE_DIR=public/ NODE_ENV=production webpack --config public/webpack.config
 ```
 
 #### Start server

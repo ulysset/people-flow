@@ -12,8 +12,9 @@
   "scripts": {
     "start": "node server.js",
     "dev-server": "nodemon server.js",
-    "dev-client": "env BASE_DIR=public/ webpack-dev-server --inline --hot --config public/webpack.config.dev",
-    "postinstall": "env BASE_DIR=public/ webpack --config public/webpack.config.prod"
+    "dev-client": "env BASE_DIR=public/ NODE_ENV=development webpack-dev-server --inline --hot --config public/webpack.config",
+    "prod-client": "env BASE_DIR=public/ NODE_ENV=production webpack --config public/webpack.config",
+    "postinstall": "npm run prod-client"
   },
   "dependencies": {
     "babel-core": "^6.4.5",
