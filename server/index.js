@@ -6,13 +6,13 @@ import { SPREADSHEET_KEY } from './config';
 import { fetch, getCells } from './utils/spreadsheet';
 
 const spreadsheet = fetch({
-    key: SPREADSHEET_KEY,
-    select: {
-        from: 'A1',
-        to: 'A5'
-    }
+  key: SPREADSHEET_KEY,
+  select: {
+    from: 'A1',
+    to: 'A5'
+  }
 }, data => {
-    const cell = getCells(data);
+  const cells = getCells(data);
 });
 
 
@@ -28,5 +28,5 @@ const port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + '/../public/__build__/'));
 app.listen(port, () => {
-    console.log('Your server is running on http://localhost:' + port);
+  console.log('Your server is running on http://localhost:' + port);
 });
