@@ -6,7 +6,7 @@ var __DEV__ = process.env.NODE_ENV === 'development';
 var __PROD__ = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  devTools: 'eval-source-map',
+  devTools: __DEV__ ? 'eval-source-map' : '',
   entry: {
     'index.js': './' + __BASE_DIR__ + 'src/index.js'
   },
