@@ -2,7 +2,7 @@
 import './index.html';
 
 // Import dependencies
-import router from 'scripts/routes';
+import router from './scripts/routes';
 import App from 'web_modules/App';
 
 // Run app !

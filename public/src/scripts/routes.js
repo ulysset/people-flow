@@ -7,7 +7,10 @@ Vue.use(Router);
 const router = new Router();
 router.map({
   '/': {
-    component: require('web_modules/Homepage')
+    component: require('../web_modules/Homepage')
+  },
+  '/hello': {
+    component: require('../web_modules/Hello')
   }
 });
 router.redirect({

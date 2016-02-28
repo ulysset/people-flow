@@ -1,8 +1,7 @@
 <template>
   <div>
-    <h2 class="title">Dataviz</h2>
-    <p>Hello world !!! :)</p>
-    <a v-link="'hello'">Home</a>
+    <h2 class="title">Hello</h2>
+    <a v-link="'/'">Back</a>
   </div>
 </template>
 
