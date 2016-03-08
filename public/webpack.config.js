@@ -30,28 +30,32 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.vue$/,
-        loader: 'vue'
-      }, {
+      loader: 'vue'
+    }, {
       test: /\.js$/,
-        loader: 'babel',
-        exclude: /node_modules/
-      }, {
-        test: /\.(png|jpg|gif)$/,
-        loader: 'url',
-        query: {
-          limit: 10000,
-          name: '[name].[ext]?[hash]'
-        }
-      }, {
-        test: /[.]html$/,
-        loader: PathRewriterPlugin.rewriteAndEmit({
-          name: '[name].html'
-        })
+      loader: 'babel',
+      exclude: /node_modules/
+    }, {
+      test: /\.(png|jpg|gif)$/,
+      loader: 'url',
+      query: {
+        limit: 10000,
+        name: '[name].[ext]?[hash]'
+      }
+    }, {
+      test: /[.]html$/,
+      loader: PathRewriterPlugin.rewriteAndEmit({
+        name: '[name].html'
+      })
+    }, {
+      test: /\.(ttf|eot|otf|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+      loader: 'file-loader'
     }]
   },
   vue: {
     loaders: {
-      js: 'babel'
+      js: 'babel',
+      css: 'style!css'
     }
   },
   plugins: [
