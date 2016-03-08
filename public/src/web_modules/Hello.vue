@@ -8,11 +8,12 @@
 <script>
 
   import Vue from 'vue';
+
   Vue.transition('expand', {
     beforeEnter: () => {
       console.log('before enter');
     },
-    enter: () => {
+    enter: function () {
       console.log('enter');
     },
     afterEnter: () => {
@@ -35,8 +36,9 @@
 
 </script>
 
-<style>
+<style scoped>
   .title {
+    font-family: "Brandon";
     font-size: 19px;
     color: green;
   }

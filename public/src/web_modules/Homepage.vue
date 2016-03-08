@@ -12,7 +12,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .title {
     font-size: 19px;
     color: green;
