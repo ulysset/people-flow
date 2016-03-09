@@ -1,7 +1,17 @@
 <template>
-  <div transition="expand">
-    <h2 class="title">Hello</h2>
-    <a v-link="'/'">Back</a>
+  <div class="header" transition="expand">
+    <h2 class="title">Map</h2>
+    <a v-link="'/'">Back to home</a>
+    <br>
+    <br>
+    <br>
+    <a v-link="'event'">Event</a>
+    <br>
+    <br>
+    <a v-link="'stat'">Stats</a>
+    <br>
+    <br>
+    <a v-link="'source'">Sources</a>
   </div>
 </template>
 
@@ -37,15 +47,34 @@
 </script>
 
 <style scoped>
-  .title {
-    font-family: "Brandon";
-    font-size: 19px;
-    color: green;
+
+  *{
+  text-align:center;
   }
+
+  .title {
+      font-family: "Brandon";
+      font-size: 19px;
+      color: green;
+      margin:auto;
+      padding-bottom:30px;
+    }
+
+    a{
+      text-decoration: none;
+    }
+
+    a:hover{
+      text-decoration: underline;
+    }
+
+
+
+  /* Animations */
 
   .expand-transition {
     transition: all .3s ease;
-    height: 100px;
+    height: 300px;
     padding: 10px;
     background-color: #eee;
     overflow: hidden;

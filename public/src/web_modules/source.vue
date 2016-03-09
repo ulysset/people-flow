@@ -1,8 +1,7 @@
 <template>
   <div class="header">
-    <h2 class="title">Futuregrant</h2>
-    <p>You are about to begin an experiment about the stream of migrants since 1980.</p>
-    <a v-link="'hello'">BEGIN EXPERIMENT</a>
+    <h2 class="title">Sources</h2>
+    <a v-link="'hello'">Back</a>
   </div>
 </template>
 
@@ -29,17 +28,15 @@ text-align:center;
     font-family: Brandon;
   }
 
+
   a{
     text-decoration: none;
-    border:1px solid black;
-    background:rgb(241, 241, 241);
-    border-radius:3px;
-    padding:17px;
   }
 
   a:hover{
-    background:rgb(229, 229, 229);
+    text-decoration: underline;
   }
+
 
 p{
 margin:50px 0 80px 0;

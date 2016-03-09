@@ -11,6 +11,15 @@ router.map({
   },
   '/hello': {
     component: require('../web_modules/Hello')
+  },
+  '/event': {
+    component: require('../web_modules/event')
+  },
+  '/source': {
+    component: require('../web_modules/source')
+  },
+  '/stat': {
+    component: require('../web_modules/stats')
   }
 });
 router.redirect({
