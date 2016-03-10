@@ -18,7 +18,7 @@ router.map({
   '/sources': {
     component: require('web_modules/Sources')
   },
-  '/stat': {
+  '/stats': {
     component: require('web_modules/Stats')
   }
 });

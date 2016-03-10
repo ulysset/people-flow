@@ -19,7 +19,10 @@ module.exports = {
       'node_modules',
       'public/src',
       'public/src/web_modules',
-      'public/src/core'
+      'public/src/core',
+      'public/src/core/config',
+      'public/src/core/helpers',
+      'public/src/vendors',
     ]
   },
   output: {
