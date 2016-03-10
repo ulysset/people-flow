@@ -1,9 +1,9 @@
-var PathRewriterPlugin = require('webpack-path-rewriter');
-var path = require('path');
+const PathRewriterPlugin = require('webpack-path-rewriter');
+const path = require('path');
 
-var __BASE_DIR__ = process.env.BASE_DIR ? process.env.BASE_DIR : '';
-var __DEV__ = process.env.NODE_ENV === 'development';
-var __PROD__ = process.env.NODE_ENV === 'production';
+const __BASE_DIR__ = process.env.BASE_DIR ? process.env.BASE_DIR : '';
+const __DEV__ = process.env.NODE_ENV === 'development';
+const __PROD__ = process.env.NODE_ENV === 'production';
 
 module.exports = {
   devTools: __DEV__ ? 'eval-source-map' : '',
@@ -19,7 +19,7 @@ module.exports = {
       'node_modules',
       'public/src',
       'public/src/web_modules',
-      'public/src/scripts'
+      'public/src/core'
     ]
   },
   output: {
@@ -55,7 +55,7 @@ module.exports = {
   vue: {
     loaders: {
       js: 'babel',
-      css: 'style!css'
+      css: 'style!css-loader'
     }
   },
   plugins: [

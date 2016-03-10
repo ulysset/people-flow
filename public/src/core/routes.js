@@ -7,19 +7,19 @@ Vue.use(Router);
 const router = new Router();
 router.map({
   '/': {
-    component: require('../web_modules/Homepage')
+    component: require('web_modules/Homepage')
   },
-  '/hello': {
-    component: require('../web_modules/Hello')
+  '/map': {
+    component: require('web_modules/Map')
   },
   '/event': {
-    component: require('../web_modules/event')
+    component: require('web_modules/event')
   },
-  '/source': {
-    component: require('../web_modules/source')
+  '/sources': {
+    component: require('web_modules/Sources')
   },
   '/stat': {
-    component: require('../web_modules/stats')
+    component: require('web_modules/Stats')
   }
 });
 router.redirect({

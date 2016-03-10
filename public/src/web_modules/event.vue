@@ -1,44 +1,29 @@
 <template>
-  <div class="header">
+  <div class="container">
     <h2 class="title">Events</h2>
-    <a v-link="'hello'">Back</a>
+    <a class="back" v-link="'/map'">Back</a>
   </div>
 </template>
 
-<script>
-  export default {
-    // ...
+<style lang="sass" scoped>
+
+  .container {
+    margin: auto;
+    text-align: center;
   }
-</script>
-
-<style scoped>
-
-*{
-text-align:center;
-}
-
-.header{
-  padding-top:200px;
-}
 
   .title {
-    font-size: 42px;
-    color: green;
-    margin:auto;
-    font-family: Brandon;
+    margin-bottom:10px;
+    font-size: 22px;
+    color: black;
   }
 
-  a{
-    text-decoration: none;
+  .back {
+    color: grey;
+
+    &:hover {
+      color: black;
+    }
   }
-
-  a:hover{
-    text-decoration: underline;
-  }
-
-
-p{
-margin:50px 0 80px 0;
-}
 
 </style>

@@ -1,9 +1,6 @@
-// Import .html files
-import './index.html';
-
-// Import dependencies
-import router from './scripts/routes';
+import router from 'core/routes';
 import App from 'web_modules/App';
 
-// Run app !
+import 'index.html';
+
 router.start(App, '.app');

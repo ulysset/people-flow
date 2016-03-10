@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2 class="title">Stats</h2>
+    <h2 class="title">Sources</h2>
     <a class="back" v-link="'/map'">Back</a>
   </div>
 </template>

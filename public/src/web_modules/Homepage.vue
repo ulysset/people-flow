@@ -1,48 +1,41 @@
 <template>
-  <div class="header">
+  <div class="container">
     <h2 class="title">Futuregrant</h2>
-    <p>You are about to begin an experiment about the stream of migrants since 1980.</p>
-    <a v-link="'hello'">BEGIN EXPERIMENT</a>
+    <p class="description">You are about to begin an experiment about the stream of migrants since 1980.</p>
+    <a class="button" v-link="'map'">BEGIN EXPERIMENT</a>
   </div>
 </template>
 
-<script>
-  export default {
-    // ...
+<style lang="sass" scoped>
+
+  .container {
+    margin: auto;
+    text-align: center;
   }
-</script>
-
-<style scoped>
-
-*{
-text-align:center;
-}
-
-.header{
-  padding-top:200px;
-}
 
   .title {
+    margin: 0 0 30px;
     font-size: 42px;
-    color: green;
-    margin:auto;
-    font-family: Brandon;
+    color: black;
   }
 
-  a{
+  .description {
+    margin: -20px 0 20px;
+    color: grey;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 17px;
+    background: rgb(241, 241, 241);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 3px;
     text-decoration: none;
-    border:1px solid black;
-    background:rgb(241, 241, 241);
-    border-radius:3px;
-    padding:17px;
-  }
+    color: black;
 
-  a:hover{
-    background:rgb(229, 229, 229);
+    &:hover{
+      background: transparent;
+    }
   }
-
-p{
-margin:50px 0 80px 0;
-}
 
 </style>
