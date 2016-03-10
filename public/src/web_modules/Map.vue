@@ -1,12 +1,10 @@
 <template>
   <div class="container" transition="expand">
     <div class="header">
-      <h2 class="title">MAP</h2>
       <a class="link --back" v-link="'/'">Back to home</a>
     </div>
-    <div class="map">
-
-    </div>
+    <div class="map"></div>
+    <div class="count">nombre de particules actives : <strong>{{ particulesLength }}</strong></div>
   </div>
 </template>
 
@@ -30,8 +28,14 @@
   });
 
   export default {
+
+    /*
+     * Fetch data (fake for
+     * the moment)
+     */
     data() {
       return {
+        particulesLength: 0,
         data: [{
           from: 'FR',
           to: 'SY',
@@ -94,38 +98,6 @@
 
 
 
-      /*
-       * When a user select a new year,
-       * remove old particultes and create
-       * some one.
-       */
-      select('.timeline li')::on('click', el => {
-
-        // Get next year
-        const nextYear = select(el)::getData('year');
-        if(selectedYear === nextYear) return; // Do nothing
-        selectedYear = nextYear;
-
-        // Remove parcticulesCreators
-        parcticulesCreators.forEach(parcticulesCreator => (
-          clearInterval(parcticulesCreator)
-        ))
-        parcticulesCreators = [];
-
-        // Add parcticulesCreators for the new year selected
-        this.data.forEach((item, i) => {
-          parcticulesCreators[i] = createParticules(item, selectedYear, particule => {
-            particulesContainer.addChild(particule)
-          });
-        });
-
-        // Update UI
-        select(el)::parent()::find('.active')::removeClass('active');
-        select(el)::addClass('active');
-
-      })
-
-
 
       /*
        * Render everything
@@ -133,16 +105,21 @@
       const render = () => {
         requestAnimationFrame(render);
 
+        // Render particules
         renderParticules(particulesContainer.children)
           .filter(particule => particule.needBeDeleted)
           .forEach(particule => (
               particulesContainer.removeChild(particule)
           ));
 
-        select('.count strong')::text(particulesContainer.children.length);
+        // Count particules length
+        const particulesLength = particulesContainer.children.length;
+        if(Math.abs(this.particulesLength - particulesLength) > 2) {
+          this.particulesLength = particulesLength;
+        }
 
         scene.render(container);
-      }
+      };
 
       render();
     }
@@ -155,13 +132,6 @@
   .container {
     margin: auto;
     text-align: center;
-  }
-
-  .title {
-    padding-bottom:30px;
-    margin:auto;
-    font-size: 19px;
-    color: black;
   }
 
   .link {
