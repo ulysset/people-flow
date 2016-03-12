@@ -1,4 +1,4 @@
-import PIXI from 'pixi';
+import PIXI from 'pixi.js';
 
 export const DEFAULT_LANDMARK_COLOR = 0x9966FF;
 export const DEFAULT_LANDMARK_SIZE = 2;
@@ -13,16 +13,35 @@ type LandmarkColor = any;
 
 
 /*
- * Create landmark provided
+ * Create landmarks provided
  * by COUNTRIES on the map
  */
 export const createLandmarks = (data: Data, landmarkSize: LandmarkSize, landmarkColor: LandmarkColor): any => {
-  return Object.keys(data).map(key => {
+  const landmarksContainer = new PIXI.Container();
+  const landmarks = Object.keys(data).map(key => {
     const item = data[key];
-    const landmark = new PIXI.Graphics();
-    landmark.beginFill(landmarkColor || DEFAULT_LANDMARK_COLOR);
-    landmark.drawCircle(item.x, item.y, landmarkSize || DEFAULT_LANDMARK_SIZE);
-    landmark.endFill();
-    return landmark;
-  });
+    return createLandmark(
+      item,
+      landmarkSize || DEFAULT_LANDMARK_SIZE,
+      landmarkColor || DEFAULT_LANDMARK_COLOR
+    );
+  }).forEach(
+    landmark => (
+      landmarksContainer.addChild(landmark)
+    )
+  );
+  return landmarksContainer;
 }
+
+
+
+/*
+ * Create singular landmark
+ */
+export const createLandmark = (item: { x: number, y: number }, landmarkSize: LandmarkSize, landmarkColor: LandmarkColor): any => {
+ const landmark = new PIXI.Graphics();
+ landmark.beginFill(landmarkColor);
+ landmark.drawCircle(item.x, item.y, landmarkSize);
+ landmark.endFill();
+ return landmark;
+};

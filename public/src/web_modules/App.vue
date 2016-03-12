@@ -17,9 +17,10 @@
   }
 
   .app {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
+    position: relative;
+    width: 100vw; height: 100vh;
+    overflow: hidden;
+    background-color: #eee;
   }
 
 </style>

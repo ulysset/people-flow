@@ -3,21 +3,12 @@
  * scene
  * > see: https://pixijs.github.io/docs/PIXI.WebGLRenderer.html
  */
-export const createScene = (options: {
-  width: number,
-  height: number,
-  container: string
-}) => {
-  const { width, height } = options;
-  const renderer = new PIXI.WebGLRenderer(width, height, {
-    ...options,
+export const createScene = (selector: string): any => {
+  const renderer = new PIXI.WebGLRenderer(window.innerWidth, window.innerHeight, {
     retina: 2,
     transparent: true,
-    antialias: true
+    antialias: true,
+    view: document.querySelector(selector)
   });
-  const el = document.querySelector(options.container);
-  el.appendChild(renderer.view);
-  el.style.width = width + 'px';
-  el.style.height = height + 'px';
   return renderer;
 }

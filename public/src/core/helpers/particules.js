@@ -1,5 +1,5 @@
-import PIXI from 'pixi';
-import { SPEED, COUNTRIES } from 'config';
+import PIXI from 'pixi.js';
+import { PARTICULE_SPEED, COUNTRIES } from 'config';
 
 export type Particule = {
   anchor: { x: number, y: number },
@@ -38,7 +38,7 @@ export const createParticuleTexture = (size: number, color: string): any => {
  * > see: https://pixijs.github.io/docs/PIXI.Sprite.html
  */
 
-export const PARTICULE_SIZE = 10;
+export const PARTICULE_SIZE = 6;
 export const PARTICULE_COLOR = 'grey';
 export const PARTICULE_TEXTURE = createParticuleTexture(PARTICULE_SIZE, PARTICULE_COLOR);
 
@@ -62,8 +62,8 @@ export const createParticule = (options: {
 
   // Define future movment
   const alpha = Math.atan(Math.abs(destination.y - origin.y) / Math.abs(destination.x - origin.x));
-  const x = Math.cos(alpha) * SPEED * (origin.x > destination.x ? -1 : 1);
-  const y = Math.sqrt(Math.pow(SPEED, 2) - Math.pow(x, 2)) * (origin.y > destination.y ? -1 : 1);
+  const x = Math.cos(alpha) * PARTICULE_SPEED * (origin.x > destination.x ? -1 : 1);
+  const y = Math.sqrt(Math.pow(PARTICULE_SPEED, 2) - Math.pow(x, 2)) * (origin.y > destination.y ? -1 : 1);
   particule.translate = { x, y };
 
   return particule;
