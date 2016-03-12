@@ -1,5 +1,6 @@
 const PathRewriterPlugin = require('webpack-path-rewriter');
 const path = require('path');
+const webpack = require('webpack');
 
 const __BASE_DIR__ = process.env.BASE_DIR ? process.env.BASE_DIR : '';
 const __DEV__ = process.env.NODE_ENV === 'development';
@@ -51,6 +52,9 @@ module.exports = {
         name: '[name].html'
       })
     }, {
+      test: /\.json?$/,
+      loader: 'json'
+    },{
       test: /\.(ttf|eot|otf|svg|woff(2)?)(\?[a-z0-9]+)?$/,
       loader: 'file-loader'
     }]
@@ -62,6 +66,18 @@ module.exports = {
     }
   },
   plugins: [
-    new PathRewriterPlugin()
-  ]
+    new PathRewriterPlugin(),
+    new webpack.DefinePlugin({
+       __PROD__: __PROD__,
+       __DEV__: __DEV__,
+       'process.env.NODE_ENV': __DEV__ ? '"development"' : '"production"'
+    })
+  ].concat(
+    __PROD__ ? [
+      new webpack.optimize.UglifyJsPlugin()
+    ] : []
+  ),
+  node: {
+    fs: "empty"
+  }
 };
