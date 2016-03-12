@@ -13,7 +13,7 @@ router.map({
     component: require('web_modules/Map')
   },
   '/event': {
-    component: require('web_modules/event')
+    component: require('web_modules/Event')
   },
   '/sources': {
     component: require('web_modules/Sources')
