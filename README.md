@@ -5,8 +5,9 @@
 
 ## Stack
 - [Vue.js](http://vuejs.org/) `1.0.x` simple yet powerful library for building modern web interfaces.
-- [Redux](https://github.com/rackt/redux) `3.0.x` a predictable state container for Javascript apps
 - [Babel](http://babeljs.io/) `6.x.x` for ES6+ support
+- [Express](http://expressjs.com/) minimalist web framework for node
+- [Pixi.js](http://www.pixijs.com/) Super fast HTML 5 2D rendering engine
 - [Webpack](https://webpack.github.io/) module loader and bundler
 
 
@@ -50,4 +51,4 @@ $ git push heroku master
 ```
 
 ## Issues
-If you run into any issues please see the Getting Started guide for [Vue.js](http://vuejs.org/guide/) and [three.js](http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene) before submitting an issue.
+If you run into any issues please see the Getting Started guide for [Vue.js](http://vuejs.org/guide/) and [Pixi.js](http://pixijs.github.io/docs/) before submitting an issue.
