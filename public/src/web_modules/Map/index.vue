@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper" transition="expand">
-    <particules v-bind:year="selectedYear"></particules>
+    <core
+      v-bind:coordinates="coordinatesCountries"
+      v-bind:year="selectedYear"></core>
     <map></map>
     <timeline v-bind:year="selectedYear"></timeline>
   </div>
@@ -12,8 +14,8 @@
   import { DEFAULT_YEAR } from 'config';
 
   Vue.component('timeline', require('./timeline'));
+  Vue.component('core', require('./core'));
   Vue.component('map', require('./map'));
-  Vue.component('particules', require('./particules'));
 
   Vue.transition('expand', {
     enter: (el, done) => {
@@ -26,11 +28,19 @@
 
   export default {
     data() {
-      return { selectedYear: DEFAULT_YEAR }
+      return {
+        selectedYear: DEFAULT_YEAR,
+        coordinatesCountries: 'h'
+      };
     },
     events: {
       changeYear(year) {
         this.selectedYear = year;
+      },
+
+      getCountriesCoordinates(coordinatesCountries) {
+        this.coordinatesCountries = coordinatesCountries;
+        this.$broadcast('getCountriesCoordinates', this.coordinatesCountries);
       }
     }
   }

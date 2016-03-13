@@ -8,7 +8,7 @@ export const createScene = (selector: string): any => {
     retina: 2,
     transparent: true,
     antialias: true,
-    view: document.querySelector(selector)
+    view: selector
   });
   return renderer;
 }

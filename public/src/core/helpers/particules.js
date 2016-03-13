@@ -1,5 +1,5 @@
 import PIXI from 'pixi.js';
-import { PARTICULE_SPEED, COUNTRIES } from 'config';
+import { PARTICULE_SPEED } from 'config';
 
 export type Particule = {
   anchor: { x: number, y: number },
@@ -75,15 +75,15 @@ export const createParticule = (options: {
  * Each intervall defined, initialyze new
  * particules thanks to createParticule()
  */
-export const createParticules = (item: { from:any, to: any }, selectedYear: number, callback: Function): any => (
+export const createParticules = (item: { from:any, to: any }, selectedYear: number, coordinates: any, callback: Function): any => (
   setInterval(() => {
     const { from, to } = item;
     const particule = createParticule({
-      origin: COUNTRIES[from],
-      destination: COUNTRIES[to]
+      origin: coordinates[from],
+      destination: coordinates[to]
     });
     callback(particule);
-  }, Math.random() * 1000)
+  }, Math.random() * 2500)
 );
 
 
