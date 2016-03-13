@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper" transition="expand">
     <particules v-bind:year="selectedYear"></particules>
+    <map></map>
     <timeline v-bind:year="selectedYear"></timeline>
   </div>
 </template>
@@ -11,6 +12,7 @@
   import { DEFAULT_YEAR } from 'config';
 
   Vue.component('timeline', require('./timeline'));
+  Vue.component('map', require('./map'));
   Vue.component('particules', require('./particules'));
 
   Vue.transition('expand', {
