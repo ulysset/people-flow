@@ -13,6 +13,7 @@ const spreadsheet = fetch({
   }
 }, data => {
   const cells = getCells(data);
+  console.log(cells);
 });
 
 
