@@ -13,9 +13,7 @@ const spreadsheet = fetch({
   let response = [];
   Object.keys(cells).map(key => {
     Object.keys(cells[key]).map(index => {
-      console.log(index);
       const country = cells[key][index];
-      console.log(country.value);
     })
   })
 });
@@ -31,7 +29,13 @@ import express from 'express';
 const app = express();
 const port = process.env.PORT || 8080;
 
+// const router = express.Router();
+
 app.use(express.static(__dirname + '/../public/__build__/'));
 app.listen(port, () => {
   console.log('Your server is running on http://localhost:' + port);
 });
+
+app.use(router.get('/data', function (req, res) {
+  res.status(200).json({name:'yolo'});
+}))
