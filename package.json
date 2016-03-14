@@ -25,6 +25,7 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "babel-runtime": "^6.3.19",
+    "chart.js": "^1.0.2",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
     "google-spreadsheets": "^0.5.1",

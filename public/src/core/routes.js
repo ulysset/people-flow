@@ -20,6 +20,9 @@ router.map({
   },
   '/stats': {
     component: require('web_modules/Stats')
+  },
+  '/country': {
+    component: require('web_modules/Country')
   }
 });
 router.redirect({
