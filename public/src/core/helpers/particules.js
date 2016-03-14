@@ -77,15 +77,14 @@ export const createParticule = (options: {
  */
 export const createParticules = (item: { from:any, to: any }, selectedYear: number, coordinates: any, callback: Function): any => {
   const { from, to, data } = item;
-  const migrants = data[selectedYear];
-  console.log(migrants);
+  const origin = coordinates[from];
+  const destination = coordinates[to];
+  const DURATION = 400000;
+  const INTERVALL = 400000 / migrants;
   return setInterval(() => {
-    const particule = createParticule({
-      origin: coordinates[from],
-      destination: coordinates[to]
-    });
+    const particule = createParticule({ origin, destination });
     callback(particule);
-  }, Math.random() * 2500);
+  }, INTERVALL);
 };
 
 
