@@ -36,6 +36,7 @@
     events: {
       changeYear(year) {
         this.selectedYear = year;
+        this.$broadcast('changeYear', year)
       },
 
       getCountriesCoordinates(coordinatesCountries) {

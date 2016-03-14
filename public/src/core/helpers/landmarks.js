@@ -9,8 +9,7 @@ type LandmarkColor = any;
 
 
 /*
- * Create landmarks provided
- * by COUNTRIES on the map
+ * Create landmarks
  */
 export const createLandmarks = (data: Data, landmarkSize: LandmarkSize, landmarkColor: LandmarkColor): any => {
   const landmarksContainer = new PIXI.Container();
@@ -38,9 +37,5 @@ export const createLandmark = (item: { x: number, y: number }, landmarkSize: Lan
   landmark.beginFill(landmarkColor);
   landmark.drawCircle(item.x, item.y, landmarkSize);
   landmark.endFill();
-  landmark.interactive = true;
-  landmark.click = function(mouseData){
-   console.log("CLICK!");
-}
   return landmark;
 };

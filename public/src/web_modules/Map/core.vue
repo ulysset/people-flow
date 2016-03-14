@@ -5,7 +5,6 @@
 <script>
 
   import PIXI from 'pixi.js';
-  import { COUNTRIES } from 'config';
   import { createParticules, renderParticules } from 'helpers/particules';
   import { createScene } from 'helpers/scene';
   import { createLandmarks } from 'helpers/landmarks';
@@ -33,11 +32,30 @@
       this.scene.render(this.container);
     },
 
-    // Watch events
     events: {
+
+      // Get countries coordinates
       getCountriesCoordinates(value) {
         this.render(value);
+      },
+
+      // Change year
+      changeYear(value) {
+
+        // Remove parcticulesCreators
+        this.parcticulesCreators.forEach(parcticulesCreator => (
+          clearInterval(parcticulesCreator)
+        ))
+        this.parcticulesCreators = [];
+
+        // Add parcticulesCreators for the new year selected
+        this.data.forEach((item, i) => {
+          this.parcticulesCreators[i] = createParticules(item, this.year, this.coordinates, particule => (
+            this.particulesContainer.addChild(particule)
+          ));
+        });
       }
+
     },
 
     // Methods
@@ -46,11 +64,14 @@
       // Render scene
       render(coordinates) {
 
+        // Get coordinates
+        this.coordinates = coordinates;
+
         // Initialyze particules
-        let parcticulesCreators = [];
+        this.parcticulesCreators = [];
         this.particulesContainer = new PIXI.ParticleContainer();
         this.data.forEach((item, i) => {
-          parcticulesCreators[i] = createParticules(item, this.year, coordinates, particule => (
+          this.parcticulesCreators[i] = createParticules(item, this.year, this.coordinates, particule => (
             this.particulesContainer.addChild(particule)
           ));
         });
