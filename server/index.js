@@ -7,13 +7,17 @@ import { fetch, getCells } from './utils/spreadsheet';
 
 const spreadsheet = fetch({
   key: SPREADSHEET_KEY,
-  select: {
-    from: 'A1',
-    to: 'A5'
-  }
+  select: 'R2C1:R3C10'
 }, data => {
   const cells = getCells(data);
-  console.log(cells);
+  let response = [];
+  Object.keys(cells).map(key => {
+    Object.keys(cells[key]).map(index => {
+      console.log(index);
+      const country = cells[key][index];
+      console.log(country.value);
+    })
+  })
 });
 
 
