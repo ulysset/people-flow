@@ -11,11 +11,12 @@ const spreadsheet = fetch({
 }, data => {
   const cells = getCells(data);
   let response = [];
-  Object.keys(cells).map(key => {
-    Object.keys(cells[key]).map(index => {
+  Object.keys(cells).forEach(key => {
+    Object.keys(cells[key]).forEach(index => {
       const country = cells[key][index];
     })
   })
+  console.log(response);
 });
 
 
@@ -28,10 +29,10 @@ import express from 'express';
 
 const app = express();
 const port = process.env.PORT || 8080;
-
-// const router = express.Router();
+const router = express.Router();
 
 app.use(express.static(__dirname + '/../public/__build__/'));
+
 app.listen(port, () => {
   console.log('Your server is running on http://localhost:' + port);
 });
