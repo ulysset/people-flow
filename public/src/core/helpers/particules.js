@@ -75,16 +75,18 @@ export const createParticule = (options: {
  * Each intervall defined, initialyze new
  * particules thanks to createParticule()
  */
-export const createParticules = (item: { from:any, to: any }, selectedYear: number, coordinates: any, callback: Function): any => (
-  setInterval(() => {
-    const { from, to } = item;
+export const createParticules = (item: { from:any, to: any }, selectedYear: number, coordinates: any, callback: Function): any => {
+  const { from, to, data } = item;
+  const migrants = data[selectedYear];
+  console.log(migrants);
+  return setInterval(() => {
     const particule = createParticule({
       origin: coordinates[from],
       destination: coordinates[to]
     });
     callback(particule);
-  }, Math.random() * 2500)
-);
+  }, Math.random() * 2500);
+};
 
 
 

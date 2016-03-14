@@ -18,9 +18,9 @@
     data() {
       return {
         data: [
-          { from: 'IT', to: 'FR' },
-          { from: 'FR', to: 'ES' },
-          { from: 'ES', to: 'IT' }
+          { from: 'ITA', to: 'FRA', data: { 1970: 250 } },
+          { from: 'FRA', to: 'ESP', data: { 1970: 400 } },
+          { from: 'ESP', to: 'ITA', data: { 1970: 500 } }
         ]
       }
     },
