@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <svg class="countries" v-el:svg  x="0px" y="0px" viewBox="400 225 200 200" xml:space="preserve">
+    <svg class="countries" v-el:svg  x="0px" y="0px" viewBox="400 175 300 300" xml:space="preserve">
       <path
         class="land"
         v-for="country in countries"
