@@ -29,7 +29,7 @@
       this.container = new PIXI.Container();
       this.scene.render(this.container);
 
-      fetch('http://localhost:8000/data')
+      fetch(location.origin + '/data')
         .then(response => response.json())
         .then(data => {
           this.isFetching = false;
