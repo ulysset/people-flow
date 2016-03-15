@@ -18,9 +18,8 @@ import cors from 'cors';
 const app = express();
 const port = process.env.PORT || 8000;
 const router = express.Router();
-const corsOptions = {
-  origin: 'http://localhost:8080'
-};
+
+app.use(cors());
 
 app.use(express.static(__dirname + '/../public/__build__/'));
 
@@ -28,7 +27,7 @@ app.listen(port, () => {
   console.log('Your server is running on http://localhost:' + port);
 });
 
-app.use(router.get('/data', cors(corsOptions), (req, res) => {
+app.use(router.get('/data', (req, res) => {
   const spreadsheet = fetch({
     key: SPREADSHEET_KEY,
     select: 'R2C1:R1240C10'
