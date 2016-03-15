@@ -76,12 +76,31 @@
         // Initialyze particules
         this.parcticulesCreators = [];
         this.particulesContainer = new PIXI.ParticleContainer();
+        let errors = [];
         this.data.forEach((item, i) => {
+
+          const { from, to, data } = item;
+          const origin = this.coordinatesCountries[from];
+          const destination = this.coordinatesCountries[to];
+
+          if(!origin) {
+            errors.push(from);
+          }
+          if(!destination) {
+            errors.push(to)
+          };
+
           this.parcticulesCreators[i] = createParticules(item, this.year, this.coordinatesCountries, particule => (
             this.particulesContainer.addChild(particule)
           ));
         });
         this.container.addChild(this.particulesContainer);
+
+        errors = errors.filter( // Remove duplicate item
+          (error, i, tab) => tab.indexOf(error) == i
+        );
+
+        console.log(errors);
 
         // Landmarks
         this.container.addChild(
