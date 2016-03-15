@@ -117,6 +117,7 @@ export const createParticules = (item: { from:any, to: any }, selectedYear: numb
 
     }
   }
+
 };
 
 
