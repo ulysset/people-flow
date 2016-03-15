@@ -7,19 +7,19 @@ Vue.use(Router);
 const router = new Router();
 router.map({
   '/': {
-    component: require('web_modules/Homepage')
+    component: require('web_modules/home')
   },
   '/map': {
-    component: require('web_modules/Map')
+    component: require('web_modules/map')
   },
   '/event': {
-    component: require('web_modules/Event')
+    component: require('web_modules/event')
   },
   '/sources': {
-    component: require('web_modules/Sources')
+    component: require('web_modules/sources')
   },
   '/stats': {
-    component: require('web_modules/Stats')
+    component: require('web_modules/stats')
   },
   '/country': {
     component: require('web_modules/Country')

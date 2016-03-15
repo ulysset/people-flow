@@ -1,6 +1,6 @@
 import router from 'core/routes';
-import App from 'web_modules/App';
+import app from 'web_modules/app';
 
 import 'index.html';
 
-router.start(App, '.app');
+router.start(app, '.app');

@@ -26,6 +26,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-runtime": "^6.3.19",
     "chart.js": "^1.0.2",
+    "cors": "^2.7.1",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
     "google-spreadsheets": "^0.5.1",
@@ -43,9 +44,14 @@
     "vue-style-loader": "^1.0.0",
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1",
+<<<<<<< HEAD
     "webpack-path-rewriter": "^1.1.3"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.8"
+=======
+    "webpack-path-rewriter": "^1.1.3",
+    "whatwg-fetch": "^0.11.0"
+>>>>>>> origin/master
   }
 }
