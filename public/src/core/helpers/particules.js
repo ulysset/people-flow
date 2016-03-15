@@ -88,6 +88,7 @@ export const createParticules = (item: { from:any, to: any }, selectedYear: numb
       // Set flow
       const migrants = data[selectedYear];
       const migrantsGroup = Math.floor(migrants ? migrants / MIGRANTS_PER_PARTICULE : 0);
+      if(migrantsGroup === 0) return;
       const interval = migrantsGroup ? YEAR_DURATION / migrantsGroup : null;
 
       // Render

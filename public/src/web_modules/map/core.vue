@@ -49,6 +49,7 @@
 
       // Change year
       changeYear(value) {
+        console.log(this.particulesContainer.children.length);
 
         // Remove parcticulesCreators
         this.parcticulesCreators.forEach(parcticulesCreator => (
