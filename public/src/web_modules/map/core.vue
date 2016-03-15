@@ -5,6 +5,7 @@
 <script>
 
   import PIXI from 'pixi.js';
+  import { WEBAPI } from 'config';
   import { createParticules, renderParticules } from 'helpers/particules';
   import { createScene } from 'helpers/scene';
   import { createLandmarks } from 'helpers/landmarks';
@@ -29,7 +30,7 @@
       this.container = new PIXI.Container();
       this.scene.render(this.container);
 
-      fetch(location.origin + '/data')
+      fetch(WEBAPI + '/data')
         .then(response => response.json())
         .then(data => {
           this.isFetching = false;
