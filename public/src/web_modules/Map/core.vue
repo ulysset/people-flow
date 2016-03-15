@@ -8,6 +8,7 @@
   import { createParticules, renderParticules } from 'helpers/particules';
   import { createScene } from 'helpers/scene';
   import { createLandmarks } from 'helpers/landmarks';
+  import 'whatwg-fetch';
 
   export default {
 
@@ -17,11 +18,8 @@
     // Get data
     data() {
       return {
-        data: [
-          { from: 'ITA', to: 'FRA', data: { 1970: 250 } },
-          { from: 'FRA', to: 'ESP', data: { 1970: 400 } },
-          { from: 'ESP', to: 'ITA', data: { 1970: 500 } }
-        ]
+        isFetching: true,
+        data: []
       }
     },
 
@@ -30,12 +28,21 @@
       this.scene = createScene(this.$els.container);
       this.container = new PIXI.Container();
       this.scene.render(this.container);
+
+      fetch('http://localhost:8000/data')
+        .then(response => response.json())
+        .then(data => {
+          this.isFetching = false;
+          this.data = data;
+          this.render();
+        })
     },
 
     events: {
 
       // Get countries coordinates
       getCountriesCoordinates(value) {
+        this.coordinatesCountries = value;
         this.render(value);
       },
 
@@ -50,7 +57,7 @@
 
         // Add parcticulesCreators for the new year selected
         this.data.forEach((item, i) => {
-          this.parcticulesCreators[i] = createParticules(item, this.year, this.coordinates, particule => (
+          this.parcticulesCreators[i] = createParticules(item, this.year, this.coordinatesCountries, particule => (
             this.particulesContainer.addChild(particule)
           ));
         });
@@ -62,16 +69,14 @@
     methods: {
 
       // Render scene
-      render(coordinates) {
+      render() {
 
-        // Get coordinates
-        this.coordinates = coordinates;
 
         // Initialyze particules
         this.parcticulesCreators = [];
         this.particulesContainer = new PIXI.ParticleContainer();
         this.data.forEach((item, i) => {
-          this.parcticulesCreators[i] = createParticules(item, this.year, this.coordinates, particule => (
+          this.parcticulesCreators[i] = createParticules(item, this.year, this.coordinatesCountries, particule => (
             this.particulesContainer.addChild(particule)
           ));
         });
@@ -79,7 +84,7 @@
 
         // Landmarks
         this.container.addChild(
-          createLandmarks(coordinates)
+          createLandmarks(this.coordinatesCountries)
         );
 
         // Add countries

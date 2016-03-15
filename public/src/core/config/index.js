@@ -2,4 +2,5 @@ export const DEFAULT_YEAR = 1970;
 export const MAP_RATIO = 2;
 
 export const PARTICULE_SPEED = 1;
-export const MIGRANTS_PER_PARTICULE = 100;
+export const YEAR_DURATION = 20000;
+export const MIGRANTS_PER_PARTICULE = 10000;

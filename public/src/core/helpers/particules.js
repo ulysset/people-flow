@@ -1,5 +1,5 @@
 import PIXI from 'pixi.js';
-import { PARTICULE_SPEED } from 'config';
+import { PARTICULE_SPEED, YEAR_DURATION, MIGRANTS_PER_PARTICULE } from 'config';
 
 export type Particule = {
   anchor: { x: number, y: number },
@@ -76,15 +76,47 @@ export const createParticule = (options: {
  * particules thanks to createParticule()
  */
 export const createParticules = (item: { from:any, to: any }, selectedYear: number, coordinates: any, callback: Function): any => {
+
+  // Extract data
   const { from, to, data } = item;
   const origin = coordinates[from];
   const destination = coordinates[to];
-  const DURATION = 400000;
-  const INTERVALL = 400000 / migrants;
-  return setInterval(() => {
-    const particule = createParticule({ origin, destination });
-    callback(particule);
-  }, INTERVALL);
+
+  if(origin && destination) { // Be sure the country exist :)
+    if(data[selectedYear] !== 'x') { // Data exist
+
+      // Set flow
+      const migrants = data[selectedYear];
+      const migrantsGroup = Math.floor(migrants ? migrants / MIGRANTS_PER_PARTICULE : 0);
+      const interval = migrantsGroup ? YEAR_DURATION / migrantsGroup : null;
+
+      // Render
+      const render = () => {
+        const particule = createParticule({ origin, destination });
+        if(interval) {
+          callback(particule);
+        } else {
+          return setTimeout(() => {
+            callback(particule);
+          }, Math.floor(Math.random() * YEAR_DURATION));
+        }
+      };
+
+      // Run
+      if(interval) {
+        return setInterval(() => {
+          render();
+        }, interval);
+      }
+      else {
+        render();
+        return setInterval(() => {
+          render();
+        }, YEAR_DURATION);
+      }
+
+    }
+  }
 };
 
 
@@ -103,7 +135,7 @@ export const renderParticules = (particules: Particules): Particules => {
     position.y += translate.y;
 
     // Test if the particle has reached its destination
-    if(Math.abs(destination.x - position.x) <= 1.25 || Math.abs(destination.y - position.y) <= 1.25) {
+    if(Math.abs(destination.x - position.x) <= .25 || Math.abs(destination.y - position.y) <= .25) {
       particule.needBeDeleted = true,
       particule.position = position;
       return particule;
