@@ -9,32 +9,31 @@
 <script>
 export default {
     data() {
-            return {
-                activeContinent: '',
-                continents: [{
-                    name: 'africa',
-                    migrants  : 2345,
-                    count : new Array()
-                }, {
-                    name: 'america',
-                    migrants : 4899,
-                    count : new Array()
-                }]
-            }
+        return {
+            activeContinent: '',
+            continents: [{
+                name: 'africa',
+                migrants : 2345,
+                count: []
+            }, {
+                name: 'america',
+                migrants: 4899,
+                count: []
+            }]
+        };
     },
     ready() {
         const total = this.continents
             .map(item => item.migrants)
             .reduce((a, b) => a + b)
 
-        this.continents.forEach((item) => {
-            let proportion = Math.ceil((item.migrants / total) * 20)
-            item.count = new Array(proportion)
-            console.log('**')
-            console.log(proportion)
-            console.log(item.count)
-        })
-
+        this.continents = this.continents.map(item => {
+          const proportion = Math.ceil((item.migrants / total) * 20);
+          return {
+            ...item,
+            count: new Array(proportion)
+          };
+        });
     },
 
     methods: {
