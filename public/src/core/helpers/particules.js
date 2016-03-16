@@ -83,7 +83,7 @@ export const createParticules = (item: { from:any, to: any }, selectedYear: numb
   const destination = coordinates[to];
 
   if(origin && destination) { // Be sure the country exist :)
-    if(data[selectedYear] !== 'x') { // Data exist
+    if(data[selectedYear] !== 'x') { // And the the data exist
 
       // Set flow
       const migrants = data[selectedYear];
@@ -137,7 +137,7 @@ export const renderParticules = (particules: Particules): Particules => {
     position.y += translate.y;
 
     // Test if the particle has reached its destination
-    if(Math.abs(destination.x - position.x) <= .25 || Math.abs(destination.y - position.y) <= .25) {
+    if(Math.abs(destination.x - position.x) <= .5 || Math.abs(destination.y - position.y) <= .5) {
       particule.needBeDeleted = true,
       particule.position = position;
       return particule;
