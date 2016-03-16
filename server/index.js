@@ -13,12 +13,17 @@ app.listen(port, () => {
   console.log('Your server is running on http://localhost:' + port);
 });
 
+let cache = null;
 app.use(router.get('/data', (req, res) => {
+  if(cache) {
+    return res.status(200).json(cache);
+  }
   const spreadsheet = fetch({
     key: SPREADSHEET_KEY,
     select: 'R2C1:R2602C7'
   }, data => {
     const response = getData(data);
-    res.status(200).json(response);
+    cache = response;
+    return res.status(200).json(response);
   });
 }))
