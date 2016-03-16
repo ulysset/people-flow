@@ -13,18 +13,17 @@
 
   export default {
 
-    // Defined props
     props: ['year', 'coordinates'],
 
-    // Get data
     data() {
       return {
+        errors: [],
+        parcticulesCreators: [],
         isFetching: true,
         data: []
       }
     },
 
-    // Create scene
     ready() {
       this.scene = createScene(this.$els.container);
       this.container = new PIXI.Container();
@@ -49,59 +48,67 @@
 
       // Change year
       changeYear(value) {
-        console.log(this.particulesContainer.children.length);
-
-        // Remove parcticulesCreators
-        this.parcticulesCreators.forEach(parcticulesCreator => (
-          clearInterval(parcticulesCreator)
-        ))
-        this.parcticulesCreators = [];
-
-        // Add parcticulesCreators for the new year selected
-        this.data.forEach((item, i) => {
-          this.parcticulesCreators[i] = createParticules(item, this.year, this.coordinatesCountries, particule => (
-            this.particulesContainer.addChild(particule)
-          ));
-        });
+        this.year = value;
+        this.renderParticules();
       }
 
     },
 
-    // Methods
     methods: {
 
-      // Render scene
-      render() {
+      /*
+       * Render particules
+       */
+      renderParticules() {
 
+        // Create particules container
+        if(!this.parcticulesCreators.length) {
+          this.particulesContainer = new PIXI.ParticleContainer();
+          this.container.addChild(this.particulesContainer);
+        }
 
-        // Initialyze particules
-        this.parcticulesCreators = [];
-        this.particulesContainer = new PIXI.ParticleContainer();
-        let errors = [];
+        // Rerender
+        else {
+          this.parcticulesCreators.forEach(parcticulesCreator => (
+            clearInterval(parcticulesCreator)
+          ))
+          this.parcticulesCreators = [];
+        }
+
+        // Initialyze parcticules creators
         this.data.forEach((item, i) => {
-
           const { from, to, data } = item;
           const origin = this.coordinatesCountries[from];
           const destination = this.coordinatesCountries[to];
 
-          if(!origin) {
-            errors.push(from);
+          if(__DEV__) {
+            if(!origin) this.errors.push(from);
+            if(!destination) this.errors.push(to);
           }
-          if(!destination) {
-            errors.push(to)
-          };
 
           this.parcticulesCreators[i] = createParticules(item, this.year, this.coordinatesCountries, particule => (
             this.particulesContainer.addChild(particule)
           ));
         });
-        this.container.addChild(this.particulesContainer);
 
-        errors = errors.filter( // Remove duplicate item
-          (error, i, tab) => tab.indexOf(error) == i
-        );
+        if(__DEV__) {
+          this.errors = this.errors.filter(
+            (error, i, tab) => tab.indexOf(error) === i
+          );
+          console.log(this.errors);
+        }
 
-        console.log(errors);
+      },
+
+
+
+      /*
+       * Render scene
+       */
+      render() {
+
+        // Rehder particules
+        this.renderParticules()
 
         // Landmarks
         this.container.addChild(

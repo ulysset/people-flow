@@ -107,7 +107,7 @@ export const createParticules = (item: { from:any, to: any }, selectedYear: numb
       if(interval) {
         return setInterval(() => {
           render();
-        }, interval);
+        }, interval < 200 ? 200 : interval);
       }
       else {
         render();
