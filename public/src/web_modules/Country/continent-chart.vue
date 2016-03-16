@@ -39,38 +39,40 @@
 
 <style scoped>
 
-  .item {
-    width: 10px;
-    height: 60px;
-    display: inline-block;
-    border-radius: 10px;
-    margin: 0 3px;
-  }
+.item {
+    width: 10px;
+    height: 60px;
+    display: inline-block;
+    border-radius: 10px;
+    margin: 0 3px;
+}
 
-  .africa {
-    background-color: red;
-  }
+.africa {
+    background-color: red;
+}
 
-  .asia {
-    background-color: blue;
-  }
-  .america {
-    background-color: coral;
-  }
+.asia {
+    background-color: blue;
+}
 
-  .oceania {
-    background-color: purple;
-  }
-  .europe {
-    background-color: green;
-  }
+.america {
+    background-color: coral;
+}
 
-  .continentName {
-    opacity: 0;
-  }
+.oceania {
+    background-color: purple;
+}
 
-  .enabled {
-    opacity: 1;
-  }
+.europe {
+    background-color: green;
+}
+
+.continentName {
+    opacity: 0;
+}
+
+.enabled {
+    opacity: 1;
+}
 
 </style>
