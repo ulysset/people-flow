@@ -19,6 +19,7 @@ module.exports = {
     modulesDirectories: [
       'node_modules',
       'public/src',
+      'public/src/assets',
       'public/src/web_modules',
       'public/src/core'
     ]
