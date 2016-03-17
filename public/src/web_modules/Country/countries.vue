@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div v-for='country in countries'>
-			<canvas v-bind:class="country.name" width='600' height='50'></canvas>
+			<canvas v-bind:class="country.name" width='600' height='100'></canvas>
 		</div>
 	</div>
 </template>
@@ -35,10 +35,10 @@
 				    labels: ['1960', '1970', '1980', '1990', '2000', '2010'],
 				    datasets: [{
 			            label: 'My First dataset',
-			            fillColor: 'rgba(220,220,220,0.2)',
-			            strokeColor: 'rgba(220,220,220,1)',
+			            fillColor: 'rgba(203,255,141,0.50)',
+			            strokeColor: 'rgba(220,220,220,0)',
 			            pointColor: 'rgba(220,220,220,1)',
-			            pointStrokeColor: '#fff',
+			            pointStrokeColor: false,
 			            pointHighlightFill: '#fff',
 			            pointHighlightStroke: 'rgba(220,220,220,1)',
 			            data: country.data
@@ -48,18 +48,17 @@
 				const chart = new Chart(ctx).Line(data, {
 				    scaleShowLabels: false,
 				    scaleShowGridLines: false,
-				    showScale: true,
+				    showScale: false,
 				    tooltipCaretSize: 2,
-				    pointDot: false,
 				    scaleFontColor: '#eeeeee',
 				    bezierCurve: true,
 				    scaleLineColor: 'rgba(219,219,220,1)',
-				    datasetFill: true,
-				    showTooltips: false,
+				    datasetStroke: false,
 				    // tooltipFillColor: 'rgba(140,32,220,0.8)',
-				    // tooltipFontSize: 10,
+				    tooltipFontSize: 10,
 				}); 
 			})
+			console.log(this);
 		}
 
 	}
