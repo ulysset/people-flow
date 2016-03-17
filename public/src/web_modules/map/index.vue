@@ -42,6 +42,10 @@
       getCountriesCoordinates(coordinatesCountries) {
         this.coordinatesCountries = coordinatesCountries;
         this.$broadcast('getCountriesCoordinates', this.coordinatesCountries);
+      },
+
+      getSelectedCountry(country) {
+        this.$broadcast('getSelectedCountry', country);
       }
     }
   }
@@ -56,6 +60,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    background-color: #eee;
   }
 
   .informations {

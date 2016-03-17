@@ -20,7 +20,8 @@
         errors: [],
         parcticulesCreators: [],
         isFetching: true,
-        data: []
+        data: [],
+        selectedCountry: null
       }
     },
 
@@ -32,6 +33,7 @@
       fetch(WEBAPI + '/data')
         .then(response => response.json())
         .then(data => {
+          console.log(data);
           this.isFetching = false;
           this.data = data;
           this.render();
@@ -50,6 +52,11 @@
       changeYear(value) {
         this.year = value;
         this.renderParticules();
+      },
+
+      // Change country selected
+      getSelectedCountry(country) {
+          this.selectedCountry = country;
       }
 
     },
@@ -76,7 +83,8 @@
         }
 
         // Initialyze parcticules creators
-        this.data.forEach((item, i) => {
+        Object.keys(this.data).forEach((key, index) => {
+          const item = this.data[key];
           const { from, to, data } = item;
           const origin = this.coordinatesCountries[from];
           const destination = this.coordinatesCountries[to];
@@ -86,7 +94,7 @@
             if(!destination) this.errors.push(to);
           }
 
-          this.parcticulesCreators[i] = createParticules(item, this.year, this.coordinatesCountries, particule => (
+          this.parcticulesCreators[index] = createParticules(item, this.year, this.coordinatesCountries, particule => (
             this.particulesContainer.addChild(particule)
           ));
         });
@@ -122,7 +130,7 @@
         // Render view
         const render = () => {
           requestAnimationFrame(render);
-          renderParticules(this.particulesContainer.children)
+          renderParticules(this.particulesContainer.children, this.selectedCountry)
             .filter(particule => particule.needBeDeleted)
             .forEach(particule => (
                 this.particulesContainer.removeChild(particule)

@@ -38,15 +38,17 @@ export const createParticuleTexture = (size: number, color: string): any => {
  * > see: https://pixijs.github.io/docs/PIXI.Sprite.html
  */
 
-export const PARTICULE_SIZE = 6;
-export const PARTICULE_COLOR = 'grey';
+export const PARTICULE_SIZE = 4;
+export const PARTICULE_COLOR = 'rgb(92, 92, 92)';
 export const PARTICULE_TEXTURE = createParticuleTexture(PARTICULE_SIZE, PARTICULE_COLOR);
 
 export const createParticule = (options: {
   destination: { x: number, y: number },
-  origin: { x: number, y: number }
+  origin: { x: number, y: number },
+  from: string,
+  to: string
 }): Particule => {
-  const { origin, destination } = options;
+  const { origin, destination, from, to } = options;
 
   // Add texture
   const particule = new PIXI.Sprite(PARTICULE_TEXTURE);
@@ -59,6 +61,8 @@ export const createParticule = (options: {
   particule.position.x = origin.x;
   particule.position.y = origin.y;
   particule.destination = destination;
+  particule.from = from;
+  particule.to = to;
 
   // Define future movment
   const alpha = Math.atan(Math.abs(destination.y - origin.y) / Math.abs(destination.x - origin.x));
@@ -93,7 +97,7 @@ export const createParticules = (item: { from:any, to: any }, selectedYear: numb
 
       // Render
       const render = () => {
-        const particule = createParticule({ origin, destination });
+        const particule = createParticule({ origin, destination, from, to });
         if(interval) {
           callback(particule);
         } else {
@@ -128,13 +132,24 @@ export const createParticules = (item: { from:any, to: any }, selectedYear: numb
  * by setting new position
  * for each particule created
  */
-export const renderParticules = (particules: Particules): Particules => {
+export const renderParticules = (particules: Particules, selectedCountry: string): Particules => {
   return particules.map(particule => {
-    const { position, destination, translate } = particule;
+    const {
+      position,
+      destination,
+      translate,
+      to,
+      from
+    } = particule;
 
     // Set position
     position.x += translate.x;
     position.y += translate.y;
+
+    particule.alpha = .1;
+    if(from === selectedCountry || to === selectedCountry) {
+      particule.alpha = 1;
+    }
 
     // Test if the particle has reached its destination
     if(Math.abs(destination.x - position.x) <= .5 || Math.abs(destination.y - position.y) <= .5) {

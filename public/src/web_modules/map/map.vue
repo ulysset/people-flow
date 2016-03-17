@@ -19,28 +19,29 @@
 
     data() {
       return {
-        countries: data
+        countries: data,
+        selectedCountry: null,
+        coordinatates: []
       };
     },
 
     ready() {
-      let coordinatates = [];
       [].slice
         .call(this.$els.svg.querySelectorAll('path'))
         .forEach(country => {
           const { top, left, width, height } = country.getBoundingClientRect();
-          coordinatates[country.classList[1]] = {
+          this.coordinatates[country.classList[1]] = {
             x: left + width / 2,
             y: top + height / 2
           };
         });
-
-      this.$dispatch('getCountriesCoordinates', coordinatates);
+      this.$dispatch('getCountriesCoordinates', this.coordinatates);
     },
 
     methods: {
-      clickCountry: (name) => {
-        console.log(name);
+      clickCountry(value) {
+        this.selectedCountry = value;
+        this.$dispatch('getSelectedCountry', this.selectedCountry);
       }
     },
 
