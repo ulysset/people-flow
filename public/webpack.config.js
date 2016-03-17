@@ -38,13 +38,6 @@ module.exports = {
       loader: 'babel',
       exclude: /node_modules/
     }, {
-      test: /\.(png|jpg|gif)$/,
-      loader: 'url',
-      query: {
-        limit: 10000,
-        name: '[name].[ext]?[hash]'
-      }
-    }, {
       test: /[.]html$/,
       loader: PathRewriterPlugin.rewriteAndEmit({
         name: '[name].html'
@@ -53,7 +46,7 @@ module.exports = {
       test: /\.json?$/,
       loader: 'json'
     },{
-      test: /\.(ttf|eot|otf|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+      test: /\.(png|jpg|gif|ttf|otf|svg|woff(2)?)(\?[a-z0-9]+)?$/,
       loader: 'file-loader'
     }]
   },
