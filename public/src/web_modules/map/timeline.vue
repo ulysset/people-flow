@@ -1,16 +1,23 @@
 <template>
-  <ul class="container">
-    <li
-      v-for="_year in years"
-      v-on:click="onClick(_year)"
-      v-bind:class="{ 'is-active': _year === year }"
-      class="item">
-      {{ _year }}
-    </li>
-  </ul>
+  <div class="container">
+    <div class="ratio" v-bind:style="{ left: ratio + 'px' }"></div>
+    <div class="pause"></div>
+    <ul class="years">
+      <li
+        v-bind:style="{ width: yearWidth + 'px' }"
+        v-for="_year in years"
+        v-on:click="onClick(_year)"
+        v-bind:class="{ 'is-active': _year === year }"
+        class="year">
+        {{ _year }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
+
+  import { DEFAULT_YEAR } from 'config';
 
   export default {
 
@@ -18,13 +25,28 @@
 
     data() {
       return {
-        years: [1960, 1970, 1980, 1990, 2000]
-      }
+        years: [1960, 1970, 1980, 1990, 2000],
+        ratio: 0,
+        yearWidth: 130
+      };
+    },
+
+    ready() {
+      this.getRatio(this.years.indexOf(DEFAULT_YEAR));
     },
 
     methods: {
+      getRatio(index) {
+        const totalWidth = this.yearWidth * this.years.length;
+        const windowWidth = window.innerWidth;
+        this.ratio =
+          ((totalWidth - windowWidth) / 2 + this.yearWidth / 2) +
+          index * this.yearWidth;
+      },
+
       onClick(year) {
         this.$dispatch('changeYear', year);
+        this.getRatio(this.years.indexOf(year));
       }
     }
 
@@ -34,31 +56,76 @@
 
 <style lang="sass" scoped>
 
+  @import "../theme";
+
   .container {
     position: absolute;
     margin: 0;
     bottom: 0;
     z-index: 1;
     width: 100%;
-    padding: 12px 0;
     background-color: white;
-    border-top: #ccc solid 1px;
-    text-align: center;
   }
 
-  .item {
+  .ratio {
+    display: block;
+    position: relative;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(to left, $primaryColor 0%, white 100%);
+    transition: left .2s ease;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 7px;
+      height: 7px;
+      background-color: $primaryColor;
+      border-radius: 50%;
+      z-index: 2;
+    }
+  }
+
+  .pause {
     display: inline-block;
-    color: #ccc;
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    width: 14px;
+    height: 14px;
+    background-image: url('../../assets/img/icon-pause.svg');
+    background-size: 100%;
+    transform: translateY(-50%);
+    opacity: .25;
     cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .years {
+    display: block;
+    text-align: center;
+    padding: 12px 0 14px;
+    margin: 0;
+  }
+
+  .year {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgba($primaryColor, .25);
+    text-align: center;
+    transition: color ease .15s;
 
     &.is-active {
       font-weight: bold;
-      color: black;
       cursor: default;
-    }
-
-    & + & {
-      margin-left: 80px;
+      color: rgba($primaryColor, 1);
     }
   }
 
