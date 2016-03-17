@@ -155,7 +155,7 @@ export const renderParticules = (particules: Particules, selectedCountry: string
     }
     else {
       if(particule.alpha !== .1) {
-        particule.alpha -= .1;
+        particule.alpha -= .025;
       }
     }
 
