@@ -29,23 +29,37 @@
     background-color: green;
 }
 
-.continentName {
-    opacity: 0;
+.statsContinents{
+  width: 300px;
+  height: 100px;
 }
 
-.enabled {
-    opacity: 1;
+.statsContinents .continent{
+  position: absolute;
+  opacity: 0;
 }
+
+.statsContinents .enabled {
+  opacity: 1;
+}
+
 
 </style>
 
 <template>
 
-<div v-for="continent in continents" v-on:mouseOver="onHover(this, continent.name)" class="barGroup">
-    <span v-bind:class="{'enabled': activeContinent == continent.name}">{{ continent.name }}</span>
-    <div v-for="continentItem in continent.count" class="item" v-bind:class="continent.name">
+  <div class="statsContinents">
+    <div v-for="continent in continents">
+      <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
+        <h2>{{ continent.name }}</h2>
+        <p>{{ continent.migrants}}</p>
+      </div>
     </div>
+  </div>
+<div v-for="continent in continents" v-on:mouseOver="onHover(this, continent.name)" class="barGroup">
+    <div v-for="continentItem in continent.count" class="item" v-bind:class="continent.name"></div>
 </div>
+
 
 </template>
 
@@ -61,15 +75,15 @@ export default {
                     count: []
                 }, {
                     name: 'america',
-                    migrants: 4899,
+                    migrants: 3566,
                     count: []
                 }, {
                     name: 'oceania',
-                    migrants: 4899,
+                    migrants: 2359,
                     count: []
                 }, {
                     name: 'europe',
-                    migrants: 4899,
+                    migrants: 3869,
                     count: []
                 }, {
                     name: 'asia',
