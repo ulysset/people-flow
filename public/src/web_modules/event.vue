@@ -20,11 +20,12 @@
 
     <h1>Guerre en Syrie</h1>
 
+    <div style="overflow-y: scroll; height:700px;background:blue;">
+
   </div>
 </template>
 
 <style lang="sass" scoped>
-
 
   .menu {
     position: absolute;

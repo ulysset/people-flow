@@ -53,8 +53,9 @@
 
   .wrapper {
     position: relative;
-    min-width: 100%;
-    min-height: 100%;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
   }
 
   .informations {
