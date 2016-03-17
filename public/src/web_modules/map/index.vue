@@ -1,4 +1,5 @@
 <template>
+  <app-header></app-header>
   <div class="wrapper" transition="expand">
     <core
       v-bind:coordinates="coordinatesCountries"
@@ -16,6 +17,7 @@
   Vue.component('timeline', require('./timeline'));
   Vue.component('core', require('./core'));
   Vue.component('map', require('./map'));
+  Vue.component('app-header', require('./../header'));
 
   Vue.transition('expand', {
     enter: (el, done) => {
