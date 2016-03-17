@@ -13,7 +13,7 @@ export const fetch = (options: { key: string, select: string }, callback: any) =
 );
 
 export const getData = data => {
-  let response = [];
+  const response = {};
   const years = ['1960', '1970', '1980', '1990', '2000'];
   Object.keys(data.cells).forEach(key => {
     const countryKey = `${data.cells[key][1].value}:${data.cells[key][2].value}`;
@@ -26,7 +26,7 @@ export const getData = data => {
       const year = `${years[(index - 3)]}`;
       country.data[year] = data.cells[key][index].value;
     })
-    response.push(country);
+    response[countryKey] = country;
   })
   return response;
 };
