@@ -1,10 +1,11 @@
 <template>
   <div class="container">
-    <svg class="countries" v-el:svg  x="0px" y="0px" viewBox="400 229 218 218" xml:space="preserve">
+    <svg class="countries" v-el:svg  x="0px" y="0px" viewBox="400 218 218 218" xml:space="preserve">
       <path
         class="land"
         v-for="country in countries"
         v-bind:class="country.name"
+        v-on:mouseOut="clickCountry(null)"
         v-on:mouseOver="clickCountry(country.name)"
         v-bind:d="country.path"/>
     </svg>

@@ -148,7 +148,7 @@ export const renderParticules = (particules: Particules, selectedCountry: string
     position.y += translate.y;
 
     // Change alpha
-    if(from === selectedCountry || to === selectedCountry) {
+    if(from === selectedCountry || to === selectedCountry || selectedCountry === null) {
       if(particule.alpha !== 1) {
         particule.alpha += .025;
       }
