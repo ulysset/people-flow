@@ -1,6 +1,7 @@
 const PathRewriterPlugin = require('webpack-path-rewriter');
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const __BASE_DIR__ = process.env.BASE_DIR ? process.env.BASE_DIR : '';
 const __DEV__ = process.env.NODE_ENV === 'development';
@@ -53,7 +54,7 @@ module.exports = {
   vue: {
     loaders: {
       js: 'babel',
-      css: 'style!css-loader'
+      css: ExtractTextPlugin.extract('style', 'css-loader')
     }
   },
   plugins: [
@@ -62,11 +63,14 @@ module.exports = {
        __PROD__: __PROD__,
        __DEV__: __DEV__,
        'process.env.NODE_ENV': __DEV__ ? '"development"' : '"production"'
-    })
+    }),
+    new ExtractTextPlugin('style.css', { disable: __DEV__ })
   ].concat(
     __PROD__ ? [
       new webpack.optimize.UglifyJsPlugin()
-    ] : []
+    ] : [
+      new webpack.NoErrorsPlugin()
+    ]
   ),
   node: {
     fs: "empty"

@@ -28,6 +28,7 @@
     "chart.js": "^1.0.2",
     "cors": "^2.7.1",
     "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "google-spreadsheets": "^0.5.1",
     "googleapis": "^2.1.7",
