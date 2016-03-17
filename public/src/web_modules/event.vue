@@ -1,6 +1,6 @@
 <template>
     <ul class="menu">
-      <img src="../assets/img/Logo.svg"/ class="logo">
+      <a v-link="'/'"><img src="../assets/img/Logo.svg"/ class="logo"></a>
       <li><a v-link="'/sources'" class="link">Sources</a></li>
       <li><a v-link="'/'" class="link">Copyright</a></li>
       <li><a href="'https://github.com/ulysset/people-flow'" class="link">Github</a></li>
@@ -73,7 +73,6 @@
     h1{
       font-size:38px;
       font-family: 'Brandon_thin';
-      color:#a8a8a8;
       padding-top:40px;
     }
   }
@@ -119,7 +118,6 @@
       display:inline-block;
       font-size:20px;
       padding:0 30px;
-      color:#a8a8a8;
     }
 
   }

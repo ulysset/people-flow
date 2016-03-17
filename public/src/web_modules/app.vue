@@ -19,6 +19,7 @@
   body {
     margin: auto;
     font-family: "Brandon";
+    color: #a8a8a8;
   }
 
   .app {
