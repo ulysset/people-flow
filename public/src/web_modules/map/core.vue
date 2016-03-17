@@ -9,7 +9,7 @@
   import { createParticules, renderParticules } from 'helpers/particules';
   import { createScene } from 'helpers/scene';
   import { createLandmarks } from 'helpers/landmarks';
-  import 'whatwg-fetch';
+  import fetch from 'helpers/fetch';
 
   export default {
 
@@ -19,7 +19,6 @@
       return {
         errors: [],
         parcticulesCreators: [],
-        isFetching: true,
         data: [],
         selectedCountry: null
       }
@@ -31,10 +30,8 @@
       this.scene.render(this.container);
 
       fetch(WEBAPI + '/data')
-        .then(response => response.json())
+        .then(response => JSON.parse(response))
         .then(data => {
-          console.log(data);
-          this.isFetching = false;
           this.data = data;
           this.render();
         })
