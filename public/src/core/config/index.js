@@ -1,4 +1,4 @@
-export const DEFAULT_YEAR = 1970;
+export const DEFAULT_YEAR = 1960;
 export const MAP_RATIO = 2;
 
 export const PARTICULE_SPEED = 1;
