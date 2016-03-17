@@ -56,6 +56,7 @@ export const createParticule = (options: {
   particule.width = PARTICULE_SIZE / 2;
   particule.height = PARTICULE_SIZE / 2;
   particule.needBeDeleted = false;
+  particule.alpha = .1;
 
   // Set position
   particule.position.x = origin.x;
@@ -146,9 +147,16 @@ export const renderParticules = (particules: Particules, selectedCountry: string
     position.x += translate.x;
     position.y += translate.y;
 
-    particule.alpha = .1;
+    // Change alpha
     if(from === selectedCountry || to === selectedCountry) {
-      particule.alpha = 1;
+      if(particule.alpha !== 1) {
+        particule.alpha += .025;
+      }
+    }
+    else {
+      if(particule.alpha !== .1) {
+        particule.alpha -= .1;
+      }
     }
 
     // Test if the particle has reached its destination

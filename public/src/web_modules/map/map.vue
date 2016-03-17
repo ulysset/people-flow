@@ -5,7 +5,7 @@
         class="land"
         v-for="country in countries"
         v-bind:class="country.name"
-        v-on:click="clickCountry(country.name)"
+        v-on:mouseOver="clickCountry(country.name)"
         v-bind:d="country.path"/>
     </svg>
   </div>
