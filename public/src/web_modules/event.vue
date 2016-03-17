@@ -18,9 +18,37 @@
     <img src="../assets/img/right_arrow.svg"/>
     </div>
 
-    <h1>Guerre en Syrie</h1>
+    <h1>Chute du mur de Berlin</h1>
 
-    <div style="overflow-y: scroll; height:700px;background:blue;">
+
+    <div class="timeline" v-el:timeline></div>
+
+    <div class="content">
+
+      <article>
+      <img src="../assets/img/berlin2.jpg"/>
+      <p>« Le Mur de la honte s'écroule »</p>
+      </article>
+
+      <article>
+      <img src="../assets/img/berlin1.jpg"/>
+      <p>« La libération, enfin. »</p>
+      </article>
+
+      <h1 style="margin:auto;font-size:40px;">Lorem ipsum dolor sit amet, consectetur</h1>
+
+      <article>
+      <img src="../assets/img/berlin1.jpg"/>
+      <p>« Le Mur de la honte s'écroule »</p>
+      </article>
+
+      <article>
+      <img src="../assets/img/berlin2.jpg"/>
+      <p>« La libération, enfin. »</p>
+      </article>
+
+    </div>
+
 
   </div>
 </template>
@@ -74,7 +102,32 @@
     h1{
       font-size:38px;
       font-family: 'Brandon_thin';
-      padding-top:40px;
+      padding-top:25px;
+    }
+  }
+
+  .timeline {
+    width:1px;
+    height:400px;
+    background:#a8a8a8;
+    position:fixed;
+    margin:auto;
+    left:50%;
+    transform:translateX(-50%);
+    margin-top:20px;
+    transition: top ease .6s;
+  }
+
+  .content{
+
+    article{
+      width:500px;
+      display:inline-block;
+      margin:30px 10px;
+
+      img{
+        width:70%;
+      }
     }
   }
 
@@ -85,9 +138,9 @@
   }
 
   .back {
-    width:20px;
-    height:20px;
-    padding:20px;
+    width:15px;
+    height:15px;
+    padding:15px;
     background:#D6D6D6;
     border-radius:50%;
 
@@ -98,7 +151,7 @@
 
 
   .events{
-    padding-top:50px;
+    padding-top:30px;
 
     img {
       width:25px;
@@ -125,15 +178,26 @@
 
 </style>
 
-
-
-
-
-
 <script>
 
-  // export default {
-  //
-  // }
+
+  export default {
+
+    ready() {
+      var $timeline = this.$els.timeline;
+
+      window.onscroll = function(e) {
+        var scrollY = window.scrollY;
+        if (scrollY > 250)
+        $timeline.style.top = (window.innerHeight/2-220) + "px";
+        else if (scrollY < 250)
+        $timeline.style.top = "360px";
+      }
+
+      console.log();
+
+    }
+
+  }
 
 </script>
