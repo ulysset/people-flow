@@ -54,8 +54,9 @@
 
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
 
+  @import "../theme";
 
   .container {
     position: absolute;
@@ -69,8 +70,9 @@
   }
 
   .land {
-    fill: white;
-    fill-opacity: 1;
+    fill: rgba($primaryColor, .25);
+    stroke-width: .5;
+    stroke: #eee;
   }
 
 </style>

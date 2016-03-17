@@ -1,6 +1,6 @@
 import PIXI from 'pixi.js';
 
-export const DEFAULT_LANDMARK_COLOR = 0xF78981;
+export const DEFAULT_LANDMARK_COLOR = 0x15395E;
 export const DEFAULT_LANDMARK_SIZE = 2;
 
 type Data = Array<{ x: number, y: number }>
