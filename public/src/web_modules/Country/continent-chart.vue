@@ -10,23 +10,23 @@
 .barGroup {}
 
 .africa {
-    background-color: red;
+    background-color: #A8216B;
 }
 
 .asia {
-    background-color: blue;
+    background-color: #EC1B4B;
 }
 
 .america {
-    background-color: coral;
+    background-color: #F26A44;
 }
 
 .oceania {
-    background-color: purple;
+    background-color: #F7DB69;
 }
 
 .europe {
-    background-color: green;
+    background-color: #2E9598;
 }
 
 .statsContinents{
@@ -51,7 +51,7 @@
   <div class="statsContinents">
     <div v-for="continent in continents">
       <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
-        <h2>{{ continent.name }}</h2>
+        <h2>{{ continent.name.toUpperCase() }}</h2>
         <p>{{ continent.migrants}}</p>
       </div>
     </div>
@@ -69,6 +69,7 @@ export default {
     data() {
             return {
                 activeContinent: '',
+                years : [],
                 continents: [{
                     name: 'africa',
                     migrants: 2345,
@@ -91,14 +92,14 @@ export default {
                     count: []
                 }]
             };
-        },
+         },
         ready() {
             const total = this.continents
                 .map(item => item.migrants)
                 .reduce((a, b) => a + b)
 
             this.continents = this.continents.map(item => {
-                const proportion = Math.ceil((item.migrants / total) * 20);
+                const proportion = Math.ceil((item.migrants / total) * 10);
                 return {
                     ...item,
                     count: new Array(proportion)
@@ -108,7 +109,7 @@ export default {
 
         methods: {
             onHover: (ctx, name) => {
-                ctx.activeContinent = name;
+                ctx.activeContinent = name.toLowerCase();
             }
         }
 }
