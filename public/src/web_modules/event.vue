@@ -1,55 +1,33 @@
 <template>
-    <ul class="menu">
-      <a v-link="'/'"><img src="../assets/img/Logo.svg"/ class="logo"></a>
-      <li><a v-link="'/sources'" class="link">Sources</a></li>
-      <li><a v-link="'/'" class="link">Copyright</a></li>
-      <li><a href="'https://github.com/ulysset/people-flow'" class="link">Github</a></li>
-      <li><a href="https://twitter.com/intent/tweet?text=Futuregrant&url=http://localhost:8080/#!/event" target="_blank" class="link">Partager</a></li>
-      <li class="help"><a v-link="'/'" class="link">BESOIN D'AIDE ?</a></li>
-    </ul>
-
-  <div class="container">
-
+  <app-header></app-header>
+  <div class="wrapper">
     <a v-link="'/map'"><img class="back" src="../assets/img/close.svg"/></a>
-
     <div class="events">
-    <img src="../assets/img/left_arrow.svg"/>
-    <p>ÉVÈNEMENTS 2014</p>
-    <img src="../assets/img/right_arrow.svg"/>
+      <img src="../assets/img/left_arrow.svg"/>
+      <p>ÉVÈNEMENTS 2014</p>
+      <img src="../assets/img/right_arrow.svg"/>
     </div>
-
     <h1>Chute du mur de Berlin</h1>
-
-
     <div class="timeline" v-el:timeline></div>
-
     <div class="content">
-
       <article>
-      <img src="../assets/img/berlin2.jpg"/>
-      <p>« Le Mur de la honte s'écroule »</p>
+        <img src="../assets/img/berlin2.jpg"/>
+        <p>« Le Mur de la honte s'écroule »</p>
       </article>
-
       <article>
-      <img src="../assets/img/berlin1.jpg"/>
-      <p>« La libération, enfin. »</p>
+        <img src="../assets/img/berlin1.jpg"/>
+        <p>« La libération, enfin. »</p>
       </article>
-
       <h1 style="margin:auto;font-size:40px;">Lorem ipsum dolor sit amet, consectetur</h1>
-
       <article>
-      <img src="../assets/img/berlin1.jpg"/>
-      <p>« Le Mur de la honte s'écroule »</p>
+        <img src="../assets/img/berlin1.jpg"/>
+        <p>« Le Mur de la honte s'écroule »</p>
       </article>
-
       <article>
-      <img src="../assets/img/berlin2.jpg"/>
-      <p>« La libération, enfin. »</p>
+        <img src="../assets/img/berlin2.jpg"/>
+        <p>« La libération, enfin. »</p>
       </article>
-
     </div>
-
-
   </div>
 </template>
 
@@ -94,7 +72,7 @@
     margin-right:30px;
   }
 
-  .container {
+  .wrapper {
     padding-top:100px;
     margin: auto;
     text-align: center;
@@ -180,24 +158,19 @@
 
 <script>
 
+  import Vue from 'vue';
+
+  Vue.component('app-header', require('./header'));
 
   export default {
-
     ready() {
-      var $timeline = this.$els.timeline;
-
+      const $timeline = this.$els.timeline;
       window.onscroll = function(e) {
-        var scrollY = window.scrollY;
-        if (scrollY > 250)
-        $timeline.style.top = (window.innerHeight/2-220) + "px";
-        else if (scrollY < 250)
-        $timeline.style.top = "360px";
-      }
-
-      console.log();
-
+        const scrollY = window.scrollY;
+        if (scrollY > 250) $timeline.style.top = (window.innerHeight/2-220) + "px";
+        else $timeline.style.top = "360px";
+      };
     }
-
   }
 
 </script>
