@@ -15,15 +15,25 @@ app.listen(port, () => {
 
 let cache = null;
 app.use(router.get('/data', (req, res) => {
+
+  // Return cache
   if(cache) {
     return res.status(200).json(cache);
   }
+
+  // Initialyze promises
   const spreadsheet = fetch({
-    key: SPREADSHEET_KEY,
+    key: SPREADSHEET_KEY['INSIDE_EUROPA'],
     select: 'R2C1:R2602C7'
-  }, data => {
-    const response = getData(data);
-    cache = response;
-    return res.status(200).json(response);
   });
+
+  // Fetch everything
+  Promise.all([spreadsheet]).then(data => {
+    const response = getData(data[0]);
+    cache = response;
+    return res.status(200).json({
+      INSIDE_EUROPA: response
+    });
+  })
+
 }))

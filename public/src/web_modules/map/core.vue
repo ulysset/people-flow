@@ -5,11 +5,9 @@
 <script>
 
   import PIXI from 'pixi.js';
-  import { WEBAPI } from 'config';
   import { createParticules, renderParticules } from 'helpers/particules';
   import { createScene } from 'helpers/scene';
   import { createLandmarks } from 'helpers/landmarks';
-  import fetch from 'helpers/fetch';
 
   export default {
 
@@ -19,7 +17,8 @@
       return {
         errors: [],
         parcticulesCreators: [],
-        data: [],
+        data: null,
+        coordinatesCountries: null,
         selectedCountry: null
       }
     },
@@ -28,13 +27,6 @@
       this.scene = createScene(this.$els.container);
       this.container = new PIXI.Container();
       this.scene.render(this.container);
-
-      fetch(WEBAPI + '/data')
-        .then(response => JSON.parse(response))
-        .then(data => {
-          this.data = data;
-          this.render();
-        })
     },
 
     events: {
@@ -54,6 +46,12 @@
       // Change country selected
       getSelectedCountry(country) {
           this.selectedCountry = country;
+      },
+
+      // Get data from server
+      getData(value) {
+        this.data = value;
+        this.render();
       }
 
     },
@@ -111,40 +109,42 @@
        * Render scene
        */
       render() {
+        if(this.data && this.coordinatesCountries) {
 
-        // Rehder particules
-        this.renderParticules()
+          // Rehder particules
+          this.renderParticules()
 
-        // Landmarks
-        this.container.addChild(
-          createLandmarks(this.coordinatesCountries)
-        );
+          // Landmarks
+          this.container.addChild(
+            createLandmarks(this.coordinatesCountries)
+          );
 
-        // Add countries
-        this.countriesContainer = new PIXI.Container();
-        this.container.addChild(this.countriesContainer);
+          // Add countries
+          this.countriesContainer = new PIXI.Container();
+          this.container.addChild(this.countriesContainer);
 
-        // Render view
-        const render = () => {
-          requestAnimationFrame(render);
-          renderParticules(this.particulesContainer.children, this.selectedCountry)
+          // Render view
+          const render = () => {
+            requestAnimationFrame(render);
+            renderParticules(this.particulesContainer.children, this.selectedCountry)
             .filter(particule => particule.needBeDeleted)
             .forEach(particule => (
-                this.particulesContainer.removeChild(particule)
+              this.particulesContainer.removeChild(particule)
             ));
-          this.scene.render(this.container);
-        };
-        render();
+            this.scene.render(this.container);
+          };
+          render();
 
-        // Resize
-        let resizer;
-        window.onresize = () => {
-          clearTimeout(resizer);
-          resizer = setTimeout(() => {
-            this.scene.resize(window.innerWidth, window.innerHeight);
-          }, 500);
-        };
+          // Resize
+          let resizer;
+          window.onresize = () => {
+            clearTimeout(resizer);
+            resizer = setTimeout(() => {
+              this.scene.resize(window.innerWidth, window.innerHeight);
+            }, 500);
+          };
 
+        }
       }
     }
 

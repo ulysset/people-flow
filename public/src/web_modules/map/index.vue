@@ -12,7 +12,8 @@
 <script scoped>
 
   import Vue from 'vue';
-  import { DEFAULT_YEAR } from 'config';
+  import { WEBAPI, DEFAULT_YEAR } from 'config';
+  import fetch from 'helpers/fetch';
 
   Vue.component('timeline', require('./timeline'));
   Vue.component('core', require('./core'));
@@ -32,9 +33,21 @@
     data() {
       return {
         selectedYear: DEFAULT_YEAR,
-        coordinatesCountries: 'h'
+        data: null,
+        coordinatesCountries: null
       };
     },
+
+    ready() {
+      fetch(WEBAPI + '/data')
+        .then(response => JSON.parse(response))
+        .then(data => {
+          console.log(data);
+          this.data = data['INSIDE_EUROPA'];
+          this.$broadcast('getData', data)
+        })
+    },
+
     events: {
       changeYear(year) {
         this.selectedYear = year;

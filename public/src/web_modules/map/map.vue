@@ -3,6 +3,7 @@
     <svg class="countries" v-el:svg  x="0px" y="0px" viewBox="400 218 218 218" xml:space="preserve">
       <path
         class="land"
+        v-bind:style="{ fill: country.color }"
         v-for="country in countries"
         v-bind:class="country.name"
         v-on:mouseOut="clickCountry(null)"
@@ -14,15 +15,19 @@
 
 <script>
 
-  import data from 'assets/data/map';
+  import countries from 'assets/data/map';
 
   export default {
 
     data() {
       return {
-        countries: data,
+        countries: countries.map(country => ({
+          ...country,
+          color: 'rgba(21, 57, 94, 0.25)'
+        })),
         selectedCountry: null,
-        coordinatates: []
+        coordinatates: [],
+        data: []
       };
     },
 
@@ -43,11 +48,17 @@
       clickCountry(value) {
         this.selectedCountry = value;
         this.$dispatch('getSelectedCountry', this.selectedCountry);
-      }
+      },
     },
 
     events: {
-
+      getData(value) {
+        this.data = value;
+        this.countries = this.countries.map(country => ({
+          ...country,
+          color: 'rgba(21, 57, 94, ' + (Math.random() * (0.05 - 0.4) + 0.4).toFixed(3) + ')'
+        }));
+      }
     }
 
   }
@@ -70,7 +81,6 @@
   }
 
   .land {
-    fill: rgba($primaryColor, .25);
     stroke-width: .5;
     stroke: #eee;
   }
