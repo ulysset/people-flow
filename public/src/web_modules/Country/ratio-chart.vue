@@ -2,7 +2,7 @@
 
     <div class="parent-ratio">
     <ul class="years" >
-      <li  v-for="year in years" v-on:click="selectIndex($index)">{{year}}</li>
+      <li  v-for="year in years" v-on:click="selectIndex($index)" >{{year}}</li>
     </ul>
       <div class="ratio">
         <canvas id="chart" class="chart"></canvas>
@@ -145,6 +145,9 @@ export default {
 
   }
   .years li:hover {
+    border: 3px solid #2F6B97;
+  }
+  .years .selected{
     border: 3px solid #2F6B97;
   }
 
