@@ -150,12 +150,12 @@ export const renderParticules = (particules: Particules, selectedCountry: string
     // Change alpha
     if(from === selectedCountry || to === selectedCountry || selectedCountry === null) {
       if(particule.alpha !== 1) {
-        particule.alpha += .025;
+        particule.alpha += .05;
       }
     }
     else {
       if(particule.alpha !== .1) {
-        particule.alpha -= .025;
+        particule.alpha -= .05;
       }
     }
 
