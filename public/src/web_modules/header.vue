@@ -3,11 +3,12 @@
     <a class="logo" v-link="'/map'"><img src="../assets/img/logo.svg" alt="Future Grant"></a>
     <nav class="nav">
       <ul class="nav-list">
-        <li class="nav-item"><a v-link="'/sources'" class="nav-link">Sources</a></li>
-        <li class="nav-item"><a v-link="'/'" class="nav-link">Copyright</a></li>
-        <li class="nav-item"><a href="https://github.com/ulysset/people-flow" class="nav-link">Github</a></li>
-        <li class="nav-item"><a href="https://twitter.com/intent/tweet?text=Futuregrant&url=http://localhost:8080/#!/event" target="_blank" class="nav-link">Partager</a></li>
-        <li class="nav-item --help"><a v-link="'/'" class="nav-link">Besoins d'aide ?</a></li>
+        <li class="nav-item"><a v-link="'/sources'" class="nav-link">Données</a></li>
+        <li class="nav-item"><a v-link="'/'" class="nav-link">À propos</a></li>
+
+        <li class="nav-item --help"><a href="https://github.com/ulysset/people-flow" class="nav-link --share --github"></a></li>
+        <li class="nav-item --help"><a href="#" target="_blank" class="nav-link --share --facebook"></a></li>
+        <li class="nav-item --help"><a href="https://twitter.com/intent/tweet?text=Futuregrant&url=https://still-fortress-88655.herokuapp.com" target="_blank" class="nav-link --share --twitter"></a></li>
       </ul>
     </nav>
   </header>
@@ -55,7 +56,7 @@
         margin-left: 20px;
       }
 
-      &.--help {
+      &.--help{
         float: right;
       }
     }
@@ -69,6 +70,24 @@
 
       &:hover {
         color: $primaryColor;
+      }
+
+      &.--share{
+        padding:0 10px;
+        background-repeat:no-repeat;
+        background-size:16px 16px;
+        &.--github{
+          background-image: url(../assets/img/github.svg);
+        }
+        &.--facebook{
+          background-image: url(../assets/img/facebook.svg);
+        }
+        &.--twitter{
+          background-image: url(../assets/img/twitter.svg);
+        }
+        &:hover {
+          opacity:.8;
+        }
       }
     }
   }
