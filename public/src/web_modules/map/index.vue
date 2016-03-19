@@ -42,9 +42,8 @@
       fetch(WEBAPI + '/data')
         .then(response => JSON.parse(response))
         .then(data => {
-          console.log(data);
-          this.data = data['INSIDE_EUROPA'];
-          this.$broadcast('getData', data)
+          this.data = data;
+          this.$broadcast('getData', this.data)
         })
     },
 

@@ -30,10 +30,8 @@ app.use(router.get('/data', (req, res) => {
   // Fetch everything
   Promise.all([spreadsheet]).then(data => {
     const response = getData(data[0]);
-    cache = response;
-    return res.status(200).json({
-      INSIDE_EUROPA: response
-    });
+    cache = { INSIDE_EUROPA: response };
+    return res.status(200).json(cache);
   })
 
 }))
