@@ -1,18 +1,18 @@
 <template>
-  <div>
-    <router-view class="container"></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <style>
 
   @font-face {
     font-family: 'Brandon';
+    font-weight: 400;
     src: url('../assets/fonts/Brandon-Regular.otf');
   }
 
   @font-face {
-    font-family: 'Brandon_thin';
+    font-family: 'Brandon';
+    font-weight: 200;
     src: url('../assets/fonts/Brandon_thin.otf');
   }
 
@@ -24,6 +24,7 @@
   body {
     margin: auto;
     font-family: "Brandon";
+    font-weight: 400;
     color: #a8a8a8;
   }
 

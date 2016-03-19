@@ -45,7 +45,7 @@
 
       // Change country selected
       getSelectedCountry(country) {
-          this.selectedCountry = country;
+        this.selectedCountry = country;
       },
 
       // Get data from server
@@ -78,8 +78,8 @@
         }
 
         // Initialyze parcticules creators
-        Object.keys(this.data).forEach((key, index) => {
-          const item = this.data[key];
+        Object.keys(this.data['INSIDE_EUROPA']).forEach((key, index) => {
+          const item = this.data['INSIDE_EUROPA'][key];
           const { from, to, data } = item;
           const origin = this.coordinatesCountries[from];
           const destination = this.coordinatesCountries[to];
@@ -111,7 +111,7 @@
       render() {
         if(this.data && this.coordinatesCountries) {
 
-          // Rehder particules
+          // Render particules
           this.renderParticules()
 
           // Landmarks

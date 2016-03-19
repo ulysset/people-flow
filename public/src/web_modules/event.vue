@@ -58,6 +58,10 @@
     background-position:center center;
     &:hover{
       opacity:.7;
+    h1{
+      font-size:38px;
+      font-weight: 200;
+      padding-top:25px;
     }
   }
 
