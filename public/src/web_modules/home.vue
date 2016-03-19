@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a v-link="'/'"><img src="../assets/img/Logo.svg"/ class="logo"></a>
+    <a v-link="'/'"><img src="../assets/img/logo.svg"/ class="logo"></a>
     <p class="description">You are about to begin an experiment about the stream of migrants since 1960.</p>
     <a class="button" v-link="'map'">BEGIN EXPERIMENT</a>
   </div>
