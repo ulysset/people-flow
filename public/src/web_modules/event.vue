@@ -75,7 +75,7 @@
     text-align: center;
     h1{
       font-size:38px;
-      font-family: 'Brandon_thin';
+      font-weight: 200;
       padding-top:25px;
     }
   }
