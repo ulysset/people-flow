@@ -1,6 +1,6 @@
 <template>
   <header class="container">
-    <a class="logo" v-link="'/'"><img src="../assets/img/logo.svg" alt="Future Grant"></a>
+    <a class="logo" v-link="'/map'"><img src="../assets/img/logo.svg" alt="Future Grant"></a>
     <nav class="nav">
       <ul class="nav-list">
         <li class="nav-item"><a v-link="'/sources'" class="nav-link">Sources</a></li>
