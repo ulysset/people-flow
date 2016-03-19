@@ -1,3 +1,94 @@
+<template>
+<div class="yearStats yearStatsActive">
+    <div class="statsContinents">
+      <h3 >{{years[0]}}</h3>
+      <div v-for="continent in continents">
+        <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
+          <h2>{{ continent.name.toUpperCase() }}</h2>
+          <p>{{ continent.migrants}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="spliter"></div>
+  <div class="barGroup">
+    <div v-for="continent in continents" v-on:mouseOver="onHover(this, continent.name)">
+        <div v-for="continentItem in continent.count" class="item" v-bind:class="continent.name"></div>
+    </div>
+  </div>
+  <div class="topCountries" >
+    <div class="country" v-for="topCountry in topCountries">
+      <p>{{topCountry.name}}</p>
+    </div>
+  </div>
+</div>
+
+</template>
+
+<script>
+
+export default {
+    data() {
+            return {
+
+                activeContinent: '',
+                years : [1960, 1970, 1980, 1990, 2000],
+                topCountries : [
+                  {
+                    name : 'Congo',
+                  },
+                  {
+                    name : 'Venezuela',
+                  },
+                  {
+                    name : 'Birmania',
+                  }
+
+                ],
+                continents: [{
+                    name: 'africa',
+                    migrants: 2345,
+                    count: []
+                }, {
+                    name: 'america',
+                    migrants: 3566,
+                    count: []
+                }, {
+                    name: 'oceania',
+                    migrants: 2359,
+                    count: []
+                }, {
+                    name: 'europe',
+                    migrants: 3869,
+                    count: []
+                }, {
+                    name: 'asia',
+                    migrants: 4899,
+                    count: []
+                }]
+            };
+         },
+        ready() {
+            const total = this.continents
+                .map(item => item.migrants)
+                .reduce((a, b) => a + b)
+
+            this.continents = this.continents.map(item => {
+                const proportion = Math.ceil((item.migrants / total) * 10);
+                return {
+                    ...item,
+                    count: new Array(proportion)
+                };
+            });
+        },
+
+        methods: {
+            onHover: (ctx, name) => {
+                ctx.activeContinent = name.toLowerCase();
+            }
+        }
+}
+
+</script>
 <style scoped>
 .yearStats{
   width: 490px;
@@ -110,97 +201,4 @@
   color: white;
 }
 
-
 </style>
-
-<template>
-<div class="yearStats yearStatsActive">
-    <div class="statsContinents">
-      <h3 >{{years[0]}}</h3>
-      <div v-for="continent in continents">
-        <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
-          <h2>{{ continent.name.toUpperCase() }}</h2>
-          <p>{{ continent.migrants}}</p>
-        </div>
-      </div>
-    </div>
-    <div class="spliter"></div>
-  <div class="barGroup">
-    <div v-for="continent in continents" v-on:mouseOver="onHover(this, continent.name)">
-        <div v-for="continentItem in continent.count" class="item" v-bind:class="continent.name"></div>
-    </div>
-  </div>
-  <div class="topCountries" >
-    <div class="country" v-for="topCountry in topCountries">
-      <p>{{topCountry.name}}</p>
-    </div>
-  </div>
-</div>
-
-</template>
-
-<script>
-
-export default {
-    data() {
-            return {
-
-                activeContinent: '',
-                years : [1960, 1970, 1980, 1990, 2000],
-                topCountries : [
-                  {
-                    name : 'Congo',
-                  },
-                  {
-                    name : 'Venezuela',
-                  },
-                  {
-                    name : 'Birmania',
-                  }
-
-                ],
-                continents: [{
-                    name: 'africa',
-                    migrants: 2345,
-                    count: []
-                }, {
-                    name: 'america',
-                    migrants: 3566,
-                    count: []
-                }, {
-                    name: 'oceania',
-                    migrants: 2359,
-                    count: []
-                }, {
-                    name: 'europe',
-                    migrants: 3869,
-                    count: []
-                }, {
-                    name: 'asia',
-                    migrants: 4899,
-                    count: []
-                }]
-            };
-         },
-        ready() {
-            const total = this.continents
-                .map(item => item.migrants)
-                .reduce((a, b) => a + b)
-
-            this.continents = this.continents.map(item => {
-                const proportion = Math.ceil((item.migrants / total) * 10);
-                return {
-                    ...item,
-                    count: new Array(proportion)
-                };
-            });
-        },
-
-        methods: {
-            onHover: (ctx, name) => {
-                ctx.activeContinent = name.toLowerCase();
-            }
-        }
-}
-
-</script>

@@ -2,11 +2,11 @@
 
     <div class="parent-ratio">
     <ul class="years" >
-      <li  v-for="year in years" v-on:click="selectYear(year)">{{year}}</li>
+      <li  v-for="year in years" v-on:click="selectIndex($index)">{{year}}</li>
     </ul>
       <div class="ratio">
         <canvas id="chart" class="chart"></canvas>
-        <div v-for="item in pointX" class="circle" v-bind:style="{ top: pointY[$index]/2 + 'px', left: pointX[$index]/2 + 'px' }"></div>
+        <div v-for="item in pointX" class="circle" v-bind:style="{ top: pointY[$index]/2 + 'px', left: pointX[$index]/2 + 'px' }" v-show="activeIndex == $index"></div>
       </div>
     </div>
 
@@ -42,7 +42,7 @@ export default {
     data['ITA:FRA'].migrants['2000'] = 2266
 
     return {
-      activeYear : '1970',
+      activeIndex : 0,
       arrival : [],
       departure : [],
       pointX : [],
@@ -107,13 +107,17 @@ export default {
   },
 
   methods: {
-    selectYear: year => {
-      console.log(this);
+    selectIndex(index) {
+      this.activeIndex = index
     }
   }
 }
 
 </script>
+
+
+
+
 
 <style scoped>
   .parent-ratio{
