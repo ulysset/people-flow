@@ -2,11 +2,14 @@
 
     <div class="parent-ratio">
     <ul class="years" >
-      <li  v-for="year in years" v-on:click="selectIndex($index)" >{{year}}</li>
+      <li  v-for="(indexYear, year) in years" v-on:click="selectIndex($index)" v-bind:class="{'selected': indexYear == activeIndex}">
+        {{year}}...{{indexYear}}...{{activeIndex}}
+
+      </li>
     </ul>
       <div class="ratio">
         <canvas id="chart" class="chart"></canvas>
-        <div v-for="item in pointX" class="circle" v-bind:style="{ top: pointY[$index]/2 + 'px', left: pointX[$index]/2 + 'px' }" v-show="activeIndex == $index"></div>
+        <div v-for="item in pointX" class="circle" v-bind:style="{ top: pointY[$index]/2 + 'px', left: pointX[$index]/2 + 'px' }" v-show="activeIndex == $index" ></div>
       </div>
     </div>
 
@@ -147,7 +150,7 @@ export default {
   .years li:hover {
     border: 3px solid #2F6B97;
   }
-  .years .selected{
+  .selected{
     border: 3px solid #2F6B97;
   }
 

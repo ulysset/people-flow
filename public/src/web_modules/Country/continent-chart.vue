@@ -8,7 +8,6 @@
           <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
             <h2>{{ continent.name.toUpperCase() }}</h2>
             <p>{{ continent.migrants[years[indexYear]]}}</p>
-            <!-- <p>{{ years[indexYear]}}</p> -->
           </div>
         </div>
       </div>

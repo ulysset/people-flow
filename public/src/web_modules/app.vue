@@ -17,7 +17,8 @@
   }
 
   @font-face {
-    font-family: 'Brandon_black';
+    font-family: 'Brandon';
+    font-weight: 700;
     src: url('../assets/fonts/Brandon_blk.otf');
   }
 

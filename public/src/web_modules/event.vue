@@ -58,6 +58,7 @@
     background-position:center center;
     &:hover{
       opacity:.7;
+    }
     h1{
       font-size:38px;
       font-weight: 200;
@@ -82,10 +83,10 @@
     background-size:12px 12px;
   }
 
-  h1{
-    font-size:38px;
-    font-family: 'Brandon_thin';
-    padding-top:25px;
+  h1 {
+    font-size: 38px;
+    font-family: 'Brandon';
+    font-weight: 200;
   }
 
   .timeline {
@@ -115,7 +116,7 @@
     margin:auto;
     width:590px;
     height:60px;
-    padding-top:0px;
+    padding-top:0;
     font-size:45px;
     background:#f0f2e3;
     color:white;
