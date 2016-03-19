@@ -96,7 +96,7 @@
       display: block;
       position: absolute;
       top: -2px;
-      right: -2px;
+      right: -3px;
       width: 7px;
       height: 7px;
       background-color: $primaryColor;
@@ -146,10 +146,14 @@
     text-align: center;
     transition: color ease .15s;
 
-    &.is-active {
+    &.is-active,
+    &:hover {
       font-weight: bold;
-      cursor: default;
       color: rgba($primaryColor, 1);
+    }
+
+    &.is-active {
+      cursor: default;
     }
   }
 

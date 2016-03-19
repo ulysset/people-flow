@@ -5,7 +5,7 @@
       <ul class="nav-list">
         <li class="nav-item"><a v-link="'/sources'" class="nav-link">Sources</a></li>
         <li class="nav-item"><a v-link="'/'" class="nav-link">Copyright</a></li>
-        <li class="nav-item"><a href="'https://github.com/ulysset/people-flow'" class="nav-link">Github</a></li>
+        <li class="nav-item"><a href="https://github.com/ulysset/people-flow" class="nav-link">Github</a></li>
         <li class="nav-item"><a href="https://twitter.com/intent/tweet?text=Futuregrant&url=http://localhost:8080/#!/event" target="_blank" class="nav-link">Partager</a></li>
         <li class="nav-item --help"><a v-link="'/'" class="nav-link">Besoins d'aide ?</a></li>
       </ul>
@@ -65,6 +65,7 @@
       text-decoration: none;
       font-size: 12px;
       color: #ccc;
+      transition: color ease .15s;
 
       &:hover {
         color: $primaryColor;

@@ -39,7 +39,7 @@ export const createParticuleTexture = (size: number, color: string): any => {
  */
 
 export const PARTICULE_SIZE = 4;
-export const PARTICULE_COLOR = 'rgb(92, 92, 92)';
+export const PARTICULE_COLOR = '#15395E';
 export const PARTICULE_TEXTURE = createParticuleTexture(PARTICULE_SIZE, PARTICULE_COLOR);
 
 export const createParticule = (options: {
