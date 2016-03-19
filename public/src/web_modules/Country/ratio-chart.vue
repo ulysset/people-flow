@@ -1,45 +1,13 @@
-<style scoped>
-  .years{
-      width: 470px;
-      display: flex;
-      justify-content: space-between;
-      list-style-type: none;
-  }
-
-  .ratio{
-    width : 470px;
-    height: 110px;
-    position: relative;
-    margin: 10px;
-  }
-  .chart{
-    border-radius: 14px;
-    transform-origin: left top;
-    transform: scale(.5);
-  }
-  .circle{
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #F3F0E4;
-    transform: translate(-50%, -50%);
-    border: 2px solid #2F6B97;
-  }
-
-</style>
-
 <template>
-    <ul class="years">
-      <li>1960</li>
-      <li>1970</li>
-      <li>1980</li>
-      <li>1990</li>
-      <li>2000</li>
+
+    <div class="parent-ratio">
+    <ul class="years" >
+      <li  v-for="year in years" v-on:click="selectYear(year)">{{year}}</li>
     </ul>
-    <div class="ratio">
-      <canvas id="chart" class="chart"></canvas>
-      <div v-for="item in pointX" class="circle" v-bind:style="{ top: pointY[$index]/2 + 'px', left: pointX[$index]/2 + 'px' }"></div>
+      <div class="ratio">
+        <canvas id="chart" class="chart"></canvas>
+        <div v-for="item in pointX" class="circle" v-bind:style="{ top: pointY[$index]/2 + 'px', left: pointX[$index]/2 + 'px' }"></div>
+      </div>
     </div>
 
 </template>
@@ -74,10 +42,12 @@ export default {
     data['ITA:FRA'].migrants['2000'] = 2266
 
     return {
+      activeYear : '1970',
       arrival : [],
       departure : [],
       pointX : [],
       pointY : [],
+      years : [1960, 1970, 1980, 1990, 2000],
       data,
       selectedCountries: {
         one: 'FRA:ITA',
@@ -135,9 +105,64 @@ export default {
     context.lineTo(0, HEIGHT)
     context.fill()
   },
-  method: {
 
+  methods: {
+    selectYear: year => {
+      console.log(this);
+    }
   }
 }
 
 </script>
+
+<style scoped>
+  .parent-ratio{
+    width: 470px;
+    height: 600px;
+    margin: 40px;
+  }
+  .years{
+    position: relative;
+    width: 520px;
+    transform: translateX(-20px);
+    display: flex;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 20px;
+    justify-content: space-between;
+    list-style-type: none;
+  }
+  .years li {
+    padding: 5px;
+    border-radius: 10px;
+    border: 3px solid transparent;
+    transition: border .1s;
+    cursor: pointer;
+
+  }
+  .years li:hover {
+    border: 3px solid #2F6B97;
+  }
+
+
+  .ratio{
+    width : 470px;
+    height: 110px;
+    position: relative;
+  }
+  .chart{
+    border-radius: 14px;
+    transform-origin: left top;
+    transform: scale(.5);
+  }
+  .circle{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #F3F0E4;
+    transform: translate(-50%, -50%);
+    border: 2px solid #2F6B97;
+  }
+
+</style>
