@@ -16,6 +16,11 @@
     src: url('../assets/fonts/Brandon_thin.otf');
   }
 
+  @font-face {
+    font-family: 'Brandon_black';
+    src: url('../assets/fonts/Brandon_blk.otf');
+  }
+
   body {
     margin: auto;
     font-family: "Brandon";
