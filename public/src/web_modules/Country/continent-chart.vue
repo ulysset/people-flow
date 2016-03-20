@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="navStats">
     <h2>CLASSEMENTS / STATISTIQUES</h2>
     <h3>CONTINENTS D’ORIGINE</h3>
@@ -16,23 +15,6 @@
                 <h2>{{ continent.name.toUpperCase() }}</h2>
                 <p>{{ continent.migrants[years[indexYear]]}}</p>
               </div>
-=======
-<div class="navStats">
-  <h2>CLASSEMENTS / STATISTIQUES</h2>
-  <h3>CONTINENTS D’ORIGINE</h3>
-  <div class="splitter"></div>
-  <h3>PAYS D’ORIGINE</h3>
-</div>
-<div class="statScroll">
-  <div v-for="(indexYear, year) in years">
-    <div class="yearStats" v-bind:class="{'yearStatsActive': activeIndex == indexYear}" v-on:click="selectIndex($index)">
-        <div class="statsContinents">
-          <h3>{{years[indexYear]}}</h3>
-          <div v-for="(indexContinent, continent) in continents">
-            <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
-              <h2>{{ continent.name.toUpperCase() }}</h2>
-              <p>{{ continent.migrants[years[indexYear]]}}</p>
->>>>>>> origin/master
             </div>
           </div>
           <div class="spliter"></div>
