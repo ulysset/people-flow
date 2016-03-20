@@ -160,17 +160,17 @@ export default {
   .years li {
     padding: 5px;
     border-radius: 10px;
-    border: 3px solid transparent;
+    border: 2px solid transparent;
     transition: all ease-in .2s;
     cursor: pointer;
     font-size: 15px;
 
   }
   .years li:hover {
-    border: 3px solid #2F6B97;
+    border: 2px solid #2F6B97;
   }
   .years li.selected{
-    border: 3px solid #2F6B97;
+    border: 2px solid #2F6B97;
     transform: scale(1.3);
   }
 

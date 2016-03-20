@@ -7,7 +7,7 @@
   </div>
   <div class="statScroll">
     <div v-for="(indexYear, year) in years">
-      <div class="yearStats" v-bind:class="{'yearStatsActive': activeIndex == indexYear}">
+      <div class="yearStats" v-bind:class="{'yearStatsActive': activeIndex == indexYear}" v-on:click="selectIndex(indexYear)">
           <div class="statsContinents">
             <h3>{{years[indexYear]}}</h3>
             <div v-for="(indexContinent, continent) in continents">
@@ -21,11 +21,6 @@
         <div class="barGroup">
           <div v-for="continent in continents" v-on:mouseOver="onHover(this, continent.name)">
               <div v-for="continentItem in continent.count[indexYear]" class="item" v-bind:class="continent.name"></div>
-          </div>
-        </div>
-        <div class="topCountries" >
-          <div class="country" v-for="topCountry in topCountries">
-            <p>{{topCountry.name}}</p>
           </div>
         </div>
       </div>
@@ -43,7 +38,6 @@
         activeIndex: 0, // year
         activeContinent: '',
         years: [1960, 1970, 1980, 1990, 2000],
-        topCountries: [{ name: 'Congo' }, { name: 'Venezuela' }, { name: 'Birmania' }],
         continents: [{
           name: 'africa',
           migrants: {
@@ -191,28 +185,32 @@
   .yearStats{
     position: relative;
     width: 450px;
-    height: 200px;
+    height: 120px;
     margin: 20px auto;
     border-radius: 5px;
-    border: 4px solid transparent;
+    border: 2px solid transparent;
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.15);
     background-color: #FEFEFE;
   }
   .yearStatsActive{
-    border: 4px solid #2F6B97;
+    border: 2px solid #2F6B97;
   }
   .item {
-      display: block;
-      width: 60px;
-      height: 10px;
+      display: inline-block;
+      width: 10px;
+      height: 60px;
       border-radius: 10px;
-      margin: 3px 0;
+      margin: 0 3px;
   }
 
   .barGroup {
     position: absolute;
-    left: 150px;
-    top: 10px;
+    left: 200px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .barGroup div {
+      display: inline-block;
   }
 
   .africa {
@@ -234,15 +232,6 @@
   .europa {
       background-color: #2E9598;
   }
-  .spliter{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 70%;
-    background-color: #B3B3B3;
-  }
 
   .statsContinents{
     position: absolute;
@@ -252,51 +241,25 @@
     height: 100px;
 
   }
+  .statsContinents h3 {
+    color: #2F6B97;
+    font-weight: 700;
+  }
   .statsContinents .continent h2, .statsContinents .continent p{
     color: #BCBCBC;
     font-size: 18px;
+    margin: 0;
   }
 
 
   .statsContinents .continent{
     position: absolute;
     opacity: 0;
+    top: 40px;
+    left: 50px;
   }
 
   .statsContinents .enabled {
     opacity: 1;
   }
-  .topCountries{
-    position: absolute;
-    right: 0;
-    width: 50%;
-    height: 80%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .topCountries .country{
-    position: relative;
-    margin: 10px;
-    width: 140px;
-    height: 30px;
-    border-radius: 30px;
-  }
-  .topCountries .country:nth-child(1){
-    background-color: #EC1B4B;
-  }
-  .topCountries .country:nth-child(2){
-    background-color: #F7DB69;
-  }
-  .topCountries .country:nth-child(3){
-    background-color: #2E9598;
-  }
-  .topCountries .country p{
-    margin: 0;
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-  }
-
 </style>
