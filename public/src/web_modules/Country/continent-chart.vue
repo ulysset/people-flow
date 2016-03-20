@@ -2,8 +2,6 @@
   <div class="navStats">
     <h2>CLASSEMENTS / STATISTIQUES</h2>
     <h3>CONTINENTS D’ORIGINE</h3>
-    <div class="splitter"></div>
-    <h3>PAYS D’ORIGINE</h3>
   </div>
   <div class="statScroll">
     <div v-for="(indexYear, year) in years">
@@ -12,8 +10,7 @@
             <h3>{{years[indexYear]}}</h3>
             <div v-for="(indexContinent, continent) in continents">
               <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
-                <h2>{{ continent.name.toUpperCase() }}</h2>
-                <p>{{ continent.migrants[years[indexYear]]}}</p>
+                <p>{{ continent.name.toUpperCase() }} : {{ continent.migrants[years[indexYear]]}}</p>
               </div>
             </div>
           </div>
@@ -95,7 +92,7 @@
    ready() {
       setTimeout(() => {
         this.$dispatch('selectIndex', this.activeIndex + 1);
-      }, 2000);
+      }, 4000);
     },
 
     methods: {
@@ -155,7 +152,6 @@
     height: 100px;
     position: relative;
     background: #FEFEFE;
-    box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.24);
   }
   .navStats h2{
     color: #215078;
@@ -200,12 +196,12 @@
       width: 10px;
       height: 60px;
       border-radius: 10px;
-      margin: 0 3px;
+      margin: 0 5px;
   }
 
   .barGroup {
     position: absolute;
-    left: 200px;
+    left: 150px;
     top: 50%;
     transform: translateY(-50%);
   }
@@ -214,24 +210,23 @@
   }
 
   .africa {
-      background-color: #A8216B;
+    background-color: #457B9D;
   }
-
-  .asia {
-      background-color: #EC1B4B;
-  }
-
   .america {
-      background-color: #F26A44;
+    background-color: #00A896;
   }
-
   .oceania {
-      background-color: #F7DB69;
+    background-color: #A8DADC;
+  }
+  .europa {
+    background-color: #EC4168;
+  }
+  .asia {
+    background-color: #1D3557;
   }
 
-  .europa {
-      background-color: #2E9598;
-  }
+
+
 
   .statsContinents{
     position: absolute;
@@ -245,7 +240,7 @@
     color: #2F6B97;
     font-weight: 700;
   }
-  .statsContinents .continent h2, .statsContinents .continent p{
+  .statsContinents .continent p{
     color: #BCBCBC;
     font-size: 18px;
     margin: 0;
@@ -255,8 +250,9 @@
   .statsContinents .continent{
     position: absolute;
     opacity: 0;
-    top: 40px;
-    left: 50px;
+    top: 50%;
+    transform: translateY(-10%);
+    left: 0px;
   }
 
   .statsContinents .enabled {
