@@ -30,7 +30,8 @@
 
   @font-face {
     font-family: 'Minion';
-    src: url('../assets/fonts/MinioReg');
+    font-weight: 400;
+    src: url('../assets/fonts/MinionPro-Regular.ttf');
   }
 
   body {

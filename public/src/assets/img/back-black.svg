@@ -7,11 +7,11 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="EVENT" transform="translate(-480.000000, -116.000000)">
             <g id="Group" transform="translate(480.000000, 116.000000)">
-                <rect id="Rectangle-137" stroke="#FFFFFF" stroke-width="2" x="0" y="0" width="140.793454" height="36" rx="85"></rect>
-                <text id="RETOUR-CARTE" font-family="BrandonGrotesque-Bold, Brandon Grotesque" font-size="13" font-weight="bold" line-spacing="13" fill="#FFFFFF">
+                <rect id="Rectangle-137" stroke="#484848" stroke-width="2" x="0" y="0" width="140.793454" height="36" rx="85"></rect>
+                <text id="RETOUR-CARTE" font-family="BrandonGrotesque-Bold, Brandon Grotesque" font-size="13" font-weight="bold" line-spacing="13" fill="#484848">
                     <tspan x="27.8251739" y="22.441">RETOUR CARTE</tspan>
                 </text>
-                <path d="M1.09302326,16.0788085 L13.1186067,16.0788085 L13.1186067,11 L19.6744186,18.045547 L13.1186067,25.0610549 L13.1186067,20.0685661 L1.09302326,20.0685661 L1.09302326,16.0788085 Z" id="Rectangle-138" fill="#FFFFFF"></path>
+                <path d="M1.09302326,16.0788085 L13.1186067,16.0788085 L13.1186067,11 L19.6744186,18.045547 L13.1186067,25.0610549 L13.1186067,20.0685661 L1.09302326,20.0685661 L1.09302326,16.0788085 Z" id="Rectangle-138" fill="#484848"></path>
             </g>
         </g>
     </g>
