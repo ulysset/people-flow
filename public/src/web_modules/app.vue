@@ -5,7 +5,7 @@
 <style>
 
   @font-face {
-    font-family: 'Brandon';
+    font-family: 'Brandon_thin';
     font-weight: 200;
     src: url('../assets/fonts/Brandon_thin.otf');
   }
@@ -17,7 +17,7 @@
   }
 
   @font-face {
-    font-family: 'Brandon';
+    font-family: 'Brandon_medium';
     font-weight: 500;
     src: url('../assets/fonts/Brandon-Medium.otf');
   }
@@ -26,6 +26,11 @@
     font-family: 'Brandon_black';
     font-weight: 700;
     src: url('../assets/fonts/Brandon_blk.otf');
+  }
+
+  @font-face {
+    font-family: 'Minion';
+    src: url('../assets/fonts/MinioReg');
   }
 
   body {
