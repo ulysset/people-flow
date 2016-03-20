@@ -1,37 +1,36 @@
 <template>
-<div class="navStats">
-  <h2>CLASSEMENTS / STATISTIQUES</h2>
-  <h3>CONTINENTS D’ORIGINE</h3>
-  <div class="splitter"></div>
-  <h3>PAYS D’ORIGINE</h3>
-</div>
-<div class="statScroll">
-  <div v-for="(indexYear, year) in years">
-    <div class="yearStats" v-bind:class="{'yearStatsActive': activeIndex == indexYear}" v-on:click="selectIndex($index)">
-        <div class="statsContinents">
-          <h3>{{years[indexYear]}}</h3>
-          <div v-for="(indexContinent, continent) in continents">
-            <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
-              <h2>{{ continent.name.toUpperCase() }}</h2>
-              <p>{{ continent.migrants[years[indexYear]]}}</p>
+  <div class="navStats">
+    <h2>CLASSEMENTS / STATISTIQUES</h2>
+    <h3>CONTINENTS D’ORIGINE</h3>
+    <div class="splitter"></div>
+    <h3>PAYS D’ORIGINE</h3>
+  </div>
+  <div class="statScroll">
+    <div v-for="(indexYear, year) in years">
+      <div class="yearStats" v-bind:class="{'yearStatsActive': activeIndex == indexYear}">
+          <div class="statsContinents">
+            <h3>{{years[indexYear]}}</h3>
+            <div v-for="(indexContinent, continent) in continents">
+              <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
+                <h2>{{ continent.name.toUpperCase() }}</h2>
+                <p>{{ continent.migrants[years[indexYear]]}}</p>
+              </div>
             </div>
           </div>
+          <div class="spliter"></div>
+        <div class="barGroup">
+          <div v-for="continent in continents" v-on:mouseOver="onHover(this, continent.name)">
+              <div v-for="continentItem in continent.count[indexYear]" class="item" v-bind:class="continent.name"></div>
+          </div>
         </div>
-        <div class="spliter"></div>
-      <div class="barGroup">
-        <div v-for="continent in continents" v-on:mouseOver="onHover(this, continent.name)">
-            <div v-for="continentItem in continent.count[indexYear]" class="item" v-bind:class="continent.name"></div>
-        </div>
-      </div>
-      <div class="topCountries" >
-        <div class="country" v-for="topCountry in topCountries">
-          <p>{{topCountry.name}}</p>
+        <div class="topCountries" >
+          <div class="country" v-for="topCountry in topCountries">
+            <p>{{topCountry.name}}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
 </template>
 
 <script>
@@ -41,64 +40,58 @@
       return {
         data: null,
         selectedCountry: 'FRA',
-        activeIndex: 0,
-        activeContinent : '',
-        years : [1960, 1970, 1980, 1990, 2000],
-        topCountries : [{
-          name : 'Congo',
-        }, {
-          name : 'Venezuela',
-        }, {
-          name : 'Birmania',
-        }],
+        activeIndex: 0, // year
+        activeContinent: '',
+        years: [1960, 1970, 1980, 1990, 2000],
+        topCountries: [{ name: 'Congo' }, { name: 'Venezuela' }, { name: 'Birmania' }],
         continents: [{
           name: 'africa',
           migrants: {
-            1960 : 2596,
-            1970 : 2506,
-            1980 : 32637,
-            1990 : 20963,
-            2000 : 2666
+            1960: 0,
+            1970: 0,
+            1980: 0,
+            1990: 0,
+            2000: 0
           },
           count: []
         }, {
           name: 'america',
           migrants: {
-            1960 : 37073,
-            1970 : 8990,
-            1980 : 26066,
-            1990 : 366,
-            2000 : 2686
+            1960: 0,
+            1970: 0,
+            1980: 0,
+            1990: 0,
+            2000: 0
           },
           count: []
         }, {
           name: 'oceania',
           migrants: {
-            1960 : 20887,
-            1970 : 38990,
-            1980 : 2666,
-            1990 : 2676,
-            2000 : 333
+            1960: 0,
+            1970: 0,
+            1980: 0,
+            1990: 0,
+            2000: 0
           },
           count: []
         }, {
-          name: 'europe',
+          name: 'europa',
           migrants: {
-            1960 : 3638,
-            1970 : 36663,
-            1980 : 35666,
-            1990 : 3553,
-            2000 : 3636
+            1960: 0,
+            1970: 0,
+            1980: 0,
+            1990: 0,
+            2000: 0
           },
           count: []
         }, {
           name: 'asia',
           migrants: {
-            1960 : 2340,
-            1970 : 8990,
-            1980 : 498,
-            1990 : 4899,
-            2000 : 890
+            1960: 0,
+            1970: 0,
+            1980: 0,
+            1990: 0,
+            2000: 0
           },
           count: []
         }]
@@ -106,21 +99,6 @@
    },
 
    ready() {
-     const total = this.years
-      .map(year => (
-        this.continents
-          .map(continent => continent.migrants[year])
-          .reduce((a, b) => a + b)
-      ));
-      this.continents = this.continents.map(continent => {
-        const count = this.years.map((year, index) => (
-          Math.ceil((continent.migrants[year] / total[index]) * 10)
-        ));
-        return {
-          ...continent,
-          count
-        }
-      });
       setTimeout(() => {
         this.$dispatch('selectIndex', this.activeIndex + 1);
       }, 2000);
@@ -140,7 +118,37 @@
         this.activeIndex = index
       },
       getData(value) {
-        console.log(value);
+
+        // Get data
+        this.data = value;
+        const data = this.data['reduceDataMigration'][this.selectedCountry].data;
+        const response = this.continents.map(continent => {
+          const continentKey = continent.name;
+          const migrants = {};
+          Object.keys(data[continentKey]).forEach(year => {
+            migrants[year] = data[continentKey][year].departures
+          })
+          return {
+            ...continent,
+            migrants
+          };
+        });
+
+        // Get total
+        const total = this.years.map(year => (
+          response
+            .map(continent => continent.migrants[year])
+            .reduce((a, b) => a + b)
+          ));
+
+        // Return this.continents
+        this.continents = response.map(continent => ({
+          ...continent,
+          count: this.years.map((year, index) => (
+            Math.ceil((continent.migrants[year] / total[index]) * 10)
+          ))
+        }));
+
       }
     }
   }
@@ -223,7 +231,7 @@
       background-color: #F7DB69;
   }
 
-  .europe {
+  .europa {
       background-color: #2E9598;
   }
   .spliter{

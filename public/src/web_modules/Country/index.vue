@@ -1,24 +1,19 @@
 <template>
 	<app-header></app-header>
 	<div class="country-container">
-		<!-- <countries></countries> -->
-
 		<div class="continent-chart">
-
 			<continent-chart></continent-chart>
 		</div>
-		<div class="ratio-chart">
+		<div class="ratio-chart-container">
 			<div class="selectors"></div>
 			<ratio-chart></ratio-chart>
 		</div>
 	</div>
 </template>
 
-
 <script>
 
 	import Vue from 'vue';
-	Vue.component('countries', require('./countries'));
 	Vue.component('continent-chart', require('./continent-chart'));
 	Vue.component('ratio-chart', require('./ratio-chart.vue'));
   Vue.component('app-header', require('./../header'));
@@ -32,7 +27,8 @@
 	}
 
 </script>
-<style>
+
+<style lang="sass" scoped>
 
 	.country-container {
 		position: absolute;
@@ -53,16 +49,18 @@
 		height: calc(100vh - 54px);
 	}
 
-	.ratio-chart {
-		width: 498px;
-		margin: 0;
-		padding: 0;
+	.ratio-chart-container {
 		display: inline-block;
 		position: relative;
 		transform: scale(.95);
+		margin: 0;
+		width: 498px;
+		padding: 0;
+
+		.ratio-chart .selectors {
+			width : 100%;
+			height : 200px;
+		}
 	}
-	.ratio-chart .selectors{
-		width : 100%;
-		height : 200px;
-	}
+
 </style>

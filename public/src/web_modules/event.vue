@@ -1,54 +1,71 @@
 <template>
   <app-header></app-header>
+
   <div class="wrapper">
+<div class="head">
+<img src="../assets/img/back-to-map.svg" alt="back-to-map" />
+<p>Évènements 1980</p>
+<h1>La chute du mur de Berlin</h1>
+</div>
 
-      <a v-link="'/map'" class="back"></a>
-      <a href="#" class="left_arrow"></a>
-      <span>ÉVÈNEMENTS 2014</span>
-      <a href="#" class="right_arrow"></a>
-      <h1>Chute du mur de Berlin</h1>
+<h2>Le soir du 9 novembre 1989, l'Europe connaît l'un de ses plus gros changements.</h2>
 
-    <div class="timeline" v-el:timeline></div>
-    <div class="content">
-      <article>
-        <img src="../assets/img/berlin2.jpg"/>
-        <p>« Le Mur de la honte s'écroule »</p>
-      </article>
-      <article>
-        <img src="../assets/img/berlin1.jpg"/>
-        <p>« La libération, enfin. »</p>
-      </article>
 
-      <h2>“ Le mur de la honte s'écroule ”</h2>
+  <!-- <a v-link="'/map'" class="back"></a>
+  <a href="#" class="left_arrow"></a>
+  <span>ÉVÈNEMENTS 2014</span>
+  <a href="#" class="right_arrow"></a>
+  <h1>Chute du mur de Berlin</h1> -->
 
-      <article>
-        <img src="../assets/img/berlin1.jpg"/>
-        <p>« Le Mur de la honte s'écroule »</p>
-      </article>
-      <article>
-        <img src="../assets/img/berlin2.jpg"/>
-        <p>« La libération, enfin. »</p>
-      </article>
-    </div>
   </div>
 
 
 </template>
 
 <style lang="sass" scoped>
+
   .wrapper {
-    padding-top:100px;
     margin: auto;
     text-align: center;
   }
-  span {
-    margin:0;
-    display:inline-block;
-    font-size:20px;
-    padding:0 30px;
-    position:relative;
-    top: -10px;
-  }
+
+.head{
+    width:100%;
+    height:539px;
+    display:block;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-image:url(../assets/img/event1.jpg);
+    margin:auto;
+    text-transform:uppercase;
+    color:white;
+    img{
+      padding-top:150px;
+    }
+
+    p{
+      padding-top:70px;
+      font-size:25px;
+      font-family:'Minion';
+      margin:auto;
+    }
+    h1{
+      margin:auto;
+      padding-top:5px;
+      font-size: 38px;
+      font-family:'Brandon_thin';
+    }
+}
+
+h2{
+  width:700px;
+  margin:auto;
+  padding-top:30px;
+  color:#5D5D5D;
+  font-size:26px;
+}
+
   a {
     width:15px;
     height:15px;
@@ -71,54 +88,6 @@
     background-image:url(../assets/img/right_arrow.svg);
     background-color:#ebebeb;
   }
-  .back{
-    background-image:url(../assets/img/cross.svg);
-    background-color:#ebebeb;
-    display:block;
-    margin:auto;
-    margin-bottom:20px;
-    background-size:12px 12px;
-  }
-
-  h1 {
-    font-size: 38px;
-    font-family: 'Brandon_thin';
-    font-weight: 200;
-  }
-
-  .timeline {
-    width:1px;
-    height:400px;
-    background:#a8a8a8;
-    position:fixed;
-    margin:auto;
-    left:50%;
-    transform:translateX(-50%);
-    margin-top:20px;
-    transition: top ease .6s;
-  }
-
-  .content{
-    article{
-      width:500px;
-      display:inline-block;
-      margin:30px 10px;
-      img{
-        width:70%;
-      }
-    }
-  }
-
-  h2{
-    margin:auto;
-    width:590px;
-    height:60px;
-    padding-top:0;
-    font-size:45px;
-    background:#f0f2e3;
-    color:white;
-    font-family:'Brandon_black';
-  }
 
 </style>
 
@@ -127,12 +96,7 @@
   Vue.component('app-header', require('./header'));
   export default {
     ready() {
-      const $timeline = this.$els.timeline;
-      window.onscroll = function(e) {
-        const scrollY = window.scrollY;
-        if (scrollY > 250) $timeline.style.top = (window.innerHeight/2-220) + "px";
-        else $timeline.style.top = "360px";
-      };
+      // Here
     }
   }
 

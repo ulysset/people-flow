@@ -57,11 +57,11 @@
 
           if(response !== undefined) {
             const netMigration = response.data.arrivals[this.year] - response.data.departures[this.year];
-            let alpha = 0.225 + netMigration * .0000001;
-            if(alpha < .1 ) {
-              alpha = .1;
+            let alpha = 0.5 + netMigration * .0000001;
+            if(alpha < .15 ) {
+              alpha = .15;
             }
-            else if(alpha > .75) {
+            else if(alpha > .9) {
               alpha = .9;
             }
             const color = 'rgba(21, 57, 94,' + alpha + ')';
@@ -109,7 +109,7 @@
 
   .land {
     fill: rgba(21, 57, 94, 0.225);
-    stroke-width: .5;
+    stroke-width: .25;
     stroke: #eee;
     cursor: pointer;
   }
