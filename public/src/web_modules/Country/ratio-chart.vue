@@ -17,8 +17,13 @@
         <div class="arriving" v-bind:style="{ width : (instantRatioScale[activeIndex] * 100) + '%' }"></div>
         <div class="leaving"></div>
       </div>
+      <div class="flowNumber">
+        <div class="numberArriving">{{arrival[activeIndex]}}</div>
+        <div class="numberDeparture">{{departure[activeIndex]}}</div>
+        <div class="numberArriving">ARRIVES</div>
+        <div class="numberDeparture">DÉPARTS</div>
+      </div>
     </div>
-
 </template>
 <script>
 
@@ -130,10 +135,6 @@ export default {
 }
 </script>
 
-
-
-
-
 <style scoped>
   .parent-ratio{
     width: 470px;
@@ -162,6 +163,7 @@ export default {
     border: 3px solid transparent;
     transition: all ease-in .2s;
     cursor: pointer;
+    font-size: 15px;
 
   }
   .years li:hover {
@@ -198,6 +200,24 @@ export default {
   }
   .showDots{
     opacity: 1;
+  }
+  .flowNumber{
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+    color: #2F6B97;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .flowNumber .numberArriving{
+    text-align: left;
+    display: inline-block;
+    width: 49%;
+  }
+  .flowNumber .numberDeparture{
+    text-align: right;
+    display: inline-block;
+    width: 49%;
   }
   .directRatio{
     width: 470px;

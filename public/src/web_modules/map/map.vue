@@ -110,7 +110,7 @@
   .land {
     fill: rgba(21, 57, 94, 0.225);
     stroke-width: .25;
-    stroke: rgba(248, 250, 237, .5);
+    stroke: #eee;
     cursor: pointer;
   }
 

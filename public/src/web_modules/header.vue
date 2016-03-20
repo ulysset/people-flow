@@ -3,8 +3,6 @@
     <a class="logo" v-link="'/map'"><img src="../assets/img/logo.svg" alt="Future Grant"></a>
     <nav class="nav">
       <ul class="nav-list">
-        <li class="nav-item"><a v-link="'/sources'" class="nav-link">Données</a></li>
-        <li class="nav-item"><a v-link="'/'" class="nav-link">À propos</a></li>
         <li class="nav-item --help"><a href="https://github.com/ulysset/people-flow" class="nav-link --share --github"></a></li>
         <li class="nav-item --help"><a href="#" target="_blank" class="nav-link --share --facebook"></a></li>
         <li class="nav-item --help"><a href="https://twitter.com/intent/tweet?text=Futuregrant&url=https://still-fortress-88655.herokuapp.com" target="_blank" class="nav-link --share --twitter"></a></li>

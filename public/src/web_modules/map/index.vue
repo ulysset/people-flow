@@ -81,7 +81,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: rgba(248, 250, 237, .5);
+    background-color: #eee;
   }
 
   .informations {

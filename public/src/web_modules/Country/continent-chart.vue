@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="navStats">
     <h2>CLASSEMENTS / STATISTIQUES</h2>
     <h3>CONTINENTS D’ORIGINE</h3>
@@ -15,6 +16,23 @@
                 <h2>{{ continent.name.toUpperCase() }}</h2>
                 <p>{{ continent.migrants[years[indexYear]]}}</p>
               </div>
+=======
+<div class="navStats">
+  <h2>CLASSEMENTS / STATISTIQUES</h2>
+  <h3>CONTINENTS D’ORIGINE</h3>
+  <div class="splitter"></div>
+  <h3>PAYS D’ORIGINE</h3>
+</div>
+<div class="statScroll">
+  <div v-for="(indexYear, year) in years">
+    <div class="yearStats" v-bind:class="{'yearStatsActive': activeIndex == indexYear}" v-on:click="selectIndex($index)">
+        <div class="statsContinents">
+          <h3>{{years[indexYear]}}</h3>
+          <div v-for="(indexContinent, continent) in continents">
+            <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
+              <h2>{{ continent.name.toUpperCase() }}</h2>
+              <p>{{ continent.migrants[years[indexYear]]}}</p>
+>>>>>>> origin/master
             </div>
           </div>
           <div class="spliter"></div>
@@ -107,6 +125,9 @@
     methods: {
       onHover: (ctx, name) => {
         ctx.activeContinent = name.toLowerCase();
+      },
+      selectIndex(index) {
+        this.$dispatch('selectIndex', index);
       }
     },
 
@@ -178,6 +199,7 @@
     font-size: 13px;
     color: #898989;
     text-align: center;
+    font-size: 18px;
   }
   .statScroll{
     width: 100%;
@@ -251,6 +273,7 @@
   }
   .statsContinents .continent h2, .statsContinents .continent p{
     color: #BCBCBC;
+    font-size: 18px;
   }
 
 
