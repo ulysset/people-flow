@@ -41,6 +41,8 @@
 		width: 1000px;
     height: calc(100vh - 54px);
     transform: translateX(-50%);
+		overflow-y: hidden;
+		overflow-x: visible;
 	}
 
 	.continent-chart {
@@ -57,6 +59,7 @@
 		padding: 0;
 		display: inline-block;
 		position: relative;
+		transform: scale(.95);
 	}
 	.ratio-chart .selectors{
 		width : 100%;

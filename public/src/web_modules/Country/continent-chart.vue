@@ -173,7 +173,6 @@
     font-size: 13px;
     color: #898989;
     text-align: center;
-    font-size: 18px;
   }
   .statScroll{
     width: 100%;
