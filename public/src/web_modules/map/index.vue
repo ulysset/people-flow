@@ -1,7 +1,7 @@
 <template>
   <app-header></app-header>
   <div class="wrapper" transition="expand">
-    <country></country>
+    <country v-bind:year="selectedYear" v-bind:filters="filters"></country>
     <filters v-bind:filters="filters"></filters>
     <core
       v-bind:filters="filters"
