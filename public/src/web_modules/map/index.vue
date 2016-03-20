@@ -1,7 +1,9 @@
 <template>
   <app-header></app-header>
   <div class="wrapper" transition="expand">
+    <filters v-bind:filters="filters"></filters>
     <core
+      v-bind:filters="filters"
       v-bind:coordinates="coordinatesCountries"
       v-bind:year="selectedYear"></core>
     <map></map>
@@ -17,6 +19,7 @@
 
   Vue.component('timeline', require('./timeline'));
   Vue.component('core', require('./core'));
+  Vue.component('filters', require('./filters'));
   Vue.component('map', require('./map'));
   Vue.component('app-header', require('./../header'));
 
@@ -34,7 +37,14 @@
       return {
         selectedYear: DEFAULT_YEAR,
         data: null,
-        coordinatesCountries: null
+        coordinatesCountries: null,
+        filters: [{
+          isActive: true,
+          name: 'Intra-européen'
+        }, {
+          isActive: true,
+          name: 'Moyen-Orient / Maghreb'
+        }]
       };
     },
 
@@ -60,6 +70,11 @@
 
       getSelectedCountry(country) {
         this.$broadcast('getSelectedCountry', country);
+      },
+
+      changeFilters(filters) {
+        this.filters = filters;
+        this.$broadcast('changeFilters', this.filters);
       }
     }
   }
