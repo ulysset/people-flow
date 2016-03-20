@@ -1,21 +1,21 @@
 <template>
 
     <div class="parent-ratio">
+      <h2>RATIO IMMIGRANTS - IMMIGRÉS</h2>
+      <ul class="years" >
+        <li  class="selected" v-for="(indexYear, year) in years" v-on:click="selectIndex($index)" v-bind:class="{'selected': indexYear == activeIndex}">
+          {{year}}
+        </li>
+      </ul>
+      <div class="ratio">
+        <canvas id="chart" class="chart"></canvas>
+        <div v-for="(indexPoint, item) in pointX" class="circle" v-bind:style="{ top: pointY[$index]/2 + 'px', left: pointX[$index]/2 + 'px' }" v-bind:class="{'showDots' : activeIndex == indexPoint }"></div>
+      </div>
       <div class="directRatio">
         <div class="baseArriving"></div>
         <div class="baseLeaving"></div>
         <div class="arriving" v-bind:style="{ width : (instantRatioScale[activeIndex] * 100) + '%' }"></div>
         <div class="leaving"></div>
-      </div>
-    <ul class="years" >
-      <li  class="selected" v-for="(indexYear, year) in years" v-on:click="selectIndex($index)" v-bind:class="{'selected': indexYear == activeIndex}">
-        {{year}}
-      </li>
-    </ul>
-      <div class="ratio">
-        <canvas id="chart" class="chart"></canvas>
-        <div v-for="(indexPoint, item) in pointX" class="circle" v-bind:style="{ top: pointY[$index]/2 + 'px', left: pointX[$index]/2 + 'px' }" v-bind:class="{'showDots' : activeIndex == indexPoint }"></div>
-
       </div>
     </div>
 
@@ -140,11 +140,16 @@ export default {
   .parent-ratio{
     width: 470px;
     height: 600px;
-    margin: 40px;
+    margin: auto;
+  }
+  .parent-ratio h2{
+    color: #215078;
+    text-align: center;
+    font-size: 18px;
   }
   .years{
     position: relative;
-    width: 520px;
+    width: 500px;
     transform: translateX(-20px);
     display: flex;
     margin: 0;
@@ -174,6 +179,7 @@ export default {
     width : 470px;
     height: 110px;
     position: relative;
+    margin-bottom: 30px;
   }
   .chart{
     border-radius: 14px;
@@ -185,9 +191,10 @@ export default {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #F3F0E4;
     transform: translate(-50%, -50%);
-    border: 2px solid #2F6B97;
+    background-color: #2F6B97;
+    border: 2px solid #F3F0E4;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.33);
     opacity: 0;
     transition: all .3s;
   }
@@ -234,6 +241,7 @@ export default {
     background-color: #F3F0E4;
     width: 100%;
     height: 100%;
+    border-radius: 10px;
   }
 
 </style>
