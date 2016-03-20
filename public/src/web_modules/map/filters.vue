@@ -34,7 +34,7 @@
   .filter {
     position: absolute;
     left: 50px;
-    bottom: 108px;
+    bottom: 116px;
     z-index: 5;
     padding-top: 12px;
 
