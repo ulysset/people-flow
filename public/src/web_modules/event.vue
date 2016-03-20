@@ -75,14 +75,15 @@ Le mur fut détruit complètement en juin de l’année suivante. Armés de mart
     color:white;
     text-align: center;
     a{
-      width:150px;
-      height:15px;
+      width:160px;
+      height:50px;
       padding:10px;
       margin-top:150px;
       display:inline-block;
       cursor:pointer;
       background-repeat:no-repeat;
       background-position:center center;
+      background-size:250px 50px;
       background-image:url(../assets/img/back-white.svg);
       &:hover{
         opacity:.7;
@@ -92,8 +93,8 @@ Le mur fut détruit complètement en juin de l’année suivante. Armés de mart
     .event{
       padding-top:70px;
       font-size:25px;
-      font-family:'Minion',Helvetica;
       margin:auto;
+      font-family:'Brandon';
     }
     h1{
       margin:auto;
@@ -196,11 +197,12 @@ footer{
       background-position:160px 10px;
     }
     .back{
-      width:150px;
+      width:160px;
       height:30px;
       margin-bottom:-20px;
       background-image:url(../assets/img/back-black.svg);
       background-position:center center;
+      background-size:250px 50px;
     }
 }
 
