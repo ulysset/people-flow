@@ -11,7 +11,7 @@
 
   export default {
 
-    props: ['year', 'coordinates'],
+    props: ['year', 'coordinates', 'filters'],
 
     data() {
       return {
@@ -52,6 +52,12 @@
       getData(value) {
         this.data = value;
         this.render();
+      },
+
+      // Set filters
+      changeFilters(value) {
+        this.filters = value;
+        this.renderParticules();
       }
 
     },
@@ -62,45 +68,56 @@
        * Render particules
        */
       renderParticules() {
+        if(this.data) {
 
-        // Create particules container
-        if(!this.parcticulesCreators.length) {
-          this.particulesContainer = new PIXI.ParticleContainer();
-          this.container.addChild(this.particulesContainer);
-        }
-
-        // Rerender
-        else {
-          this.parcticulesCreators.forEach(parcticulesCreator => (
-            clearInterval(parcticulesCreator)
-          ))
-          this.parcticulesCreators = [];
-        }
-
-        // Initialyze parcticules creators
-        Object.keys(this.data['INSIDE_EUROPA']).forEach((key, index) => {
-          const item = this.data['INSIDE_EUROPA'][key];
-          const { from, to, data } = item;
-          const origin = this.coordinatesCountries[from];
-          const destination = this.coordinatesCountries[to];
-
-          if(__DEV__) {
-            if(!origin) this.errors.push(from);
-            if(!destination) this.errors.push(to);
+          // Create particules container
+          if(!this.parcticulesCreators.length) {
+            this.particulesContainer = new PIXI.ParticleContainer();
+            this.container.addChild(this.particulesContainer);
           }
 
-          this.parcticulesCreators[index] = createParticules(item, this.year, this.coordinatesCountries, particule => (
-            this.particulesContainer.addChild(particule)
-          ));
-        });
+          // Rerender
+          else {
+            this.parcticulesCreators.forEach(parcticulesCreator => (
+              clearInterval(parcticulesCreator)
+            ))
+            this.parcticulesCreators = [];
+          }
 
-        if(__DEV__) {
-          this.errors = this.errors.filter(
-            (error, i, tab) => tab.indexOf(error) === i
-          );
-          console.log(this.errors);
+          // Combine date sent
+          const combineData = this.data['migratoryFlux']
+            .filter((item, index) => (
+              this.filters[index].isActive
+            ))
+            .reduce((a, b) => (
+              { ...a, ...b }
+            ));
+
+          // Parse data
+          Object.keys(combineData).forEach((key, index) => {
+            const item = combineData[key];
+            const { from, to, data } = item;
+            const origin = this.coordinatesCountries[from];
+            const destination = this.coordinatesCountries[to];
+
+            if(__DEV__) {
+              if(!origin) this.errors.push(from);
+              if(!destination) this.errors.push(to);
+            }
+
+            this.parcticulesCreators[index] = createParticules(item, this.year, this.coordinatesCountries, particule => (
+              this.particulesContainer.addChild(particule)
+            ));
+          });
+
+          if(__DEV__) {
+            this.errors = this.errors.filter(
+              (error, i, tab) => tab.indexOf(error) === i
+            );
+            console.log(this.errors);
+          }
+
         }
-
       },
 
 

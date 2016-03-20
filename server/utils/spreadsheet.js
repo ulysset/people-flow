@@ -1,6 +1,6 @@
 import GoogleSpreadsheets from 'google-spreadsheets';
 
-export const fetch = (options: { key: string, select: string }, callback: any) => (
+export const fetchSpreadsheet = (options: { key: string, select: string }, callback: any) => (
   new Promise((resolve, reject) => {
     GoogleSpreadsheets({
       key: options.key
@@ -9,6 +9,7 @@ export const fetch = (options: { key: string, select: string }, callback: any) =
         range: options.select
       }, (err, response) => {
         if(err) {
+          console.log('err on', options.key);
           return reject(err);
         }
         return resolve(response);

@@ -1,7 +1,10 @@
 <template>
   <app-header></app-header>
   <div class="wrapper" transition="expand">
+    <country></country>
+    <filters v-bind:filters="filters"></filters>
     <core
+      v-bind:filters="filters"
       v-bind:coordinates="coordinatesCountries"
       v-bind:year="selectedYear"></core>
     <map></map>
@@ -12,12 +15,13 @@
 <script scoped>
 
   import Vue from 'vue';
-  import { WEBAPI, DEFAULT_YEAR } from 'config';
-  import fetch from 'helpers/fetch';
+  import { DEFAULT_YEAR } from 'config';
 
   Vue.component('timeline', require('./timeline'));
   Vue.component('core', require('./core'));
+  Vue.component('filters', require('./filters'));
   Vue.component('map', require('./map'));
+  Vue.component('country', require('./country'));
   Vue.component('app-header', require('./../header'));
 
   Vue.transition('expand', {
@@ -34,17 +38,15 @@
       return {
         selectedYear: DEFAULT_YEAR,
         data: null,
-        coordinatesCountries: null
+        coordinatesCountries: null,
+        filters: [{
+          isActive: true,
+          name: 'Intra-européen'
+        }, {
+          isActive: true,
+          name: 'Moyen-Orient / Maghreb'
+        }]
       };
-    },
-
-    ready() {
-      fetch(WEBAPI + '/data')
-        .then(response => JSON.parse(response))
-        .then(data => {
-          this.data = data;
-          this.$broadcast('getData', this.data)
-        })
     },
 
     events: {
@@ -60,6 +62,11 @@
 
       getSelectedCountry(country) {
         this.$broadcast('getSelectedCountry', country);
+      },
+
+      changeFilters(filters) {
+        this.filters = filters;
+        this.$broadcast('changeFilters', this.filters);
       }
     }
   }

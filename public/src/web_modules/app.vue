@@ -6,14 +6,26 @@
 
   @font-face {
     font-family: 'Brandon';
+    font-weight: 200;
+    src: url('../assets/fonts/Brandon_thin.otf');
+  }
+
+  @font-face {
+    font-family: 'Brandon';
     font-weight: 400;
     src: url('../assets/fonts/Brandon-Regular.otf');
   }
 
   @font-face {
+<<<<<<< HEAD
     font-family: 'Brandon_thin';
     font-weight: 200;
     src: url('../assets/fonts/Brandon_thin.otf');
+=======
+    font-family: 'Brandon';
+    font-weight: 500;
+    src: url('../assets/fonts/Brandon-Medium.otf');
+>>>>>>> origin/master
   }
 
   @font-face {
@@ -30,3 +42,21 @@
   }
 
 </style>
+
+<script>
+
+  import { WEBAPI } from 'config';
+  import fetch from 'helpers/fetch';
+
+  export default {
+    ready() {
+      fetch(WEBAPI + '/data')
+        .then(response => JSON.parse(response))
+        .then(data => {
+          this.data = data;
+          this.$broadcast('getData', this.data)
+        });
+    }
+  }
+
+</script>

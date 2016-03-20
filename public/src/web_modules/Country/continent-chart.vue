@@ -1,7 +1,7 @@
 <template>
 
 <div v-for="(indexYear, year) in years">
-  <div class="yearStats yearStatsActive">
+  <div class="yearStats" v-bind:class="{'yearStatsActive': activeIndex == indexYear}">
       <div class="statsContinents">
         <h3>{{years[indexYear]}}</h3>
         <div v-for="(indexContinent, continent) in continents">
@@ -30,107 +30,107 @@
 <script>
 
 export default {
-    data() {
-            return {
+  data() {
+    return {
+        activeIndex: 0,
+        activeContinent : '',
+        years : [1960, 1970, 1980, 1990, 2000],
+        topCountries : [
+          {
+            name : 'Congo',
+          },
+          {
+            name : 'Venezuela',
+          },
+          {
+            name : 'Birmania',
+          }
 
-                activeContinent: '',
-                years : [1960, 1970, 1980, 1990, 2000],
-                topCountries : [
-                  {
-                    name : 'Congo',
-                  },
-                  {
-                    name : 'Venezuela',
-                  },
-                  {
-                    name : 'Birmania',
-                  }
+        ],
+        continents: [{
+            name: 'africa',
+            migrants: {
+              1960 : 2596,
+              1970 : 2506,
+              1980 : 32637,
+              1990 : 20963,
+              2000 : 2666
+            },
+            count: []
+        }, {
+            name: 'america',
+            migrants: {
+              1960 : 37073,
+              1970 : 8990,
+              1980 : 26066,
+              1990 : 366,
+              2000 : 2686
+            },
+            count: []
+        }, {
+            name: 'oceania',
+            migrants: {
+              1960 : 20887,
+              1970 : 38990,
+              1980 : 2666,
+              1990 : 2676,
+              2000 : 333
+            },
+            count: []
+        }, {
+            name: 'europe',
+            migrants: {
+              1960 : 3638,
+              1970 : 36663,
+              1980 : 35666,
+              1990 : 3553,
+              2000 : 3636
+            },
+            count: []
+        }, {
+            name: 'asia',
+            migrants: {
+              1960 : 2340,
+              1970 : 8990,
+              1980 : 498,
+              1990 : 4899,
+              2000 : 890
+            },
+            count: []
+        }]
+    };
+ },
+ready() {
+    const total = this.years
+      .map(year => (
+        this.continents
+          .map(continent => continent.migrants[year])
+          .reduce((a, b) => a + b)
+      ));
+    this.continents = this.continents.map(continent => {
+      const count = this.years.map((year, index) => (
+        Math.ceil((continent.migrants[year] / total[index]) * 10)
+      ));
 
-                ],
-                continents: [{
-                    name: 'africa',
-                    migrants: {
-                      1960 : 2596,
-                      1970 : 2506,
-                      1980 : 32637,
-                      1990 : 20963,
-                      2000 : 2666
-                    },
-                    count: []
-                }, {
-                    name: 'america',
-                    migrants: {
-                      1960 : 37073,
-                      1970 : 8990,
-                      1980 : 26066,
-                      1990 : 366,
-                      2000 : 2686
-                    },
-                    count: []
-                }, {
-                    name: 'oceania',
-                    migrants: {
-                      1960 : 20887,
-                      1970 : 38990,
-                      1980 : 2666,
-                      1990 : 2676,
-                      2000 : 333
-                    },
-                    count: []
-                }, {
-                    name: 'europe',
-                    migrants: {
-                      1960 : 3638,
-                      1970 : 36663,
-                      1980 : 35666,
-                      1990 : 3553,
-                      2000 : 3636
-                    },
-                    count: []
-                }, {
-                    name: 'asia',
-                    migrants: {
-                      1960 : 2340,
-                      1970 : 8990,
-                      1980 : 498,
-                      1990 : 4899,
-                      2000 : 890
-                    },
-                    count: []
-                }]
-            };
-         },
-        ready() {
-            const total = this.years
-              .map(year => (
-                this.continents
-                  .map(continent => continent.migrants[year])
-                  .reduce((a, b) => a + b)
-              ));
+      return {
+        ...continent,
+        count
+      }
+    });
+},
 
+methods: {
+    onHover: (ctx, name) => {
+        ctx.activeContinent = name.toLowerCase();
+    }
+},
 
-            this.continents = this.continents.map(continent => {
-              const count = this.years.map((year, index) => (
-                Math.ceil((continent.migrants[year] / total[index]) * 10)
-              ));
+events: {
+  selectIndex(index) {
+    this.activeIndex = index
 
-              return {
-                ...continent,
-                count
-              }
-            });
-
-
-
-
-
-        },
-
-        methods: {
-            onHover: (ctx, name) => {
-                ctx.activeContinent = name.toLowerCase();
-            }
-        }
+  }
+}
 }
 
 </script>
@@ -142,6 +142,7 @@ export default {
   background-color: #F3F0E4;
   position: relative;
   margin: 40px;
+  border: 4px solid transparent;
 
 }
 .yearStatsActive{
@@ -189,7 +190,6 @@ export default {
   width: 1px;
   height: 70%;
   background-color: #B3B3B3;
-
 }
 
 .statsContinents{

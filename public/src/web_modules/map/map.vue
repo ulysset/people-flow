@@ -1,9 +1,8 @@
 <template>
   <div class="container">
-    <svg class="countries" v-el:svg  x="0px" y="0px" viewBox="400 218 218 218" xml:space="preserve">
+    <svg class="countries" v-el:svg  x="0px" y="0px" viewBox="405 215 230 230" xml:space="preserve">
       <path
         class="land"
-        v-bind:style="{ fill: country.color }"
         v-for="country in countries"
         v-bind:class="country.name"
         v-on:mouseOut="clickCountry(null)"
@@ -16,18 +15,18 @@
 <script>
 
   import countries from 'assets/data/map';
+  import { DEFAULT_YEAR } from 'config';
+  import dynamics from 'dynamics.js';
 
   export default {
 
     data() {
       return {
-        countries: countries.map(country => ({
-          ...country,
-          color: 'rgba(21, 57, 94, 0.25)'
-        })),
+        countries,
         selectedCountry: null,
         coordinatates: [],
-        data: []
+        netMigration: {},
+        year: DEFAULT_YEAR,
       };
     },
 
@@ -49,15 +48,43 @@
         this.selectedCountry = value;
         this.$dispatch('getSelectedCountry', this.selectedCountry);
       },
+
+      renderMapColor() {
+        const defaultColor = 'rgba(21, 57, 94, 0.225';
+        this.countries.forEach(country => {
+          const key = country.name;
+          const response = this.netMigration[key];
+
+          if(response !== undefined) {
+            const netMigration = response.data.arrivals[this.year] - response.data.departures[this.year];
+            let alpha = 0.225 + netMigration * .0000001;
+            if(alpha < .1 ) {
+              alpha = .1;
+            }
+            else if(alpha > .75) {
+              alpha = .9;
+            }
+            const color = 'rgba(21, 57, 94,' + alpha + ')';
+            dynamics.animate(this.$els.svg.querySelector(`.${key}`), {
+              fill: color,
+            }, {
+              duration: 300
+            })
+          }
+        });
+
+      }
     },
 
     events: {
+      changeYear(value) {
+        this.year = value;
+        this.renderMapColor();
+      },
       getData(value) {
         this.data = value;
-        this.countries = this.countries.map(country => ({
-          ...country,
-          color: 'rgba(21, 57, 94, ' + (Math.random() * (0.05 - 0.4) + 0.4).toFixed(3) + ')'
-        }));
+        this.netMigration = this.data['netMigration'];
+        this.renderMapColor();
       }
     }
 
@@ -81,8 +108,10 @@
   }
 
   .land {
+    fill: rgba(21, 57, 94, 0.225);
     stroke-width: .5;
     stroke: #eee;
+    cursor: pointer;
   }
 
 </style>
