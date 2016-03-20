@@ -1,20 +1,25 @@
 <template>
 
     <div class="parent-ratio">
+      <div class="directRatio">
+        <div class="baseArriving"></div>
+        <div class="baseLeaving"></div>
+        <div class="arriving" v-bind:style="{ width : (instantRatioScale[activeIndex] * 100) + '%' }"></div>
+        <div class="leaving"></div>
+      </div>
     <ul class="years" >
-      <li  v-for="(indexYear, year) in years" v-on:click="selectIndex($index)" v-bind:class="{'selected': indexYear == activeIndex}">
-        {{year}}...{{indexYear}}...{{activeIndex}}
-
+      <li  class="selected" v-for="(indexYear, year) in years" v-on:click="selectIndex($index)" v-bind:class="{'selected': indexYear == activeIndex}">
+        {{year}}
       </li>
     </ul>
       <div class="ratio">
         <canvas id="chart" class="chart"></canvas>
-        <div v-for="item in pointX" class="circle" v-bind:style="{ top: pointY[$index]/2 + 'px', left: pointX[$index]/2 + 'px' }" v-show="activeIndex == $index" ></div>
+        <div v-for="(indexPoint, item) in pointX" class="circle" v-bind:style="{ top: pointY[$index]/2 + 'px', left: pointX[$index]/2 + 'px' }" v-bind:class="{'showDots' : activeIndex == indexPoint }"></div>
+
       </div>
     </div>
 
 </template>
-
 <script>
 
 export default {
@@ -50,6 +55,7 @@ export default {
       departure : [],
       pointX : [],
       pointY : [],
+      instantRatioScale : [],
       years : [1960, 1970, 1980, 1990, 2000],
       data,
       selectedCountries: {
@@ -91,6 +97,7 @@ export default {
       pointX.push((WIDTH/4)*i)
     }
     for(let i = 0; i<5; i++){
+      this.instantRatioScale.push( arrival[i]/(arrival[i] + departure[i]));
       pointY.push( arrival[i]/(arrival[i] + departure[i])* HEIGHT )
     }
     context.fillStyle = "#2F6B97"
@@ -111,9 +118,16 @@ export default {
 
   methods: {
     selectIndex(index) {
-      this.activeIndex = index
+      this.$dispatch('selectIndex', index);
+    }
+  },
+
+  events: {
+    selectIndex(index) {
+      this.activeIndex = index;
     }
   }
+
 }
 
 </script>
@@ -143,15 +157,16 @@ export default {
     padding: 5px;
     border-radius: 10px;
     border: 3px solid transparent;
-    transition: border .1s;
+    transition: all ease-in .2s;
     cursor: pointer;
 
   }
   .years li:hover {
     border: 3px solid #2F6B97;
   }
-  .selected{
+  .years li.selected{
     border: 3px solid #2F6B97;
+    transform: scale(1.3);
   }
 
 
@@ -173,6 +188,52 @@ export default {
     background-color: #F3F0E4;
     transform: translate(-50%, -50%);
     border: 2px solid #2F6B97;
+    opacity: 0;
+    transition: all .3s;
+  }
+  .showDots{
+    opacity: 1;
+  }
+  .directRatio{
+    width: 470px;
+    height: 50px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .directRatio .baseArriving {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 20px;
+    background-color: #2f6b96;
+    z-index: 5;
+    border-radius: 10px;
+  }
+  .directRatio .baseLeaving {
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    right: 0;
+    background-color: #F3F0E4 ;
+    z-index: 5;
+    border-radius: 10px;
+
+  }
+  .directRatio .arriving{
+    transition: all ease .3s;
+    position: absolute;
+    background-color: #2f6b96;
+    z-index: 2;
+    height: 100%;
+    border-radius: 10px;
+
+  }
+  .directRatio .leaving{
+    position: absolute;
+    background-color: #F3F0E4;
+    width: 100%;
+    height: 100%;
   }
 
 </style>
