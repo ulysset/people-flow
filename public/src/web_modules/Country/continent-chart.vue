@@ -36,112 +36,111 @@
 
 <script>
 
-export default {
-  data() {
-    return {
+  export default {
+    data() {
+      return {
+        data: null,
+        selectedCountry: 'FRA',
         activeIndex: 0,
         activeContinent : '',
         years : [1960, 1970, 1980, 1990, 2000],
-        topCountries : [
-          {
-            name : 'Congo',
-          },
-          {
-            name : 'Venezuela',
-          },
-          {
-            name : 'Birmania',
-          }
-
-        ],
+        topCountries : [{
+          name : 'Congo',
+        }, {
+          name : 'Venezuela',
+        }, {
+          name : 'Birmania',
+        }],
         continents: [{
-            name: 'africa',
-            migrants: {
-              1960 : 2596,
-              1970 : 2506,
-              1980 : 32637,
-              1990 : 20963,
-              2000 : 2666
-            },
-            count: []
+          name: 'africa',
+          migrants: {
+            1960 : 2596,
+            1970 : 2506,
+            1980 : 32637,
+            1990 : 20963,
+            2000 : 2666
+          },
+          count: []
         }, {
-            name: 'america',
-            migrants: {
-              1960 : 37073,
-              1970 : 8990,
-              1980 : 26066,
-              1990 : 366,
-              2000 : 2686
-            },
-            count: []
+          name: 'america',
+          migrants: {
+            1960 : 37073,
+            1970 : 8990,
+            1980 : 26066,
+            1990 : 366,
+            2000 : 2686
+          },
+          count: []
         }, {
-            name: 'oceania',
-            migrants: {
-              1960 : 20887,
-              1970 : 38990,
-              1980 : 2666,
-              1990 : 2676,
-              2000 : 333
-            },
-            count: []
+          name: 'oceania',
+          migrants: {
+            1960 : 20887,
+            1970 : 38990,
+            1980 : 2666,
+            1990 : 2676,
+            2000 : 333
+          },
+          count: []
         }, {
-            name: 'europe',
-            migrants: {
-              1960 : 3638,
-              1970 : 36663,
-              1980 : 35666,
-              1990 : 3553,
-              2000 : 3636
-            },
-            count: []
+          name: 'europe',
+          migrants: {
+            1960 : 3638,
+            1970 : 36663,
+            1980 : 35666,
+            1990 : 3553,
+            2000 : 3636
+          },
+          count: []
         }, {
-            name: 'asia',
-            migrants: {
-              1960 : 2340,
-              1970 : 8990,
-              1980 : 498,
-              1990 : 4899,
-              2000 : 890
-            },
-            count: []
+          name: 'asia',
+          migrants: {
+            1960 : 2340,
+            1970 : 8990,
+            1980 : 498,
+            1990 : 4899,
+            2000 : 890
+          },
+          count: []
         }]
-    };
- },
-ready() {
+      };
+   },
 
-    const total = this.years
+   ready() {
+     const total = this.years
       .map(year => (
         this.continents
           .map(continent => continent.migrants[year])
           .reduce((a, b) => a + b)
       ));
-    this.continents = this.continents.map(continent => {
-      const count = this.years.map((year, index) => (
-        Math.ceil((continent.migrants[year] / total[index]) * 10)
-      ));
+      this.continents = this.continents.map(continent => {
+        const count = this.years.map((year, index) => (
+          Math.ceil((continent.migrants[year] / total[index]) * 10)
+        ));
+        return {
+          ...continent,
+          count
+        }
+      });
+      setTimeout(() => {
+        this.$dispatch('selectIndex', this.activeIndex + 1);
+      }, 2000);
+    },
 
-      return {
-        ...continent,
-        count
-      }
-    });
-    setTimeout(() => {
-      this.$dispatch('selectIndex', this.activeIndex + 1);
-    }, 2000);
-},
-
-methods: {
-    onHover: (ctx, name) => {
+    methods: {
+      onHover: (ctx, name) => {
         ctx.activeContinent = name.toLowerCase();
-    }
-},
+      }
+    },
 
-events: {
-  selectIndex(index) {
-    this.activeIndex = index
-  },
-}
-}
+    events: {
+      selectIndex(index) {
+        this.activeIndex = index
+      },
+      getData(value) {
+        console.log(value);
+      }
+    }
+  }
 
 </script>
 <style scoped>
