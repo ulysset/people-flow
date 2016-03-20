@@ -43,11 +43,10 @@ app.use(router.get('/data', (req, res) => {
     const middleEastResponse = getData(data[2]);
 
     cache = {
-      insideEuropa: {
-        ...europaResponse,
-        ...maghrebResponse,
-        ...middleEastResponse
-      },
+      migratoryFlux: [
+        europaResponse,
+        { ...maghrebResponse, ...middleEastResponse }
+      ],
       netMigration: getNetMigration(europaResponse)
     };
     return res.status(200).json(cache);
