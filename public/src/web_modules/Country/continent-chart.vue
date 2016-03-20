@@ -7,7 +7,7 @@
 </div>
 <div class="statScroll">
   <div v-for="(indexYear, year) in years">
-    <div class="yearStats" v-bind:class="{'yearStatsActive': activeIndex == indexYear}">
+    <div class="yearStats" v-bind:class="{'yearStatsActive': activeIndex == indexYear}" v-on:click="selectIndex($index)">
         <div class="statsContinents">
           <h3>{{years[indexYear]}}</h3>
           <div v-for="(indexContinent, continent) in continents">
@@ -129,6 +129,9 @@
     methods: {
       onHover: (ctx, name) => {
         ctx.activeContinent = name.toLowerCase();
+      },
+      selectIndex(index) {
+        this.$dispatch('selectIndex', index);
       }
     },
 
@@ -170,6 +173,7 @@
     font-size: 13px;
     color: #898989;
     text-align: center;
+    font-size: 18px;
   }
   .statScroll{
     width: 100%;
@@ -243,6 +247,7 @@
   }
   .statsContinents .continent h2, .statsContinents .continent p{
     color: #BCBCBC;
+    font-size: 18px;
   }
 
 

@@ -162,6 +162,7 @@ export default {
     border: 3px solid transparent;
     transition: all ease-in .2s;
     cursor: pointer;
+    font-size: 15px;
 
   }
   .years li:hover {
