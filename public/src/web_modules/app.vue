@@ -17,15 +17,9 @@
   }
 
   @font-face {
-<<<<<<< HEAD
-    font-family: 'Brandon_thin';
-    font-weight: 200;
-    src: url('../assets/fonts/Brandon_thin.otf');
-=======
     font-family: 'Brandon';
     font-weight: 500;
     src: url('../assets/fonts/Brandon-Medium.otf');
->>>>>>> origin/master
   }
 
   @font-face {
