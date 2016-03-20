@@ -5,8 +5,9 @@
         class="land"
         v-for="country in countries"
         v-bind:class="country.name"
-        v-on:mouseOut="clickCountry(null)"
-        v-on:mouseOver="clickCountry(country.name)"
+        v-on:mouseOut="hoverCountry(null)"
+        v-on:mouseOver="hoverCountry(country.name)"
+        v-on:click="clickCountry(country.name)"
         v-bind:d="country.path"/>
     </svg>
   </div>
@@ -46,9 +47,13 @@
     },
 
     methods: {
-      clickCountry(value) {
+      hoverCountry(value) {
         this.selectedCountry = value;
         this.$dispatch('getSelectedCountry', this.selectedCountry);
+      },
+
+      clickCountry(value) {
+        console.log(value);
       },
 
       renderMapColor() {
@@ -59,7 +64,7 @@
           if(this.netMigration[0][key] !== undefined && this.netMigration[1][key] !== undefined) {
             let netMigration = 0;
 
-            if(this.filters[0].isActive || this.filters[1].isActive) {
+            if(this.filters && this.filters.length !== 0) {
               if(this.filters[0].isActive) {
                 const response = this.netMigration[0][key];
                 netMigration += response.data.arrivals[this.year] - response.data.departures[this.year];

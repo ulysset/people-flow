@@ -40,7 +40,7 @@
     methods: {
       render() {
         if(this.netMigration && this.country) {
-          if(this.filters[0].isActive || this.filters[1].isActive) {
+          if(this.filters && this.filters.length !== 0) {
             this.departures = this.filters.map(
               (filter, index) => {
                 if(filter.isActive) {
