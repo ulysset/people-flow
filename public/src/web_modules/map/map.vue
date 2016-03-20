@@ -20,6 +20,8 @@
 
   export default {
 
+    props: ['filters'],
+
     data() {
       return {
         countries,
@@ -50,14 +52,25 @@
       },
 
       renderMapColor() {
-        const defaultColor = 'rgba(21, 57, 94, 0.225';
+        const defaultColor = 'rgba(21, 57, 94, 0.3';
         this.countries.forEach(country => {
           const key = country.name;
-          const response = this.netMigration[key];
 
-          if(response !== undefined) {
-            const netMigration = response.data.arrivals[this.year] - response.data.departures[this.year];
-            let alpha = 0.5 + netMigration * .0000001;
+          if(this.netMigration[0][key] !== undefined && this.netMigration[1][key] !== undefined) {
+            let netMigration = 0;
+
+            if(this.filters[0].isActive || this.filters[1].isActive) {
+              if(this.filters[0].isActive) {
+                const response = this.netMigration[0][key];
+                netMigration += response.data.arrivals[this.year] - response.data.departures[this.year];
+              }
+              if(this.filters[1].isActive) {
+                const response = this.netMigration[1][key];
+                netMigration += response.data.arrivals[this.year] - response.data.departures[this.year];
+              }
+            }
+
+            let alpha = 0.3 + netMigration * .0000001;
             if(alpha < .15 ) {
               alpha = .15;
             }
@@ -72,7 +85,6 @@
             })
           }
         });
-
       }
     },
 
@@ -84,6 +96,10 @@
       getData(value) {
         this.data = value;
         this.netMigration = this.data['netMigration'];
+        this.renderMapColor();
+      },
+      changeFilters(value) {
+        this.filters = value;
         this.renderMapColor();
       }
     }
@@ -108,7 +124,7 @@
   }
 
   .land {
-    fill: rgba(21, 57, 94, 0.225);
+    fill: rgba(21, 57, 94, 0.3);
     stroke-width: .25;
     stroke: #eee;
     cursor: pointer;

@@ -7,7 +7,7 @@
       v-bind:filters="filters"
       v-bind:coordinates="coordinatesCountries"
       v-bind:year="selectedYear"></core>
-    <map></map>
+    <map v-bind:filters="filters"></map>
     <timeline v-bind:year="selectedYear"></timeline>
   </div>
 </template>

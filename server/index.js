@@ -76,7 +76,10 @@ app.use(router.get('/data', (req, res) => {
         europaResponse,
         { ...maghrebResponse, ...middleEastResponse }
       ],
-      netMigration: getNetMigration(europaResponse),
+      netMigration: [
+        getNetMigration(europaResponse),
+        getNetMigration({ ...maghrebResponse, ...middleEastResponse })
+      ],
       reduceDataMigration: reduceToContinents({
         africa: africaResponse,
         america: americaResponse,
