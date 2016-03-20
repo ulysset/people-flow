@@ -35,19 +35,40 @@ app.use(router.get('/data', (req, res) => {
     key: SPREADSHEET_KEY['middleEast'],
     select: 'R2C1:R817C7'
   });
+  const getAfrica = fetchSpreadsheet({
+    key: SPREADSHEET_KEY['africa'],
+    select: 'R2C1:R5695C7'
+  });
+  const getAmerica = fetchSpreadsheet({
+    key: SPREADSHEET_KEY['america'],
+    select: 'R2C1:R4951C7'
+  });
+  const getAsia = fetchSpreadsheet({
+    key: SPREADSHEET_KEY['asia'],
+    select: 'R2C1:R5458C7'
+  });
+  const getOceania = fetchSpreadsheet({
+    key: SPREADSHEET_KEY['oceania'],
+    select: 'R2C1:R1797C7'
+  });
 
   // Fetch everything
   Promise.all([getEuropa, getMaghreb, getMiddleEast]).then(data => {
     const europaResponse = getData(data[0]);
     const maghrebResponse = getData(data[1]);
     const middleEastResponse = getData(data[2]);
+    const africaResponse = getData(data[3]);
 
     cache = {
       migratoryFlux: [
         europaResponse,
         { ...maghrebResponse, ...middleEastResponse }
       ],
-      netMigration: getNetMigration(europaResponse)
+      netMigration: getNetMigration(europaResponse),
+      reduceDataMigration: {
+        ...africaResponse
+      }
+
     };
     return res.status(200).json(cache);
   })
