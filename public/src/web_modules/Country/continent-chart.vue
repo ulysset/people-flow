@@ -108,6 +108,7 @@ export default {
     };
  },
 ready() {
+
     const total = this.years
       .map(year => (
         this.continents
@@ -124,6 +125,9 @@ ready() {
         count
       }
     });
+    setTimeout(() => {
+      this.$dispatch('selectIndex', this.activeIndex + 1);
+    }, 2000);
 },
 
 methods: {
@@ -135,8 +139,7 @@ methods: {
 events: {
   selectIndex(index) {
     this.activeIndex = index
-
-  }
+  },
 }
 }
 
@@ -176,13 +179,14 @@ events: {
     background-color: #F3F0E4;
   }
   .yearStats{
+    position: relative;
     width: 450px;
     height: 200px;
-    border-radius: 20px;
-    background-color: white;
-    position: relative;
     margin: 20px auto;
+    border-radius: 5px;
     border: 4px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.15);
+    background-color: #FEFEFE;
   }
   .yearStatsActive{
     border: 4px solid #2F6B97;
@@ -193,7 +197,6 @@ events: {
       height: 10px;
       border-radius: 10px;
       margin: 3px 0;
-
   }
 
   .barGroup {

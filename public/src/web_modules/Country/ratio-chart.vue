@@ -127,9 +127,7 @@ export default {
       this.activeIndex = index;
     }
   }
-
 }
-
 </script>
 
 

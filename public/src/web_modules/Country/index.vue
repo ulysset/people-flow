@@ -1,6 +1,6 @@
 <template>
 	<app-header></app-header>
-	<div class="container">
+	<div class="country-container">
 		<!-- <countries></countries> -->
 
 		<div class="continent-chart">
@@ -32,9 +32,9 @@
 	}
 
 </script>
-<style lang="sass">
+<style>
 
-	.container {
+	.country-container {
 		position: absolute;
 		top: 54px;
 		left: 50%;
@@ -57,9 +57,9 @@
 		padding: 0;
 		display: inline-block;
 		position: relative;
-		.selectors{
-			width : 100%;
-			height : 200px;
-		}
+	}
+	.ratio-chart .selectors{
+		width : 100%;
+		height : 200px;
 	}
 </style>
