@@ -2,7 +2,7 @@
   <div class="container">
     <div class="ratio" v-bind:style="{ left: ratio + 'px' }"></div>
     <div class="pause" v-bind:class="{
-      isPlaying: isPlaying
+      isPlaying: !isPlaying
     }" v-on:click="play()"></div>
     <ul class="years">
       <li
@@ -88,7 +88,8 @@
     top: -2px;
     width: 50%;
     height: 3px;
-    background: linear-gradient(to left, $primaryColor 0%, transparent 100%);
+    transform: translateX(-8px);
+    background: linear-gradient(to left, $secondaryColor 0%, transparent 100%);
     transition: left .2s ease;
 
     &:after {
@@ -99,7 +100,7 @@
       right: -3px;
       width: 7px;
       height: 7px;
-      background-color: $primaryColor;
+      background-color: $secondaryColor;
       border-radius: 50%;
       z-index: 2;
     }
@@ -142,18 +143,14 @@
     display: inline-block;
     cursor: pointer;
     font-size: 14px;
-    color: rgba($primaryColor, .25);
+    color: rgba($secondaryColor, .25);
     text-align: center;
-    transition: color ease .15s;
+    transition: color ease .15s, transform ease .15s;
 
     &.is-active,
     &:hover {
-      font-weight: bold;
-      color: rgba($primaryColor, 1);
-    }
-
-    &.is-active {
-      cursor: default;
+      font-weight: 500;
+      color: rgba($secondaryColor, 1);
     }
   }
 
