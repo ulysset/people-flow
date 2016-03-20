@@ -77,6 +77,7 @@
         background-repeat: no-repeat;
         background-size: 16px 16px;
         background-position: center;
+        opacity: 1;
 
         &.--github{
           background-image: url(../assets/img/github.svg);
@@ -92,7 +93,7 @@
         }
 
         &:hover {
-          opacity:.8;
+          opacity:.5;
         }
       }
     }
