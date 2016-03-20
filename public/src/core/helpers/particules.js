@@ -56,7 +56,7 @@ export const createParticule = (options: {
   particule.width = PARTICULE_SIZE / 2;
   particule.height = PARTICULE_SIZE / 2;
   particule.needBeDeleted = false;
-  particule.alpha = .1;
+  particule.alpha = 1;
 
   // Set position
   particule.position.x = origin.x;
@@ -143,21 +143,21 @@ export const renderParticules = (particules: Particules, selectedCountry: string
       from
     } = particule;
 
-    // Set position
-    position.x += translate.x;
-    position.y += translate.y;
-
     // Change alpha
     if(from === selectedCountry || to === selectedCountry || selectedCountry === null) {
       if(particule.alpha !== 1) {
-        particule.alpha += .05;
+        particule.alpha += .1;
       }
     }
     else {
       if(particule.alpha !== .1) {
-        particule.alpha -= .05;
+        particule.alpha -= .1;
       }
     }
+
+    // Set position
+    position.x += translate.x;
+    position.y += translate.y;
 
     // Test if the particle has reached its destination
     if(Math.abs(destination.x - position.x) <= .5 || Math.abs(destination.y - position.y) <= .5) {

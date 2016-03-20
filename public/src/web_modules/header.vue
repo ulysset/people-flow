@@ -5,7 +5,6 @@
       <ul class="nav-list">
         <li class="nav-item"><a v-link="'/sources'" class="nav-link">Données</a></li>
         <li class="nav-item"><a v-link="'/'" class="nav-link">À propos</a></li>
-
         <li class="nav-item --help"><a href="https://github.com/ulysset/people-flow" class="nav-link --share --github"></a></li>
         <li class="nav-item --help"><a href="#" target="_blank" class="nav-link --share --facebook"></a></li>
         <li class="nav-item --help"><a href="https://twitter.com/intent/tweet?text=Futuregrant&url=https://still-fortress-88655.herokuapp.com" target="_blank" class="nav-link --share --twitter"></a></li>
@@ -18,7 +17,7 @@
 
   @import "./theme";
 
-  $logoWidth: 140px;
+  $logoWidth: 136px;
 
   .container {
     position: absolute;
@@ -53,7 +52,7 @@
       display: inline-block;
 
       & + & {
-        margin-left: 20px;
+        margin-left: 10px;
       }
 
       &.--help{
@@ -65,26 +64,33 @@
       text-transform: uppercase;
       text-decoration: none;
       font-size: 12px;
-      color: #ccc;
-      transition: color ease .15s;
+      color: $primaryColor;
+      opacity: .25;
+      transition: opacity ease .15s;
 
       &:hover {
-        color: $primaryColor;
+        opacity: 1;
       }
 
       &.--share{
-        padding:0 10px;
-        background-repeat:no-repeat;
-        background-size:16px 16px;
+        padding: 0 10px;
+        background-repeat: no-repeat;
+        background-size: 16px 16px;
+        background-position: center;
+
         &.--github{
           background-image: url(../assets/img/github.svg);
         }
+
         &.--facebook{
           background-image: url(../assets/img/facebook.svg);
+          background-size: 14px 14px;
         }
+
         &.--twitter{
           background-image: url(../assets/img/twitter.svg);
         }
+
         &:hover {
           opacity:.8;
         }
