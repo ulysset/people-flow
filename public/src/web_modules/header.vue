@@ -23,6 +23,7 @@
     position: absolute;
     top: 0;
     z-index: 5;
+    height: 54px;
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
