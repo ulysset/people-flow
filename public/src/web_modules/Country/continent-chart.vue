@@ -1,7 +1,6 @@
 <template>
   <div class="navStats">
     <h2>CLASSEMENTS / STATISTIQUES</h2>
-    <h3>CONTINENTS D’ORIGINE</h3>
   </div>
   <div class="statScroll">
     <div v-for="(indexYear, year) in years">
@@ -14,7 +13,6 @@
               </div>
             </div>
           </div>
-          <div class="spliter"></div>
         <div class="barGroup">
           <div v-for="continent in continents" v-on:mouseOver="onHover(this, continent.name)">
               <div v-for="continentItem in continent.count[indexYear]" class="item" v-bind:class="continent.name"></div>
@@ -136,7 +134,7 @@
         this.continents = response.map(continent => ({
           ...continent,
           count: this.years.map((year, index) => (
-            Math.ceil((continent.migrants[year] / total[index]) * 10)
+            Math.ceil((continent.migrants[year] / total[index]) * 30)
           ))
         }));
 
@@ -149,22 +147,16 @@
 
   .navStats{
     width: 100%;
-    height: 100px;
+    height: 40px;
     position: relative;
     background: #FEFEFE;
   }
   .navStats h2{
     color: #215078;
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
   }
-  .navStats .splitter{
-    position: absolute;
-    left: 50%;
-    width: 1px;
-    height: 50px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(216,216,216,0.65) 99%,rgba(216,216,216,0.65) 100%);
-  }
+
   .navStats h3{
     display: inline-block;
     width: 49%;
@@ -176,33 +168,31 @@
     width: 100%;
     height: calc(100vh - 54px - 115px);
     overflow-y: scroll;
-    background-color: #F3F0E4;
   }
   .yearStats{
     position: relative;
     width: 450px;
-    height: 120px;
+    height: 100px;
     margin: 20px auto;
     border-radius: 5px;
-    border: 2px solid transparent;
-    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.15);
-    background-color: #FEFEFE;
+        border: 2px solid #F3F0E4;
+    background-color: white;
   }
   .yearStatsActive{
     border: 2px solid #2F6B97;
   }
   .item {
-      display: inline-block;
-      width: 10px;
-      height: 60px;
-      border-radius: 10px;
-      margin: 0 5px;
+    width: 3px;
+    height: 44px;
+    border-radius: 1px;
+    margin: 0px 3px;
+    transform: rotate(-30deg);
   }
 
   .barGroup {
     position: absolute;
-    left: 150px;
-    top: 50%;
+    left: 110px;
+    top: 40%;
     transform: translateY(-50%);
   }
   .barGroup div {
@@ -239,10 +229,11 @@
   .statsContinents h3 {
     color: #2F6B97;
     font-weight: 700;
+    font-size: 14px;
   }
   .statsContinents .continent p{
     color: #BCBCBC;
-    font-size: 18px;
+    font-size: 14px;
     margin: 0;
   }
 
@@ -250,9 +241,9 @@
   .statsContinents .continent{
     position: absolute;
     opacity: 0;
-    top: 50%;
-    transform: translateY(-10%);
-    left: 0px;
+    top: 66%;
+    left: 200px;
+    width: 170px;
   }
 
   .statsContinents .enabled {

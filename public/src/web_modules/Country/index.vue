@@ -5,7 +5,7 @@
 			<continent-chart></continent-chart>
 		</div>
 		<div class="ratio-chart-container">
-			<div class="selectors"></div>
+			<!-- <input-country class="selectors"></input-country> -->
 			<ratio-chart></ratio-chart>
 		</div>
 	</div>
@@ -16,6 +16,7 @@
 	import Vue from 'vue';
 	Vue.component('continent-chart', require('./continent-chart'));
 	Vue.component('ratio-chart', require('./ratio-chart.vue'));
+	Vue.component('input-country', require('./input-country.vue'));
   Vue.component('app-header', require('./../header'));
 
 	export default {
@@ -32,7 +33,7 @@
 
 	.country-container {
 		position: absolute;
-		top: 54px;
+		top: 60px;
 		left: 50%;
 		width: 1000px;
     height: calc(100vh - 54px);
