@@ -12,6 +12,7 @@ export const fetchSpreadsheet = (options: { key: string, select: string }, callb
           console.log('err on', options.key);
           return reject(err);
         }
+        console.log('response on spreadsheet:', options.key);
         return resolve(response);
       });
     })

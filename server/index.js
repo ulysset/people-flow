@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { SPREADSHEET_KEY } from './config';
 import { fetchSpreadsheet, getData } from './utils/spreadsheet';
-import { getNetMigration } from './utils/data';
+import { reduceToContinents, getNetMigration } from './utils/data';
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -19,6 +19,7 @@ app.use(router.get('/data', (req, res) => {
 
   // Return cache
   if(cache) {
+    console.log('Return cache');
     return res.status(200).json(cache);
   }
 
@@ -53,23 +54,43 @@ app.use(router.get('/data', (req, res) => {
   });
 
   // Fetch everything
-  Promise.all([getEuropa, getMaghreb, getMiddleEast]).then(data => {
-    const europaResponse = getData(data[0]);
+  Promise.all(
+    [getEuropa, getMaghreb, getMiddleEast,
+     getAfrica, getAmerica, getAsia, getOceania]
+  ).then(data => {
+
+    console.log('All promises are resolved');
+
+    // Get all data
     const maghrebResponse = getData(data[1]);
     const middleEastResponse = getData(data[2]);
+    const europaResponse = getData(data[0]);
     const africaResponse = getData(data[3]);
+    const americaResponse = getData(data[4]);
+    const asiaResponse = getData(data[5]);
+    const oceaniaResponse = getData(data[6]);
 
+    // Set cache
     cache = {
       migratoryFlux: [
         europaResponse,
         { ...maghrebResponse, ...middleEastResponse }
       ],
       netMigration: getNetMigration(europaResponse),
-      reduceDataMigration: {
-        ...africaResponse
+      reduceDataMigration: reduceToContinents({
+        africa: africaResponse,
+        america: americaResponse,
+        asia: asiaResponse,
+        oceania: oceaniaResponse,
+        europa: europaResponse
+      }),
+      allDataMigration: {
+        ...africaResponse, ...americaResponse,
+        ...asiaResponse, ...europaResponse,
+        ...oceaniaResponse
       }
-
     };
+
     return res.status(200).json(cache);
   })
 
