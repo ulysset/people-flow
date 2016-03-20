@@ -34,8 +34,27 @@
   .filter {
     position: absolute;
     left: 50px;
-    bottom: 90px;
+    bottom: 108px;
     z-index: 5;
+    padding-top: 12px;
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, mix($primaryColor, white, 20%) 50%, transparent 100%);
+    }
+
+    &:before {
+      top: -12px;
+    }
+
+    &:after {
+      bottom: -16px;
+    }
   }
 
   .list {
@@ -47,7 +66,7 @@
     list-style: none;
     text-transform: uppercase;
     font-size: 11px;
-    color: rgba($primaryColor, .5);
+    color: rgba($primaryColor, .25);
     cursor: pointer;
     transition: color ease .2s;
 
@@ -64,22 +83,22 @@
     width: 8px;
     height: 8px;
     background-color: white;
-    border: 2px solid rgba($primaryColor, .33);
+    border: 2px solid rgba($primaryColor, .25);
     border-radius: 50%;
     transition: border ease .2s;
   }
 
   .item.is-active {
-    color: rgba($primaryColor, 1);
+    color: rgba($primaryColor, .75);
 
     .select {
-      border-color: rgba($primaryColor, 1);
+      border-color: rgba($primaryColor, .75);
     }
   }
 
   .item.is-active:hover {
     .select {
-      border-color: rgba($primaryColor, .66);
+      border-color: rgba($primaryColor, .6);
     }
   }
 
