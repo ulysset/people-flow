@@ -30,14 +30,16 @@
 
   .logo{
     display: inline-block;
+    position: relative;
+    top: -3px;
     width: $logoWidth;
-    margin: 15px 0;
+    margin: 0 0 15px;
   }
 
   .nav {
     display: inline-block;
     position: relative;
-    top: -2px;
+    top: 1px;
     padding-left: 30px;
     width: calc(100% - #{$logoWidth} - 10px);
     box-sizing: border-box;
@@ -50,7 +52,7 @@
       display: inline-block;
 
       & + & {
-        margin-left: 10px;
+        margin-right: 10px;
       }
 
       &.--help{
