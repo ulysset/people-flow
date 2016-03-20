@@ -31,6 +31,8 @@
       </article>
     </div>
   </div>
+
+
 </template>
 
 <style lang="sass" scoped>
@@ -59,11 +61,6 @@
     &:hover{
       opacity:.7;
     }
-    h1{
-      font-size:38px;
-      font-weight: 200;
-      padding-top:25px;
-    }
   }
 
   .left_arrow{
@@ -85,7 +82,7 @@
 
   h1 {
     font-size: 38px;
-    font-family: 'Brandon';
+    font-family: 'Brandon_thin';
     font-weight: 200;
   }
 
@@ -120,7 +117,7 @@
     font-size:45px;
     background:#f0f2e3;
     color:white;
-    font-family:Brandon_black;
+    font-family:'Brandon_black';
   }
 
 </style>
@@ -138,4 +135,5 @@
       };
     }
   }
+
 </script>
