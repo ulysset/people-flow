@@ -1,6 +1,7 @@
 <template>
   <app-header></app-header>
   <div class="wrapper" transition="expand">
+    <country></country>
     <filters v-bind:filters="filters"></filters>
     <core
       v-bind:filters="filters"
@@ -14,13 +15,13 @@
 <script scoped>
 
   import Vue from 'vue';
-  import { WEBAPI, DEFAULT_YEAR } from 'config';
-  import fetch from 'helpers/fetch';
+  import { DEFAULT_YEAR } from 'config';
 
   Vue.component('timeline', require('./timeline'));
   Vue.component('core', require('./core'));
   Vue.component('filters', require('./filters'));
   Vue.component('map', require('./map'));
+  Vue.component('country', require('./country'));
   Vue.component('app-header', require('./../header'));
 
   Vue.transition('expand', {
@@ -46,15 +47,6 @@
           name: 'Moyen-Orient / Maghreb'
         }]
       };
-    },
-
-    ready() {
-      fetch(WEBAPI + '/data')
-        .then(response => JSON.parse(response))
-        .then(data => {
-          this.data = data;
-          this.$broadcast('getData', this.data)
-        })
     },
 
     events: {

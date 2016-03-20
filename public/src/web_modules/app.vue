@@ -36,3 +36,21 @@
   }
 
 </style>
+
+<script>
+
+  import { WEBAPI } from 'config';
+  import fetch from 'helpers/fetch';
+
+  export default {
+    ready() {
+      fetch(WEBAPI + '/data')
+        .then(response => JSON.parse(response))
+        .then(data => {
+          this.data = data;
+          this.$broadcast('getData', this.data)
+        });
+    }
+  }
+
+</script>
