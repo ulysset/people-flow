@@ -21,7 +21,7 @@ router.map({
   '/stats': {
     component: require('web_modules/stats')
   },
-  '/country': {
+  '/country/:key': {
     component: require('web_modules/Country')
   }
 });
