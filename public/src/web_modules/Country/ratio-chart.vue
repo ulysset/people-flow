@@ -398,7 +398,7 @@ export default {
   }
   .years li {
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 2px solid transparent;
     transition: all ease-in .2s;
     cursor: pointer;
@@ -462,7 +462,7 @@ export default {
     width: 470px;
     height: 50px;
     position: relative;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
   }
   .directRatio .baseArriving {
@@ -472,7 +472,7 @@ export default {
     width: 20px;
     background-color: #2f6b96;
     z-index: 5;
-    border-radius: 10px;
+    border-radius: 5px;
   }
   .directRatio .baseLeaving {
     position: absolute;
@@ -481,7 +481,7 @@ export default {
     right: 0;
     background-color: #F3F0E4 ;
     z-index: 5;
-    border-radius: 10px;
+    border-radius: 5px;
 
   }
   .directRatio .arriving{
@@ -490,7 +490,7 @@ export default {
     background-color: #2f6b96;
     z-index: 2;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
 
   }
   .directRatio .leaving{
@@ -498,7 +498,7 @@ export default {
     background-color: #F3F0E4;
     width: 100%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
 </style>
