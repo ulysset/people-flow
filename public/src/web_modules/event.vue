@@ -46,9 +46,9 @@ Le mur fut détruit complètement en juin de l’année suivante. Armés de mart
 
 
 <footer>
-  <a href="#" class="left_arrow">Évènement précédent</a>
+  <span class="left_arrow">Évènement précédent</span>
   <a v-link="'/map'" class="back"></a>
-  <a href="#" class="right_arrow">Évènement suivant</a>
+  <span class="right_arrow">Évènement suivant</span>
 </footer>
 
   </div>
@@ -174,7 +174,7 @@ footer{
   text-align:center;
   padding-top:100px;
   padding-bottom:100px;
-    a {
+    a, span {
       width:170px;
       height:15px;
       padding:10px 10px 10px 14px;
