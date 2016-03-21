@@ -1,6 +1,6 @@
 <template>
   <div class="navStats">
-    <h2>CLASSEMENTS / STATISTIQUES</h2>
+    <h2>Flux des arrivés: ratio des continents</h2>
   </div>
   <div class="statScroll">
     <div v-for="(indexYear, year) in years">
@@ -150,7 +150,6 @@
     top: 12px;
     width: 100%;
     height: 40px;
-    background: #FEFEFE;
     margin-bottom: 10px;
   }
 
@@ -158,6 +157,7 @@
     color: #215078;
     padding-left: 20px;
     font-size: 16px;
+    text-transform: uppercase;
   }
 
   .navStats h3{
@@ -180,7 +180,7 @@
     height:85px;
     margin: 16px auto;
     border-radius: 5px;
-    border: 2px solid #EAEAEA;
+    border: 2px solid #ececec;
     background-color: white;
   }
 

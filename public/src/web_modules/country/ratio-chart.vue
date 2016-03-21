@@ -1,7 +1,6 @@
 <template>
 
     <div class="parent-ratio">
-      <h1>FRANCE</h1>
       <h2>RATIO IMMIGRANTS - IMMIGRÉS</h2>
       <ul class="years" >
         <li  class="selected" v-for="(indexYear, year) in years" v-on:click="selectIndex($index)" v-bind:class="{'selected': indexYear == activeIndex}">
@@ -347,7 +346,7 @@ export default {
     context.beginPath()
     context.rect(0, 0, WIDTH, HEIGHT)
     context.fill()
-    context.fillStyle = "#F3F0E4"
+    context.fillStyle = "#ececec"
 
     context.beginPath()
     context.moveTo(pointX[0], pointY[0])
@@ -432,7 +431,7 @@ export default {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     background-color: #2F6B97;
-    border: 2px solid #F3F0E4;
+    border: 2px solid #ececec;
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.33);
     opacity: 0;
     transition: all .3s;
@@ -479,7 +478,7 @@ export default {
     height: 100%;
     width: 20px;
     right: 0;
-    background-color: #F3F0E4 ;
+    background-color: #ececec ;
     z-index: 5;
     border-radius: 5px;
 
@@ -495,7 +494,7 @@ export default {
   }
   .directRatio .leaving{
     position: absolute;
-    background-color: #F3F0E4;
+    background-color: #ececec;
     width: 100%;
     height: 100%;
     border-radius: 5px;

@@ -57,7 +57,7 @@
       },
 
       clickCountry(value) {
-        this.$router.go({ path: '/country/' + 'FRA' });
+        this.$router.go({ path: '/country/' + value });
       },
 
       renderMapColor() {
