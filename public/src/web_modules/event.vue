@@ -11,17 +11,17 @@
 <h2>Le soir du 9 novembre 1989, l'Europe connaît l'un de ses plus gros changements.</h2>
 
 <p>
-  Dans une atmosphère où les dictatures du bloc soviétique sont en train de tomber tour à tour avec notamment la doctrine Brejnev. Peu après 19h, à la sortie d’une conférence, Günter Schabowski annonce qu’il y aura des nouvelles règlementations pour sortir de la RDA (Berlin Est).
+   L'atmosphère est tendue, en effet les dictatures du bloc soviétique sont en train de tomber tour à tour notamment avec la doctrine Brejnev. Peu après 19h, à la sortie d’une conférence, Günter Schabowski annonce qu’il y aura des nouvelles règlementations pour sortir de la RDA (Berlin Est).
 </p>
 
 <div class="berlin-wall">
 <img src="../assets/img/event2.jpg" alt="mur-berlin" />
-<span>Le Mur durant les année 80</span>
+<span>Le Mur durant les années 80</span>
 </div>
 
 
 <p>
-  Suite à cette annonce, beaucoup de berlinois de l’Est se rassemble devant le mur pour demander leur visa. À 23h30, le flux était telle que les gardes frontières n’ont eu d’autre choix que d’ouvrir la frontière à l’Ouest définitivement. Près de 20 000 personnes passèrent sur le pont de Bösebrücke au cours de l’heure qui suivit.
+  Suite à cette annonce, beaucoup de berlinois de l’Est se rassemblent devant le mur pour demander leurs visa. À 23h30, le flux était tel que les gardes frontières n’ont eu d’autre choix que d’ouvrir définitivement la frontière à l’Ouest. Près de 20 000 personnes passèrent sur le pont de Bösebrücke au cours de l’heure qui suivit.
 </p>
 
 <div class="image image-2">
@@ -29,12 +29,11 @@
 </div>
 
 
-<h2>Cette révolution se produisit sans tir, sans blessé, sans mort.</h2>
+<h2>Cette révolution se produisit sans tir, ni mort, ni blessé</h2>
 
 
 <p>
-  L'euphorie avait gagné la ville entière. Une ambiance de fête populaire régna sur le Kurfürstendamm pendant plusieurs jours.
-Le mur fut détruit complètement en juin de l’année suivante. Armés de marteaux, des collectionneurs viennent des 4 coins du monde pour avoir un morceau de ce mur resté plus de 28ans.
+  L'euphorie avait gagné la ville entière. Une ambiance de fête populaire régna sur le Kurfürstendamm pendant plusieurs jours. Le mur fut détruit complètement en juin de l’année suivante. Armés de marteaux, des collectionneurs viennent des 4 coins du monde pour avoir un morceau de ce mur resté plus de 28ans.
 </p>
 
 <div class="image image-3"></div>
@@ -42,8 +41,7 @@ Le mur fut détruit complètement en juin de l’année suivante. Armés de mart
 
 <h2 class="now">Et maintenant ?</h2>
 
-<p>Aujourd’hui, on entend de nouveau des propositions de séparations de frontières de la part des pays de l’Union Européenne, et des barrières de fils barbelés font leur apparition, moins brutaux visuellement qu’un mur en béton…</p>
-
+<p>Aujourd’hui, on entends de nouveau des propositions de séparations de frontières de la part des pays de l’Union Européenne, et des barrières de fils barbelés font leur apparition, moins brutaux visuellement qu’un mur en béton…</p>
 
 <footer>
   <span class="left_arrow">Évènement précédent</span>
