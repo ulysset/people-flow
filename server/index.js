@@ -26,7 +26,7 @@ app.use(router.get('/data', (req, res) => {
   // Initialyze promises
   const getEuropa = fetchSpreadsheet({
     key: SPREADSHEET_KEY['europa'],
-    select: 'R2C1:R2249C7'
+    select: 'R2C1:R2449C7'
   });
   const getMaghreb = fetchSpreadsheet({
     key: SPREADSHEET_KEY['maghreb'],

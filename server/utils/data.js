@@ -5,20 +5,22 @@ export const getNetMigration = data => {
 
     // Create keys
     const key = index.split(':');
-    const defaultData = {
-      departures: { '1960': 0, '1970': 0, '1980': 0, '1990': 0, '2000': 0 },
-      arrivals: { '1960': 0, '1970': 0, '1980': 0, '1990': 0, '2000': 0 }
-    };
     if(!response[key[0]]) {
       response[key[0]] = {
         name: key[0],
-        data: defaultData
+        data: {
+          departures: { '1960': 0, '1970': 0, '1980': 0, '1990': 0, '2000': 0 },
+          arrivals: { '1960': 0, '1970': 0, '1980': 0, '1990': 0, '2000': 0 }
+        }
       };
     }
     if(!response[key[1]]) {
       response[key[1]] = {
         name: key[0],
-        data: defaultData
+        data: {
+          departures: { '1960': 0, '1970': 0, '1980': 0, '1990': 0, '2000': 0 },
+          arrivals: { '1960': 0, '1970': 0, '1980': 0, '1990': 0, '2000': 0 }
+        }
       };
     }
 
