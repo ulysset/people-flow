@@ -1,40 +1,41 @@
 <template>
-  <div class="container">
+  <div>
+    <div style="position: fixed; z-index: -99; width: 106%; height: 106%; left: -3%; top: -%">
+      <iframe frameborder="0" height="100%" width="100%"
+        src="https://youtube.com/embed/tw-q-hG0owc?loop=1&autoplay=1&controls=0&showinfo=0&autohide=1&playlist=tw-q-hG0owc">
+      </iframe>
+    </div>
     <a v-link="'/'"><img src="../assets/img/logo.svg"/ class="logo"></a>
-    <p class="description">You are about to begin an experiment about the stream of migrants since 1960.</p>
-    <a class="button" v-link="'map'">BEGIN EXPERIMENT</a>
+    <a class="button" v-link="'/map'">Découvrir l'expérience</a>
   </div>
 </template>
 
 <style lang="sass" scoped>
 
-  .container {
-    margin: auto;
-    text-align: center;
-  }
-
-  .description {
-    font-size:20px;
-    margin: 20px 0 20px;
-  }
+  @import "./theme";
 
   .logo{
-    width:300px;
-    margin: 30px 0 30px;
+    width:150px;
+    margin: 24px 30px;
+    opacity: .25;
   }
 
   .button {
-    display: inline-block;
-    padding: 17px;
-    background: #f1f1f1;
-    border: 1px solid #c8c8c8;
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 75px;
+    transform: translateX(-50%);
+    padding: 15px 22px 16px;
+    background-color: white;
     border-radius: 3px;
+    text-transform: uppercase;
     text-decoration: none;
-    color: black;
-    margin-top:20px;
+    color: $primaryColor;
+    font-size: 14px;
 
-    &:hover{
-      background: #e7e7e7;
+    &:hover {
+      color: rgba($primaryColor, .5);
     }
   }
 
