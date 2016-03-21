@@ -22,7 +22,7 @@ router.map({
     component: require('web_modules/stats')
   },
   '/country/:key': {
-    component: require('web_modules/Country')
+    component: require('web_modules/country')
   }
 });
 router.redirect({
