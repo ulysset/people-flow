@@ -9,7 +9,7 @@
             <h3>{{years[indexYear]}}</h3>
             <div v-for="(indexContinent, continent) in continents">
               <div class="continent" v-bind:class="{'enabled': activeContinent == continent.name}">
-                <p>{{ continent.name.toUpperCase() }} : {{ continent.migrants[years[indexYear]]}}</p>
+                <p>{{ continent.name.toUpperCase() }} : <strong>{{ continent.migrants[years[indexYear]]}}</strong></p>
               </div>
             </div>
           </div>
@@ -29,7 +29,6 @@
     data() {
       return {
         data: null,
-        selectedCountry: 'FRA',
         activeIndex: 0, // year
         activeContinent: '',
         years: [1960, 1970, 1980, 1990, 2000],
@@ -110,12 +109,12 @@
 
         // Get data
         this.data = value;
-        const data = this.data['reduceDataMigration'][this.selectedCountry].data;
+        const data = this.data['reduceDataMigration'][this.$route.params.key].data;
         const response = this.continents.map(continent => {
           const continentKey = continent.name;
           const migrants = {};
           Object.keys(data[continentKey]).forEach(year => {
-            migrants[year] = data[continentKey][year].departures
+            migrants[year] = data[continentKey][year].arrivals
           })
           return {
             ...continent,
@@ -143,18 +142,22 @@
   }
 
 </script>
-<style scoped>
+
+<style lang="sass" scoped>
 
   .navStats{
+    position: relative;
+    top: 12px;
     width: 100%;
     height: 40px;
-    position: relative;
     background: #FEFEFE;
+    margin-bottom: 10px;
   }
+
   .navStats h2{
     color: #215078;
-    text-align: center;
-    font-size: 14px;
+    padding-left: 20px;
+    font-size: 16px;
   }
 
   .navStats h3{
@@ -164,59 +167,50 @@
     color: #898989;
     text-align: center;
   }
+
   .statScroll{
     width: 100%;
-    height: calc(100vh - 54px - 115px);
-    overflow-y: scroll;
+    height: calc(100vh - 54px - 140px);
+    overflow-y: auto;
   }
+
   .yearStats{
     position: relative;
     width: 450px;
-    height: 100px;
-    margin: 20px auto;
+    height:85px;
+    margin: 16px auto;
     border-radius: 5px;
-        border: 2px solid #F3F0E4;
+    border: 2px solid #EAEAEA;
     background-color: white;
   }
+
   .yearStatsActive{
     border: 2px solid #2F6B97;
   }
+
   .item {
     width: 3px;
     height: 44px;
     border-radius: 1px;
-    margin: 0px 3px;
-    transform: rotate(-30deg);
+    margin: 0px 2.5px;
   }
 
   .barGroup {
     position: absolute;
-    left: 110px;
-    top: 40%;
+    left: 160px;
+    top: 46px;
     transform: translateY(-50%);
   }
+
   .barGroup div {
       display: inline-block;
   }
 
-  .africa {
-    background-color: #457B9D;
-  }
-  .america {
-    background-color: #00A896;
-  }
-  .oceania {
-    background-color: #A8DADC;
-  }
-  .europa {
-    background-color: #EC4168;
-  }
-  .asia {
-    background-color: #1D3557;
-  }
-
-
-
+  .africa { background-color: #457B9D; }
+  .america { background-color: #00A896; }
+  .oceania { background-color: #A8DADC; }
+  .europa { background-color: #EC4168; }
+  .asia { background-color: #1D3557; }
 
   .statsContinents{
     position: absolute;
@@ -227,26 +221,31 @@
 
   }
   .statsContinents h3 {
+    position: relative;
+    top: 8px;
     color: #2F6B97;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 15px;
   }
   .statsContinents .continent p{
+    position: relative;
+    top: -9px;
     color: #BCBCBC;
-    font-size: 14px;
+    font-size: 13px;
     margin: 0;
+
+    strong {
+      font-size: 14px;
+    }
   }
 
-
   .statsContinents .continent{
-    position: absolute;
-    opacity: 0;
-    top: 66%;
-    left: 200px;
+    display: none;
     width: 170px;
   }
 
   .statsContinents .enabled {
-    opacity: 1;
+    display: block;
   }
+
 </style>
