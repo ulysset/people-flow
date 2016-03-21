@@ -91,7 +91,12 @@ app.use(router.get('/data', (req, res) => {
         ...africaResponse, ...americaResponse,
         ...asiaResponse, ...europaResponse,
         ...oceaniaResponse
-      }
+      },
+      allNetMigration: getNetMigration({
+        ...africaResponse, ...americaResponse,
+        ...asiaResponse, ...europaResponse,
+        ...oceaniaResponse
+      })
     };
 
     return res.status(200).json(cache);

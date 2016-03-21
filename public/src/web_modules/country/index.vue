@@ -2,12 +2,11 @@
 	<app-header></app-header>
 	<div class="country-container">
     <h1 class="title">{{ title }}</h1>
+		<div class="ratio-chart-container">
+			<ratio-chart></ratio-chart>
+		</div>
 		<div class="continent-chart">
 			<continent-chart></continent-chart>
-		</div>
-		<div class="ratio-chart-container">
-			<!-- <input-country class="selectors"></input-country> -->
-			<ratio-chart></ratio-chart>
 		</div>
 	</div>
 </template>
@@ -52,6 +51,9 @@
 
 <style lang="sass" scoped>
 
+	body {
+	}
+
 	.title {
 		margin-bottom: 0;
 	}
@@ -63,13 +65,13 @@
 		width: 1000px;
     height: calc(100vh - 60px);
     transform: translateX(-50%);
-		overflow: hidden;
+		overflow-y: hidden;
 	}
 
 	.continent-chart {
 		display: inline-block;
 		position: relative;
-		float: right;
+		vertical-align: top;
 		width: 498px;
 		height: calc(100vh - 54px);
 	}
@@ -77,7 +79,7 @@
 	.ratio-chart-container {
 		display: inline-block;
 		position: relative;
-		transform: scale(.95);
+		vertical-align: top;
 		margin: 0;
 		width: 498px;
 		padding: 0;

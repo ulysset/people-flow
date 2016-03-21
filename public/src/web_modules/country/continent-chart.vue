@@ -1,6 +1,6 @@
 <template>
-  <div class="navStats">
-    <h2>Flux des arrivés: ratio des continents</h2>
+  <div class="header">
+    <h2>Flux des arrivés: ratio continents</h2>
   </div>
   <div class="statScroll">
     <div v-for="(indexYear, year) in years">
@@ -145,7 +145,7 @@
 
 <style lang="sass" scoped>
 
-  .navStats{
+  .header{
     position: relative;
     top: 12px;
     width: 100%;
@@ -153,19 +153,11 @@
     margin-bottom: 10px;
   }
 
-  .navStats h2{
+  .header h2{
     color: #215078;
     padding-left: 20px;
     font-size: 16px;
     text-transform: uppercase;
-  }
-
-  .navStats h3{
-    display: inline-block;
-    width: 49%;
-    font-size: 13px;
-    color: #898989;
-    text-align: center;
   }
 
   .statScroll{
