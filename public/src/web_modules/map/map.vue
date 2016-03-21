@@ -36,7 +36,6 @@
     ready() {
       const $svg = this.$els.svg;
       const height = window.innerHeight + 120 + window.innerHeight * .0175;
-
       $svg.style.height = height + 'px';
 
       [].slice
@@ -58,7 +57,7 @@
       },
 
       clickCountry(value) {
-        this.$router.go({ name: '/country/' + value });
+        this.$router.go({ path: '/country/' + 'FRA' });
       },
 
       renderMapColor() {
