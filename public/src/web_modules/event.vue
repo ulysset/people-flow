@@ -177,27 +177,30 @@ footer{
     a {
       width:170px;
       height:15px;
-      padding:10px;
+      padding:10px 10px 10px 14px;
       display:inline-block;
       cursor:pointer;
       background-repeat:no-repeat;
       text-decoration:none;
-      color:#A8A8A8;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: black;
+
       &:hover{
-        opacity:.7;
+        opacity:.5;
       }
     }
 
     .left_arrow{
       background-image:url(../assets/img/left_arrow.svg);
-      background-position:0px 10px;
+      background-position:0px 8px;
     }
     .right_arrow{
       background-image:url(../assets/img/right_arrow.svg);
-      background-position:160px 10px;
+      background-position:160px 8px;
     }
     .back{
-      width:160px;
+      width:170px;
       height:30px;
       margin-bottom:-20px;
       background-image:url(../assets/img/back-black.svg);
