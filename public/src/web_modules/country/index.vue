@@ -26,15 +26,32 @@
     props: ['data'],
 
 		data() {
+			const country = countries.filter(
+				_country => _country.slug === this.$route.params.key
+			)[0];
+
 			return {
 				countries,
-				title: countries.filter(
-						country => country.slug === this.$route.params.key
-					)[0].name.toUpperCase()
+				title: country ? country.name.toUpperCase() : ''
 			};
 		},
 
 		ready() {
+			const keys = [
+		    'ALB', 'AND', 'AUT', 'BLR', 'BEL', 'BIH',
+		    'BGR', 'HRV', 'CYP', 'CZE', 'DNK', 'EST',
+		    'FRO', 'FIN', 'FRA', 'GEO', 'DEU', 'GIB',
+		    'GRC', 'GRL', 'HUN', 'ISL', 'IRL', 'ITA',
+		    'LVA', 'LIE', 'LTU', 'LUX', 'MKD', 'MDA',
+		    'MCO', 'MNE', 'NLD', 'NOR', 'POL', 'PRT',
+		    'ROM', 'RUS', 'SMR', 'SRB', 'SCG', 'SVK',
+		    'SVN', 'ESP', 'SWE', 'CHE', 'UKR', 'GBR'
+		  ];
+
+			if(!keys.includes(this.$route.params.key)) {
+				this.$router.go({ path: '/map' });
+			}
+
       if(this.data) {
         this.$broadcast('getData', this.data)
       }
