@@ -1,12 +1,15 @@
 <template>
 	<app-header></app-header>
 	<div class="country-container">
+		<a v-link="'/map'" class="back">< Retour sur la map</a>
     <h1 class="title">{{ title }}</h1>
-		<div class="ratio-chart-container">
-			<ratio-chart></ratio-chart>
-		</div>
-		<div class="continent-chart">
-			<continent-chart></continent-chart>
+		<div>
+			<div class="ratio-chart-container">
+				<ratio-chart></ratio-chart>
+			</div>
+			<div class="continent-chart">
+				<continent-chart></continent-chart>
+			</div>
 		</div>
 	</div>
 </template>
@@ -68,11 +71,18 @@
 
 <style lang="sass" scoped>
 
-	body {
+	.title {
+		display: block;
+		margin: 0 0 2px 0;
 	}
 
-	.title {
-		margin-bottom: 0;
+	.back {
+		display: block;
+		margin-top: 26px;
+		text-transform: uppercase;
+		color: #BCBCBC;
+		font-size: 12px;
+		text-decoration: none;
 	}
 
 	.country-container {
