@@ -63,9 +63,7 @@
 		top: 60px;
 		left: 50%;
 		width: 1000px;
-    height: calc(100vh - 60px);
     transform: translateX(-50%);
-		overflow-y: hidden;
 	}
 
 	.continent-chart {

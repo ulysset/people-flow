@@ -162,8 +162,6 @@
 
   .statScroll{
     width: 100%;
-    height: calc(100vh - 54px - 140px);
-    overflow-y: auto;
   }
 
   .yearStats{

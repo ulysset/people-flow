@@ -19,10 +19,10 @@
         <div class="leaving"></div>
       </div>
       <div class="flowNumber">
-        <div class="numberArriving">{{arrival[activeIndex]}}</div>
-        <div class="numberDeparture">{{departure[activeIndex]}}</div>
-        <div class="numberArriving">ARRIVES</div>
-        <div class="numberDeparture">DÉPARTS</div>
+        <div class="numberArriving --label">ARRIVES</div>
+        <div class="numberDeparture --label">DÉPARTS</div>
+        <div class="numberArriving --label">{{arrival[activeIndex]}}</div>
+        <div class="numberDeparture --value">{{departure[activeIndex]}}</div>
       </div>
     </div>
 </template>
@@ -126,7 +126,7 @@
 
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
 
   .parent-ratio{
     width: 470px;
@@ -220,12 +220,22 @@
     text-align: left;
     display: inline-block;
     width: 49%;
+    color: #BCBCBC;
+
+    &.--label {
+      font-size: 13px;
+    }
   }
 
   .flowNumber .numberDeparture{
     text-align: right;
     display: inline-block;
     width: 49%;
+    color: #BCBCBC;
+
+    &.--label {
+      font-size: 13px;
+    }
   }
 
   .directRatio{
