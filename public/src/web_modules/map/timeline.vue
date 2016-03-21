@@ -48,8 +48,10 @@
       getRatio(index) {
         const totalWidth = this.yearWidth * this.years.length;
         const windowWidth = window.innerWidth;
+
         this.ratio =
-          ((totalWidth - windowWidth) / 2 + this.yearWidth / 2) +
+          (windowWidth - totalWidth) / 2 -
+          (windowWidth / 2) + this.yearWidth / 2 +
           index * this.yearWidth;
       },
 
@@ -88,7 +90,6 @@
     top: -2px;
     width: 50%;
     height: 3px;
-    transform: translateX(-8px);
     background: linear-gradient(to left, $secondaryColor 0%, transparent 100%);
     transition: left .2s ease;
 
