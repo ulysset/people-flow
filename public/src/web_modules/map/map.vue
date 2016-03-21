@@ -34,8 +34,13 @@
     },
 
     ready() {
+      const $svg = this.$els.svg;
+      const height = window.innerHeight + 120 + window.innerHeight * .0175;
+
+      $svg.style.height = height + 'px';
+
       [].slice
-        .call(this.$els.svg.querySelectorAll('path'))
+        .call($svg.querySelectorAll('path'))
         .forEach(country => {
           const { top, left, width, height } = country.getBoundingClientRect();
           this.coordinatates[country.classList[1]] = {
@@ -53,11 +58,11 @@
       },
 
       clickCountry(value) {
-        console.log(value);
+        this.$router.go({ name: '/country/' + value });
       },
 
       renderMapColor() {
-        const defaultColor = 'rgba(21, 57, 94, 0.3';
+        const defaultColor = 'rgba(21, 57, 94, 0.25';
         this.countries.forEach(country => {
           const key = country.name;
 
@@ -75,9 +80,9 @@
               }
             }
 
-            let alpha = 0.3 + netMigration * .0000001;
-            if(alpha < .15 ) {
-              alpha = .15;
+            let alpha = 0.25 + netMigration * .0000001;
+            if(alpha < .05 ) {
+              alpha = .05;
             }
             else if(alpha > .9) {
               alpha = .9;
@@ -124,12 +129,13 @@
   }
 
   .countries {
+    position: absolute;
     width: 1500px;
     height: 800px;
   }
 
   .land {
-    fill: rgba(21, 57, 94, 0.3);
+    fill: rgba(21, 57, 94, 0.25);
     stroke-width: .25;
     stroke: #eee;
     cursor: pointer;

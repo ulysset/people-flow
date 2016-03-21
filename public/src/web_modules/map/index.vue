@@ -34,6 +34,9 @@
   });
 
   export default {
+
+    props: ['data'],
+
     data() {
       return {
         selectedYear: DEFAULT_YEAR,
@@ -47,6 +50,12 @@
           name: 'Moyen-Orient / Maghreb'
         }]
       };
+    },
+
+    ready() {
+      if(this.data) {
+        this.$broadcast('getData', this.data)
+      }
     },
 
     events: {
