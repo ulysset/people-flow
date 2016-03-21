@@ -1,5 +1,5 @@
 <template>
-  <router-view></router-view>
+  <router-view v-bind:data="data"></router-view>
 </template>
 
 <style>
@@ -49,6 +49,12 @@
   import fetch from 'helpers/fetch';
 
   export default {
+    data() {
+      return {
+        data: null
+      };
+    },
+
     ready() {
       fetch(WEBAPI + '/data')
         .then(response => JSON.parse(response))
