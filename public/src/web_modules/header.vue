@@ -8,6 +8,7 @@
         <li class="nav-item --help"><a href="https://twitter.com/intent/tweet?text=Futuregrant la nouvelle dataviz qui change notre regard !&url=https://still-fortress-88655.herokuapp.com" target="_blank" class="nav-link --share --twitter"></a></li>
       </ul>
     </nav>
+    <a class="events" v-link="'/event'">Évènements marquants</a>
   </header>
 </template>
 
@@ -96,6 +97,20 @@
           opacity:.5;
         }
       }
+    }
+  }
+
+  .events {
+    position: absolute;
+    left: 50%; top: 20.5px;
+    transform: translateX(-50%);
+    color: $secondaryColor;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 
